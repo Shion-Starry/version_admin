@@ -6,7 +6,7 @@ import com.drake.serialize.serialize.annotation.SerializeConfig
 import com.drake.serialize.serialize.serial
 import com.drake.serialize.serialize.serialLazy
 
-@SerializeConfig(mmapID = "user_config", cryptKey = "h8F!dwVkmjRkfK%#")
+@SerializeConfig(mmapID = "user_config", cryptKey = "~P)*ulzNT9E@4JlJIuPB")
 object UserConfig {
     var isLoginStatus: Boolean by serial(false)
     var token: String by serialLazy("")

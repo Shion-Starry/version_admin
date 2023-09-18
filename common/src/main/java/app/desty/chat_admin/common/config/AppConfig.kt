@@ -7,7 +7,7 @@ import com.drake.serialize.serialize.annotation.SerializeConfig
 import com.drake.serialize.serialize.serialLazy
 import java.util.Locale
 
-@SerializeConfig(mmapID = "app_config", cryptKey = "h8F!dwVkmjRkfK%#")
+@SerializeConfig(mmapID = "app_config", cryptKey = "~P)*ulzNT9E@4JlJIuPB")
 object AppConfig {
 
     var deviceId: String by serialLazy("")
