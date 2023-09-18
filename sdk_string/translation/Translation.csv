@@ -1,0 +1,227 @@
+Code,Android-key,English,Bahasa
+,【Common】,,
+_10aec353,cancel,Cancel,Batalkan
+_a14fa216,loading,Loading…,Loading…
+_828905a2,login_out,Log out,Keluar
+_444bcb3a,ok,ok,OK
+_0020d1a4,over_max_limit,Max limit reached,Telah mencapai batas maksimum
+_018110ff,over_min_limit,Min limit reached,Telah mencapai limit minimum
+_43781db5,save,Save,Simpan
+_199ad8f2,save_iamge_failed,Save failed,Gagal
+_29d10d7f,save_image_success,Save successful,Tersimpan
+_2af72f10,version,Version %s,Versi %s
+_a6105c0a,yes,Yes,Iya
+,【Permission】,,
+_ece66ad3,permission_battery_content,We will be able to send you offline message notifications only when you grant this access.,Kami akan dapat mengirimi Anda pemberitahuan pesan luring hanya jika Anda memberikan akses ini.
+_dac540b1,permission_battery_operate,Set,Atur
+_dac7e27b,permission_battery_title,Allow App to run in background?,Izinkan App berjalan di latar belakang?
+_2ef1bb05,permission_notification_content,"Your notifications are not turned on, you will not be notified of new messages","Notifikasi anda tidak aktif, anda tidak akan menerima notifikasi jik ada pesan baru"
+_6c14d946,permission_notification_operate,Set,Atur
+_81597753,permission_notification_title,Notification prompt,Permintaan Notifikasi
+,【Platform】,,
+_918b7a11,platform_blibli,BliBli,BliBli
+_853432e4,platform_instagram,Instagram,Instagram
+_fbb2e98a,platform_lazada,Lazada,Lazada
+_924471ec,platform_shopee,Shopee,Shopee
+_f4db90a7,platform_tiktok,TikTok,TikTok
+_f1c32494,platform_tokopedia,Tokopedia,Tokpedia
+_e42220fa,platform_whats_app,WhatsApp,WhatsApp
+_a2712e82,platform_whats_app_commerce,WhatsApp Commerce,WhatsApp Commerce
+,【Splash】,,
+_cdcfe606,splash_no_internet_content,Your network is currently unavailable. Please check your settings and try again,Mohon periksa pengaturan telepon seluler Anda dan coba Lagi
+_92ad0d94,splash_no_internet_negative,Setting,Atur
+_0a2ff602,splash_no_internet_positive,Retry,Coba lagi
+_56aeb490,splash_no_internet_title,No network available,Jaringan tidak tersedia
+,【Welcome】,,
+_a9341bfc,welcome_content,"Easily reply your customer chat, anywhere and anytime from your Mobile App","Balas pesan pelanggan Anda dengan mudah, di mana saja dan kapan saja dari Aplikasi Seluler"
+_883e8df6,welcome_content_no_platform,Please connect a channel on Profile-Channel Management or Web to start the chat with your customers.,Hubungkan toko Anda di Profil - Pengaturan Toko atau di Website untuk mulai chat dengan penlanggan Anda
+_c163e094,welcome_login,Log in,Log in
+_440ed308,welcome_refresh,Refresh,Refresh
+_318903df,welcome_title,Welcome to Desty Chat,Selamat Datang di Desty Chat
+,【Upgrade】,,
+_aaa399bd,upgrade_cancel_button,<u>Cancel update</u>,<u>Batalkan</u>
+_b1494cfb,upgrade_get_info_failure,Get upgrade info failed,Gagal memuat infomasi update
+_e233ca91,upgrade_title,Update Reminder,Pengingat Perbaruhi
+_261f47a8,upgrade_upgrade_button,Update,Update
+_8c401962,upgrade_without_click,<u>here</u>,<u>disini</u>
+_162dc5f5,upgrade_without_google_play_tip,if u Without Google play?,Perbaruhi tanpa Google Play
+,【Login】,,
+_769edc64,login_check_email_empty,Please input your email account,Masukkan email anda
+_7390f19c,login_check_email_invaild,Invalid email account,Format email salah
+_14e242ac,login_check_password_empty,Please input your email password,Masukkan password anda
+_fadb4312,login_check_phone_number_empty,Please input your phone number first,Masukkan nomer hp
+_b572c422,login_check_phone_number_invaild,Invalid phone number,Nomer hp anda salah
+_544d458a,login_email_account_input_hint,Please input the Email account,Harap input email
+_bc1e9ee2,login_email_login,Log in,Log in
+_c8ec64c7,login_email_password_hint,Please input the password,Harap input kata sandi
+_86619ce4,login_email_title,with Email account,dengan Email
+_f6db0733,login_otp_count_down,%ds later get the OTP again,%ds untuk kirim ulang OTP
+_b9c6cfcf,login_otp_get_otp,Get the OTP,Dapatkan kode OTP
+_b8013d15,login_otp_get_otp_again,<u>Get the OTP again</u>,<u>Kirim ulang OTP</u>
+_3c4c3c12,login_otp_get_otp_failed,Get the OTP failed,OTP salah
+_a1de4914,login_otp_input_hint,Please input the OTP,Harap masukan kode OTP
+_06123bfa,login_otp_title,with Phone number,dengan No. Telp
+_0b011e00,login_out_dialog_content,Are you sure you want to log out of the Desty Chat app? Logout will not receive messages,Anda yakin keluar dari Desty Chat app? Anda tidak akan menerima pesan dari customer
+_35280f7a,login_out_dialog_title,Confirm,Konfirmasi
+_1bb0a1be,login_phone_number_input_hint,Please input the phone number,Masukkan no telp
+_7d6e6801,login_policy,"By logging or sign up, you agree to Terms &amp; Conditions and Privacy Policy","Dengan masuk atau mendaftar, Anda menyetujui Syarat &amp; Ketentuan dan Kebijakan Privasi"
+_34039c01,login_policy_highlight_privacy_policy,Privacy Policy,Kebijakan Privasi
+_3be82bff,login_policy_highlight_terms_conditions,Terms &amp; Conditions,Syarat &amp; Ketentuan
+_533972a2,login_refresh_content,"Failed to connect to the service, please click Refresh to try again","Gagal menghubungkan servis, coba lagi dengan klik refresh"
+_64826f25,login_refresh_positive,Refresh,Refresh
+_61d34745,login_refresh_title,Login successfu!,Login Berhasil
+_ad448021,login_switch_to_email,Email login,Email Log in
+_4d2c83c4,login_switch_to_otp,Phone number login,Masuk dengan Telp
+_1551b724,login_title,Log in,Masuk
+_0da195b5,login_with_email_title,Log in,Masuk
+,【Onboarding】,,
+_86d5df35,onboarding_error_email,Invalid email address,Email salah
+_b13f6943,onboarding_error_name,Please enter the correct full name,Masukkan nama lengkap yang benar
+_5303ebe1,onboarding_user_info_email_hint,Input your email,Alamat email
+_e91bd314,onboarding_user_info_email_title,Email,Email
+_ee4ab2b1,onboarding_user_info_name_hint,Input your name,Nama
+_76f62e81,onboarding_user_info_name_title,Full Name *,Nama Lengkap *
+_2cc38b9a,onboarding_user_info_operation,Start to use Desty Chat,Mulai Desty Chat
+_e71ed59a,onboarding_user_info_tip,Input email to get updates from Desty Chat,Masukkan email untuk mendapatkan informasi terbaru
+_0394a837,onboarding_user_info_title,Personal information,Informasi Pribadi
+,【Message】,,
+_372c4039,message_attach_order_title,You are talking about this order,Anda sedang membicarakan pesanan ini
+_dcff591d,message_attach_product_title,You are talking about this product,Anda sedang membicarakan produk ini
+_71d39e97,message_attachment_camera,Camera,Kamera
+_27d5f47d,message_attachment_order,Order,Pesanan
+_514f4ef5,message_attachment_photo,Photo,Foto
+_ce4958c1,message_attachment_product,Product,Produk
+_53d7e76a,message_expired,The chat has expired.,Chat telah berakhir
+_0ed268d6,message_go_to_last_read_location,Last read location,Pesan terakhir dibaca
+_fed14e86,message_gpt_validating,Analyzing...,Analisis
+_6a1981af,message_load_error,Please check your network settings,Silahkan periksa jaringan internet anda
+_b54f029d,message_loading,"Loading,please wait",Sedang memuat
+_86128ce1,message_new_message_timeline,%s New message,%s Pesan baru
+_13426345,message_no_permission_positive,I see,OK
+_a9382730,message_no_permission_title,The current chat user has no permission to access,Akun anda saat ini tidak memiliki akses
+_9237b030,message_non_support,"[Due to API limitation, this message is not supported yet, please check in the seller center]","[Karena keterbatasan API, pesan ini belum didukung, harap periksa di pusat penjual]"
+_5cb25147,message_operation_gpt_generating,Generating,Membuat
+_bd3bd7d6,message_operation_gpt_reply,ChatGPT Reply,Balasan ChatGPT
+_af439138,message_operation_order,Orders,Pesanan
+_9c4e9c61,message_operation_product,Products,Produk
+_84606fbd,message_order_product_count,Total %d products,Total %d produk
+_21678283,message_platform_all,All,Semua
+_bb385137,message_product_price,Rp %s,Rp %s
+_e5c2ad59,message_product_price_range,Rp %s-%s,Rp %s-%s
+_70c5f419,message_product_title,Product,Produk
+_66b6cc2e,message_read_filter_all,All,Semua
+_e5e69a19,message_read_filter_unanswered,Unanswered,Belum dibalas
+_ea76979a,message_read_filter_unread,Unread,Belum dibaca
+_921ffa1d,message_resend_positive,Resend,Kirim ulang
+_75c32d44,message_resend_title,Resend this message,Kirim ulang pesan ini
+_a0a5c371,message_search_filter_dialog_default,Default,Default
+_88e33a0c,message_search_filter_dialog_message_type,Message Type,Tipe pesan
+_a0bbcf23,message_search_filter_dialog_save,Save,Simpan
+_0772f2cb,message_search_filter_dialog_store_all,All Store(%d),Semua Toko (%d)
+_fac6d9fe,message_search_filter_dialog_store_list,Store List,Daftar Toko
+_4a533c82,message_search_filter_dialog_title,Messages and Stores Filter,Filter Pesan dan Toko
+_c433b3d6,message_search_page_title,Search,Mencari
+_1d91a72e,message_seller_center,Seller Center,Seller Center
+_b76cc1d4,message_time_yesterday,Yesterday,Kemarin
+_f4f2a0e4,message_unknown,"[Message not supported, please make sure you have updated to the latest version or check it on PC]","[Pesan tidak didukung, pastikan Anda telah memperbarui ke versi terbaru atau memeriksa di PC]"
+,【Product】,,
+_fc4c98fe,product_detail,Detail,Detail
+_fa761ca6,product_detail_page_title,Product detail,Detail Produk
+_4b2f379b,product_page_title,Products,Produk
+_0271bf39,product_price,Rp %s,Rp %s
+_ebf61250,product_price_range,Rp %s-%s,Rp %s-%s
+_590bde6a,product_search_hint,Search product name or SKU,Cari dengan nama produk atau SKU
+_533da2c3,product_send,Send,Kirim
+_4fa21e30,product_stock,Stock:,Stok:
+,【Order】,,
+_dc1fac5a,order_detail_buyer_notes,Buyer Notes,Catatan pelanggan
+_a8040265,order_detail_info_created_date,Created Date,Tanggal dibuat
+_7c89a2ef,order_detail_info_order_id,Order ID,Id Pesanan
+_5ad12aea,order_detail_info_payment_method,Payment Method,Metode Pembayaran
+_4ae12ed1,order_detail_info_ship_before,Ship Before,Kirim Sebelum
+_43b352c2,order_detail_info_shipment_number,Shipment Number,Nomer Pengiriman
+_b83f1a37,order_detail_info_source,Source,Sumber
+_86f9686b,order_detail_info_store_channel,Store Channel,Toko
+_ce69fccb,order_detail_info_title,Order detail,Detail Pesanan
+_5f52474d,order_detail_insurance,Insurance,Asuransi
+_d42b73e8,order_detail_page_title,Order detail,Detail Pesanan
+_d92771a8,order_detail_send,Send,Kirim
+_a506712c,order_detail_shipping_cost,Delivery Fee,Biaya Pengiriman
+_f1fcd1f3,order_detail_store_discount,Store Discount,Diskon Toko
+_a0043022,order_detail_subtotal,Subtotal,Sub Total
+_14522d8d,order_detail_summary,Summary,Ringkasan
+_30734339,order_detail_total_price,Total Price,Total Harga
+_9d645658,order_detail_total_qty,Total Qty,Total Qty
+_83d1034f,order_list_hide,Hide,Sembunyikan
+_30c62cf1,order_list_order_detail,Order Detail,Detail Pesanan
+_b208af6d,order_list_send,Send,Kirim
+_4519c73a,order_list_sync,<u>Sync</u>,<u>Sync</u>
+_337d9d6a,order_list_total_price,Total Price:,Total Harga :
+_8a082266,order_list_total_qty,Total Qty:,Total Produk :
+_5543fa44,order_list_type_all,All Orders,Semua pesanan
+_06f0e827,order_list_type_new_orders,New Orders,Pesanan baru
+_db8df907,order_list_type_unpaid,Unpaid,Belum dibayar
+_fba390cb,order_list_view_more_product,View %d more products,Lihat %d produk lainnya
+_5c3e6d74,order_page_title,Orders,Pesanan
+_9a84a7a2,order_search_hint,Search order id,Cari Id Pesanan
+,【Setting】,,
+_f869d7d3,bind_3rd_part_1st_guide_content,Click %s and you will be directed to the %s page for login and authorization.,Klik %s dan Anda akan diarahkan ke halaman %s untuk login dan authorization.
+_c37210fa,bind_3rd_part_1st_guide_content_highlight_connect,"\""Start Connect\""","\""Mulai hubungkan\"""
+_04cbd122,bind_3rd_part_2nd_guide_content,"After the authorization is successful, you can manage chats from customers for all Shopee stores that have been integrated with Desty Chat.","Setelah proses authorization berhasil, Anda bisa mengelolah chat dari semua toko yang terhubung dengan akun Desty Chat Anda."
+_e5650f4e,bind_3rd_part_failure_negative,Close,Tutup
+_91264938,bind_3rd_part_failure_positive,Try again,Coba Lagi
+_cc33e204,bind_3rd_part_failure_title,Connect failed!,Gagal Menghubungkan
+_f34b3fd4,bind_3rd_part_page_title,Add %s Channel,Tambahkan %s Toko
+_5bd6bf13,bind_3rd_part_start_connect,Start Connect,Mulai Hubungkan
+_092f2888,bind_3rd_part_success_content,You can add more stores at Channel Management. Check it later in Personal Center - 'Channel settings',Anda bisa menambahkan toko di Pengaturan Toko. Klik Akun lalu Pengaturan Toko
+_d5aeb7a2,bind_3rd_part_success_positive,Start Chat,Mulai chat
+_7b2e1dfb,bind_3rd_part_success_title,Connect Successful!,Berhasil hubungkan
+_e0abe5e8,bind_store_connect,Connect,Hubungkan
+_4be6fcc8,bind_store_page_tip,"Some marketplaces do not support connection on mobile app,Please operate on PC.",Beberapa marketplace harus dihubungkan di Website
+_f27d06e7,bind_store_page_title,Choose marketplaces,Pilih Marketplace
+_4f15679e,channel_connect_status_all,All,Semua
+_1ba539a1,channel_connect_status_connected,Connected,Terhubung
+_f299ca25,channel_connect_status_expired,Expired,Terlepas
+_f5902cd4,channel_connect_status_waiting,Waiting,Menunggu
+_65ff2a60,channel_management_entrance,Channel Management,Pengaturan Toko
+_a01158f1,channel_management_page_operation,Add channel/store,Tambah Toko
+_1c34bd0e,channel_management_page_title,Channel Management,Pengaturan Toko
+_7fa2d32f,channel_operation_delete,Delete,Hapus
+_ce55cd27,channel_operation_delete_confirm_title,Are you sure you want to delete？,
+_ad5e7e91,channel_operation_delete_success,Delete successful,Berhasil dihapus
+_bdfdfbaf,channel_operation_reconnect,Reconnect,Hubungkan lagi
+_72b7ef21,channel_operation_sync,Sync Product&amp;Orders,Sync product &amp; pesanan
+_db1e9dce,channel_operation_sync_success,"Sync successful, please go to the notification bar to check the progress","Sync berhasil, untuk melihat statusnya silahkan ke notifikasi"
+_55f51859,sync_store_notify_complete,Sync completed,Sync Selesai
+_1b8c99eb,sync_store_notify_title,Store Syncing,Sync Toko
+,【Empty View】,,
+_60f94799,empty_layout_default,no relevant results,Hasil tidak ditemukan
+_c8f21d2d,empty_layout_message,You dont have any message,Kamu tidak memiliki pesan
+_07804370,load_more_load_complete,Click to load more,Klik untuk memuat lebih banyak
+_f120751f,load_more_load_end,No more data,Tidak ada data lagi
+_06f8cb6c,load_more_load_failed,Load more failed,Gagal memuat lebih banyak
+_330cd7db,load_more_loading,Loading…,Loading…
+_2f8d2f53,loading_layout_default,Loading…,Loading…
+,【Error View】,,
+_59f0a6c9,error_layout_content,Unable to get data on this page.\nPlease refresh page.,Tidak dapat memuat data.\nHarap memuat ulang laman ini
+_3f243f64,error_layout_refresh,Refresh,Memuat Ulang
+_f4bf940a,error_layout_title,Failed to Fetch Data,Gagal mengambil data
+,【Network Error】,,
+_057a959f,chat_net_connect_error,Connect to network failed.,Koneksi internet gagal
+_7a915ca1,chat_net_connect_timeout_error,"Connect to network timeout, %s","Koneksi internet terputus, %s"
+_b8d3ef58,chat_net_download_error,Failed to download,Gagal memuat
+_f7b259f0,chat_net_host_error,Can't find host on network,Tidak menemukan koneksi internet
+_822a1847,chat_net_no_cache_error,Read cache failed,Gagal membaca cache
+_21247591,chat_net_null_error,Null error,Null error
+_bfbf27bc,chat_net_parse_error,Failed to parse date,Gagal mendapatkan tanggal
+_e3e80a25,chat_net_request_error,Request params error,Permintaan paramter gagal
+_2e477288,chat_net_request_failure,Request failed,Permintaan gagal
+_2b8ed64a,chat_net_server_error,Server response error,Respon server error
+_1933405b,chat_net_unknown_error,Unknown error,Error tidak diketahui
+_d1871f2c,chat_net_unknown_net_error,Unknown network error,Jaringan error
+_679762a2,chat_net_url_error,Parse url failed,Parse url gagal
+,【JumpOutError】,,
+_235a6502,jump_out_error_app_store,GOOGLE PLAY,Google Play
+_d562b13a,jump_out_error_base_message,"Failed, please check do you have installed %s","Gagal, Mohon periksa apakah telah terinstal %s"
+_baa19db4,jump_out_error_dial,PHONE,Telp
+_e0ed8d64,jump_out_error_web,BROWSER,Browser

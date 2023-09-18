@@ -1,0 +1,212 @@
+import com.google.gson.Gson
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+apply from: "${project.rootDir.path}/module-common.gradle"
+
+
+android {
+    signingConfigs {
+        release {
+            keyAlias 'main'
+            keyPassword 'desty#2021'
+            storeFile file('/private/android/destyprod.jks')
+            storePassword 'desty#2021'
+        }
+    }
+
+
+    defaultConfig {
+        namespace APPLICATION_ID
+        applicationId APPLICATION_ID
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        if (project.DESTY_DEBUG == 'false') {
+            //正式包参数
+            manifestPlaceholders = [
+                    GETUI_APP_ID    : "YFwhf7LkkP8xPvurNaOzX5",
+                    GETUI_APP_KEY   : "FOedM1vHPFAtHdLteDAqG9",
+                    GETUI_APP_SECRET: "MwBIsA5ZT89klW5BFS0rr3",
+                    // 小米相关应用参数
+//                    XIAOMI_APP_ID   : "",
+//                    XIAOMI_APP_KEY  : "",
+                    // OPPO 相关应用参数
+//                    OPPO_APP_KEY    : "",
+//                    OPPO_APP_SECRET : "",
+                    // VIVO 相关应用参数
+//                    VIVO_APP_ID     : "",
+//                    VIVO_APP_KEY    : "",
+            ]
+        } else {
+            //测试包参数
+            manifestPlaceholders = [
+                    GETUI_APP_ID    : "8wEOs7HifiAPehSErKwOZ8",
+                    GETUI_APP_KEY   : "HUJEaHuDKu7EhgNA0i16k5",
+                    GETUI_APP_SECRET: "sjD0Gf2Sf48VtRo18onEB1",
+                    // 小米相关应用参数
+//                    XIAOMI_APP_ID   : "",
+//                    XIAOMI_APP_KEY  : "",
+                    // OPPO 相关应用参数
+//                    OPPO_APP_KEY    : "",
+//                    OPPO_APP_SECRET : "",
+                    // VIVO 相关应用参数
+//                    VIVO_APP_ID     : "",
+//                    VIVO_APP_KEY    : "",
+            ]
+        }
+        if (project.ABI_SPLITS == 'false') {
+            ndk {
+                abiFilters "armeabi-v7a", "arm64-v8a"
+            }
+        }
+    }
+
+    if (project.ABI_SPLITS != 'false') {
+        splits {
+            abi {
+                enable true
+                reset()
+                include 'armeabi-v7a', 'arm64-v8a'
+                universalApk false
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            jniDebuggable false
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+    // bundle 分包配置
+    bundle {
+        density {
+            // 是否根据屏幕尺寸分割安装包
+            // app中大规模使用svg，即使是png也只有一套图，所以关闭根据屏幕尺寸分包
+            enableSplit false
+        }
+        abi {
+            // 是否根据cpu指令集分包
+            enableSplit true
+        }
+        language {
+            // 是否根据语言分包
+            // APP中存在切换语言需求，所以关闭语言分包
+            enableSplit false
+        }
+    }
+    packagingOptions {
+        exclude("META-INF/DEPENDENCIES")
+        exclude("META-INF/LICENSE")
+        exclude("META-INF/INDEX.LIST")
+        exclude("META-INF/LICENSE.txt")
+        exclude("META-INF/license.txt")
+        exclude("META-INF/NOTICE")
+        exclude("META-INF/NOTICE.txt")
+        exclude("META-INF/notice.txt")
+        exclude("META-INF/ASL2.0")
+        exclude("META-INF/*.kotlin_module")
+        exclude("META-INF/io.netty.versions.properties")
+    }
+}
+
+// bundle打包完成后拷贝文件
+tasks.whenTaskAdded { task ->
+    if (task.name.equalsIgnoreCase("bundleRelease")) {
+        def renameTaskName = "rename${task.name.capitalize()}Aab"
+        def flavor = task.name.substring("bundle".length()).uncapitalize()
+        tasks.create(renameTaskName, Copy) {
+            def path = "${buildDir}/outputs/bundle/${flavor}/"
+            from(path)
+            include "app-release.aab"
+            destinationDir file("$rootDir" + File.separator + "release_app")
+            rename "app-release.aab", "DestyChat-${flavor}-v${APP_VERSION_NAME}(${APP_VERSION_CODE})-${project.PACKAGE_TIME_STR}.aab"
+        }
+        task.finalizedBy(renameTaskName)
+    }
+}
+
+android.applicationVariants.all {
+    variant ->
+        if (variant.name.equalsIgnoreCase("release")) {
+            variant.outputs.all { output ->
+                //outputFileName = "app-${variant.name}-v${variant.versionName}-" + formatDate() + ".apk"
+                def releaseAppPath = "$rootDir" + File.separator + "release_app"
+                File outputPath = new File(releaseAppPath)
+                println(String.format('拷贝生成文件到指定目录[%s]', outputPath.getAbsolutePath()))
+
+                variant.getAssembleProvider().get().doLast {
+                    def timeStr = project.PACKAGE_TIME_STR //yyyy-MM-dd_HH-mm-ss格式时间
+                    def abiStr = output.getFilter(com.android.build.OutputFile.ABI)
+                    def envStr = "Production"
+                    if (project.DESTY_DEBUG == 'true') {//内测 模式
+                        envStr = "Testing"
+                    }
+                    def apkName = "DestyChat-${envStr}-v${APP_VERSION_NAME}(${APP_VERSION_CODE})-${project.PACKAGE_TIME_STR}.apk"
+                    if (abiStr != null) {
+                        apkName = "DestyChat-${envStr}-v${APP_VERSION_NAME}(${APP_VERSION_CODE})-${project.PACKAGE_TIME_STR}-${abiStr}.apk"
+                    }
+                    // 输出APK的文件名
+                    def mappingDirName = "mapping-${variant.name}-v${variant.versionName}-${timeStr}"
+                    // 输出mapping的文件夹名
+                    // 拷贝apk文件
+                    copy {
+                        from output.outputFile
+                        into outputPath
+                        // 重命名导出名称
+                        rename {
+                            "${apkName}"
+                        }
+                    }
+
+                    // 拷贝mapping目录
+                    copy {
+                        from variant.mappingFile.getParentFile()
+                        into new File(outputPath, "${mappingDirName}")
+                    }
+                    def configJson = [:]
+                    configJson['VersionName'] = APP_VERSION_NAME
+                    configJson['VersionCode'] = APP_VERSION_CODE
+                    configJson['AppName'] = 'DestyChat'
+                    configJson['DeviceType'] = 'Android'
+                    configJson['AppId'] = APPLICATION_ID
+                    configJson['DESTY_DEBUG'] = project.DESTY_DEBUG
+                    configJson['Time'] = project.PACKAGE_TIME
+                    configJson['MappingDirName'] = mappingDirName.toString()
+
+                    File appConfig = new File(releaseAppPath + File.separator + "AppConfig.json")
+                    appConfig.withWriter { writer ->
+                        writer.write(new Gson().toJson(configJson))
+                    }
+                }
+
+            }
+        }
+}
+
+
+
+dependencies {
+
+    implementation supportDependencies.ktx
+    implementation supportDependencies.supportAppcompat
+    implementation supportDependencies.supportDesign
+    testImplementation supportDependencies.testJunit
+    androidTestImplementation supportDependencies.androidJunit
+    androidTestImplementation supportDependencies.androidEspresso
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
+
+    implementation project(path: ':common')
+
+}

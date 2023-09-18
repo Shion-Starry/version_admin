@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application>
+
+        <activity android:name=".page.WebViewActivity" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="app.desty.chat_admin.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"
+                tools:replace="android:resource" />
+        </provider>
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <!-- If you are using androidx.startup to initialize other components -->
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+            <meta-data
+                android:name="app.desty.chat_admin.common.initializer.ConfigInitializer"
+                android:value="androidx.startup" />
+
+            <meta-data
+                android:name="app.desty.chat_admin.common.initializer.LogInitializer"
+                android:value="androidx.startup" />
+
+            <meta-data
+                android:name="app.desty.chat_admin.common.initializer.ARouterInitializer"
+                android:value="androidx.startup" />
+
+            <meta-data
+                android:name="app.desty.chat_admin.common.initializer.NetInitializer"
+                android:value="androidx.startup" />
+
+            <meta-data
+                android:name="app.desty.chat_admin.common.initializer.ViewInitializer"
+                android:value="androidx.startup" />
+
+        </provider>
+    </application>
+</manifest>

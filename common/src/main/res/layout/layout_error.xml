@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <app.desty.chat_admin.common.widget.base.BaseTextView
+        android:id="@+id/tv_error_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_lg"
+        android:textColor="@color/grey_500"
+        android:text="@string/error_layout_title"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintVertical_bias="0.25"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_error_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <app.desty.chat_admin.common.widget.base.BaseTextView
+        android:id="@+id/tv_error_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/grey_400"
+        android:textSize="@dimen/text_sm"
+        android:layout_marginTop="6dp"
+        android:text="@string/error_layout_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_error_title"
+        app:layout_constraintBottom_toTopOf="@id/btn_error_refresh"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+<!--        android:background="@drawable/shape_round_rect_r8_tint"-->
+    <app.desty.chat_admin.common.widget.base.BaseTextView
+        style="@style/Chat.Button.Primary.Base"
+        android:id="@+id/btn_error_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/error_layout_refresh"
+        android:layout_marginTop="16dp"
+        android:minWidth="150dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_error_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

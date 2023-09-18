@@ -1,0 +1,262 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <style name="LoadingDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--        <item name="colorAccent">@color/colorAccent</item>-->
+
+        <!-- 去除Activity顶部黑线 -->
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsTranslucent">false</item>
+
+    </style>
+
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="main_button_style.v2">
+
+        <item name="android:textSize">16sp</item>
+        <!--        <item name="android:textColor">@color/white</item>-->
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">46dp</item>
+    </style>
+
+    <style name="main_button_style">
+        <item name="android:textSize">18sp</item>
+        <!--        <item name="android:textColor">@color/white</item>-->
+        <item name="android:gravity">center</item>
+        <!--        <item name="android:background">@drawable/shape_rectangle_main_btn_v2</item>-->
+        <item name="android:layout_width">320dp</item>
+        <item name="android:layout_height">55dp</item>
+    </style>
+
+    <style name="bottom_button_style">
+        <item name="android:textSize">18sp</item>
+        <!--        <item name="android:textColor">@color/white</item>-->
+        <item name="android:gravity">center</item>
+        <!--        <item name="android:background">@drawable/shape_rectangle_main_btn_v2</item>-->
+        <item name="android:layout_width">345dp</item>
+        <item name="android:layout_height">44dp</item>
+    </style>
+
+    <style name="bottom_button_style2">
+        <item name="android:textSize">18sp</item>
+        <!--        <item name="android:textColor">@color/white</item>-->
+        <item name="android:gravity">center</item>
+        <!--        <item name="android:background">@drawable/selector_bottom_button_bg2</item>-->
+        <item name="android:layout_width">345dp</item>
+        <item name="android:layout_height">44dp</item>
+    </style>
+
+    <style name="bottom_button_style2.v2" parent="bottom_button_style2">
+        <!--        <item name="android:background">@drawable/selector_bottom_button_bg2_v2</item>-->
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="settings_item_style">
+        <item name="android:textSize">17sp</item>
+        <!--        <item name="android:textColor">@color/percent_90_translucent_black</item>-->
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <!--        <item name="android:drawableEnd">@drawable/ic_arrow_right_gray</item>-->
+    </style>
+
+
+    <style name="base_dialog_theme" parent="android:style/Theme.Dialog">
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 背景 透明 -->
+        <!--        <item name="android:windowBackground">@color/transparent</item>-->
+        <!-- 边框以外背景模糊 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 模糊 -->
+    </style>
+
+    <style name="InputDialogStyle">
+        <item name="android:windowIsFloating">false</item><!--  这个属性为false布局不会整体被键盘顶起      -->
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="common_bottom_dialog_style" parent="android:Animation">
+        <!--        <item name="android:windowEnterAnimation">@anim/common_anim_bottom_in</item>-->
+        <!--        <item name="android:windowExitAnimation">@anim/common_anim_bottom_out</item>-->
+    </style>
+
+    <style name="slide_bottom_AppTheme" parent="AppTheme">
+        <item name="android:windowAnimationStyle">@style/slide_bottom_theme</item>
+    </style>
+
+    <style name="slide_bottom_theme" parent="@android:style/Animation.Activity">
+        <!--        <item name="android:activityOpenEnterAnimation">@anim/open_enter_slide_from_bottom</item>-->
+        <!--        <item name="android:activityOpenExitAnimation">@anim/open_exit_slide_to_bottom</item>-->
+        <!--        <item name="android:activityCloseEnterAnimation">@anim/close_enter_slide_from_top</item>-->
+        <!--        <item name="android:activityCloseExitAnimation">@anim/close_exit_slide_to_bottom</item>-->
+    </style>
+
+    <style name="TabTextAppearance">
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="Dialog_Activity_Theme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--        <item name="colorAccent">@color/colorAccent</item>-->
+        <!-- 背景透明 -->
+    </style>
+
+    <style name="input_dialog_style" parent="Theme.AppCompat.Dialog.Alert">
+
+        <item name="android:windowFullscreen">true</item>
+        <!--透明是否-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@null</item>
+        <item name="android:title">@null</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:dialogTitle">@null</item>
+
+        <!--点击 dialog Activity 周围是否关闭弹窗 true 关闭（默认为true） false 为不关闭-->
+        <item name="android:windowCloseOnTouchOutside">true</item>
+
+        <item name="listPreferredItemPaddingLeft">0dip</item>
+        <item name="listPreferredItemPaddingRight">0dip</item>
+    </style>
+
+    <style name="dialog_style" parent="Theme.AppCompat.Light.Dialog">
+        <!--是否悬浮在activity上-->
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <!--透明是否-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@null</item>
+        <!--设置没有窗口标题、dialog标题等各种标题-->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:title">@null</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:dialogTitle">@null</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <!--点击 dialog Activity 周围是否关闭弹窗 true 关闭（默认为true） false 为不关闭-->
+        <item name="android:windowCloseOnTouchOutside">true</item>
+
+        <item name="listPreferredItemPaddingLeft">0dip</item>
+        <item name="listPreferredItemPaddingRight">0dip</item>
+    </style>
+
+    <style name="ActionSheetDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFullscreen">true</item>
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- 浮于Activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- Dialog以外的区域模糊效果 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- Dialog进入及退出动画 -->
+        <item name="android:windowAnimationStyle">@style/ActionSheetDialogAnimation</item>
+    </style>
+
+    <!-- ActionSheet进出动画 -->
+    <style name="ActionSheetDialogAnimation" parent="@android:style/Animation.Dialog">
+        <!--        <item name="android:windowEnterAnimation">@anim/actionsheet_dialog_in</item>-->
+        <!--        <item name="android:windowExitAnimation">@anim/actionsheet_dialog_out</item>-->
+    </style>
+
+    //状态页
+    <declare-styleable name="StateLayout">
+        <attr name="empty_layout" format="reference" />
+        <attr name="error_layout" format="reference" />
+        <attr name="loading_layout" format="reference" />
+    </declare-styleable>
+
+    //扫码页
+    <color name="ml_camera_navigation_bar_color">#00000000</color>
+    <color name="ml_camera_status_bar_color">#00000000</color>
+
+    <style name="CameraScanTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@android:color/black</item>
+        <item name="colorPrimaryDark">@android:color/black</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:statusBarColor">@color/ml_camera_status_bar_color</item>
+        <item name="android:navigationBarColor">@color/ml_camera_navigation_bar_color</item>
+    </style>
+
+    <!--    <style name="DestyRadioButton">-->
+    <!--        <item name="android:drawableLeft">@drawable/ic_radio_selector</item>-->
+    <!--        <item name="android:drawablePadding">8dp</item>-->
+    <!--        <item name="android:button">@null</item>-->
+    <!--        <item name="android:background">@null</item>-->
+    <!--        <item name="android:textSize">@dimen/text_lg</item>-->
+    <!--        <item name="android:textColor">@color/grey_700</item>-->
+    <!--    </style>-->
+
+    <style name="LodingTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--设置过渡效果，禁用窗口的预览动画-->
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:fullBackupOnly">true</item>
+        <item name="android:screenOrientation">portrait</item>
+        <item name="android:windowSoftInputMode">stateHidden</item>
+        <item name="android:configChanges">orientation|keyboardHidden|screenSize</item>
+
+    </style>
+
+
+    <!--    <style name="dialog">-->
+    <!--        <item name="android:windowFrame">@null</item>-->
+    <!--        <item name="android:windowIsFloating">false</item>-->
+    <!--        <item name="android:windowIsTranslucent">false</item>-->
+    <!--        <item name="android:windowNoTitle">true</item>              &lt;!&ndash; 设置title &ndash;&gt;-->
+    <!--        <item name="android:windowBackground">@android:color/transparent</item>-->
+    <!--        <item name="android:windowFullscreen">false</item>           &lt;!&ndash; 设置全屏 &ndash;&gt;-->
+    <!--        <item name="android:background">@android:color/transparent</item>-->
+    <!--        <item name="android:backgroundDimEnabled">true</item>-->
+    <!--        <item name="android:windowEnterAnimation">@anim/push_ios_in</item>-->
+    <!--        <item name="android:windowExitAnimation">@anim/push_ios_out</item>-->
+    <!--    </style>-->
+
+    <style name="TransparentTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+
+</resources>

@@ -1,0 +1,92 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-parcelize'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'AspectjPlugin'
+apply plugin: 'org.jetbrains.kotlin.plugin.serialization'
+
+aspectj {
+    version = "$ASPECTJ_VERSION"
+}
+
+android {
+    namespace "${APPLICATION_ID}.${project.getName()}"
+    compileSdk project.COMPILE_SDK_VERSION as int
+
+
+    defaultConfig {
+        minSdk project.MIN_SDK_VERSION as int
+        targetSdk project.TARGET_SDK_VERSION as int
+        versionCode project.APP_VERSION_CODE as int
+        versionName project.APP_VERSION_NAME
+
+        buildConfigField "int","appVersionCode",project.APP_VERSION_CODE
+        buildConfigField "String","appVersionName","\"$project.APP_VERSION_NAME\""
+        buildConfigField "boolean", "desty_debug", project.DESTY_DEBUG
+        buildConfigField "String", "buildTimeStr", "\"$project.PACKAGE_TIME_STR\""
+        buildConfigField "long", "buildTimeLong", project.PACKAGE_TIME
+
+        //arouter
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName(),
+                             "room.schemaLocation": "$rootDir/RoomSchemas".toString()]
+            }
+        }
+        println("AROUTER_MODULE_NAME:"+project.getName())
+        /**** 混淆 ****/
+        //将混淆规则传递至上层
+        consumerProguardFiles "consumer-rules.pro","proguard-rules.pro"
+        //module 不生效混淆
+        buildTypes {
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            }
+        }
+    }
+    kotlin{
+        jvmToolchain {
+            languageVersion.set(JavaLanguageVersion.of(JavaVersion.VERSION_11.toString()))
+        }
+    }
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+        aidl true
+    }
+
+    lintOptions {
+        abortOnError false
+        disable 'MissingTranslation'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java', 'src/main/kotlin']
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+}
+
+
+dependencies {
+    implementation supportDependencies.ktx
+    testImplementation supportDependencies.testJunit
+    androidTestImplementation supportDependencies.androidJunit
+    androidTestImplementation supportDependencies.androidEspresso
+    implementation ktxDependencies.ktSerialization
+
+    //ARoute
+    implementation commonLibraries.arouterApi
+    kapt commonLibraries.arouterCompiler
+
+}

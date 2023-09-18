@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="desty_text_style">
+        <enum name="normal" value="5" />
+        <enum name="bold" value="10" />
+    </attr>
+
+    <declare-styleable name="BaseTextView">
+        <attr name="desty_text_style"/>
+    </declare-styleable>
+
+</resources>

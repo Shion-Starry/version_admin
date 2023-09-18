@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:padding="12dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <app.desty.chat_admin.common.widget.base.BaseTextView
+            android:id="@+id/tv"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/text_xs"
+            android:layout_width="172dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</layout>

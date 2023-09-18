@@ -1,0 +1,39 @@
+pluginManagement {
+    repositories {
+        maven {
+            url "https://code.desty.app:11443/api/v4/projects/216/packages/maven"
+            name "GitLab"
+            credentials(HttpHeaderCredentials) {
+                name = 'Deploy-Token'
+                value = 'p4xM8TxrZ7sDzZKGhZiP'
+            }
+            authentication {
+                header(HttpHeaderAuthentication)
+            }
+        }
+        // 优先使用阿里云镜像
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter/' }
+        maven { url 'https://maven.aliyun.com/repository/google/' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin/' }
+        maven { url 'https://jitpack.io' }
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+        maven {
+            url "https://mvn.getui.com/nexus/content/repositories/releases/"
+        }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    //使用和插件一样的maven库
+    repositories.clear()
+    repositories.addAll(pluginManagement.getRepositories().toList())
+}
+rootProject.name = "DestyChat"
+include ':app'
+include ':sdk_string'
+include ':common'
+include ':widget'
+//include ':core'

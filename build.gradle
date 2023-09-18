@@ -1,0 +1,113 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+//在这里引入config.gradle
+plugins {
+    id 'com.android.application' version "${GRADLE_VERSION}" apply false
+    id 'com.android.library' version "${GRADLE_VERSION}" apply false
+    id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.20' apply false
+    id 'AspectjPlugin' version '1.0.3' apply false
+
+}
+apply from: "config.gradle"
+
+
+task showRepos {
+    doLast {
+        repositories.each {
+            println "repository: ${it.name} ('${it.url}')"
+        }
+    }
+}
+
+
+task clean1(type: Delete) {
+    delete rootProject.buildDir
+
+    //删除Release 输出目录
+    def releaseAppPath = "$rootDir" + File.separator + "release_app"
+    File outputPath = new File(releaseAppPath)
+    println("准备删除：" + releaseAppPath)
+    if (outputPath.exists()) {
+        outputPath.deleteDir()
+    }
+}
+
+
+ext {
+    //android support库依赖
+    supportLibraries = rootProject.ext.supportDependencies
+
+    // ktx依赖库
+    ktxDependencies = rootProject.ext.ktxDependencies
+
+    //私有库
+    destyLibraries = rootProject.ext.destyDependencies
+
+    //其他共同依赖
+    commonLibraries = rootProject.ext.commonDependencies
+
+
+    def buildNumber = getBuildNumber()
+
+    println "buildNumber:${buildNumber}"
+
+    APP_VERSION_CODE = String.format("%d%02d%02d%03d",
+            project.MAJOR_VERSION.toInteger(),
+            project.SUB_VERSION.toInteger(),
+            project.FIX_VERSION.toInteger(),
+            buildNumber)
+    APP_VERSION_NAME = String.format("%d.%d.%d",
+            project.MAJOR_VERSION.toInteger(),
+            project.SUB_VERSION.toInteger(),
+            project.FIX_VERSION.toInteger())
+
+    //生成打包时间
+    def time = new Date()
+    PACKAGE_TIME = String.valueOf(time.getTime())
+    PACKAGE_TIME_STR = formatDate(time)
+
+    println "APP_VERSION_CODE -> $APP_VERSION_CODE\nAPP_VERSION_NAME -> $APP_VERSION_NAME"
+    println "PACKAGE_TIME -> $PACKAGE_TIME\nPACKAGE_TIME_STR-> $PACKAGE_TIME_STR"
+}
+
+static def formatDate(date) {
+    return date.format("yyyy-MM-dd_HH-mm-ss", TimeZone.getTimeZone("GMT+08:00"))
+}
+
+//获取并自增构建
+def getBuildNumber() {
+    def config = project.BUILD_NUMBER_CONFIG
+    //若未设置配置文件路径，默认返回0
+    if (config.isEmpty()) return 0
+
+    //生成构建号保存的键值
+    def envStr = "Production"
+    if (project.DESTY_DEBUG == 'true') {//内测 模式
+        envStr = "Testing"
+    }
+    def key = "${envStr}_${project.MAJOR_VERSION}_${project.SUB_VERSION}_${project.FIX_VERSION}"
+
+
+    def localProperties = new Properties()
+    def localFile = new File(project.BUILD_NUMBER_CONFIG)
+
+    //读取配置
+    if (localFile.exists()) {
+        localFile.withReader {
+            localProperties.load(it)
+        }
+    }
+
+    //读取构建号
+    def currentNumber = localProperties.getProperty(key, "0").toInteger() + 1
+    //自增
+    localProperties.setProperty(key, String.valueOf(currentNumber))
+
+    //保存在本地
+    localFile.withWriter {
+        localProperties.store(it, null)
+    }
+
+    return currentNumber
+}

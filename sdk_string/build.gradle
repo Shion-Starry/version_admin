@@ -1,0 +1,50 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    namespace "${APPLICATION_ID}.${project.getName()}"
+    compileSdk project.COMPILE_SDK_VERSION as int
+
+    defaultConfig {
+        minSdk project.MIN_SDK_VERSION as int
+        targetSdk project.TARGET_SDK_VERSION as int
+        versionCode project.APP_VERSION_CODE as int
+        versionName project.APP_VERSION_NAME
+    }
+}
+
+task preTranslation(type: Exec) {
+    workingDir '../python'
+    println("translation task: pip install ")
+    def pipInstallCmd = ['python3', '-m', 'pip', 'install', '-r', 'requirements.txt', '-i', 'https://pypi.tuna.tsinghua.edu.cn/simple']
+    commandLine pipInstallCmd
+}
+
+task mergeTranslation(type: Exec) {
+    workingDir '../python'
+    println("merge translation: start merge")
+    def mergeCmd = ['python3', '-u', 'merge_translation.py', '-v', project.APP_VERSION_NAME]
+    commandLine mergeCmd
+}
+
+task translation(type: Exec) {
+    workingDir '../python'
+    println("translation task: start translation")
+    def translationCommand
+    if (project.DESTY_DEBUG == 'true') {//内测 模式
+        translationCommand = ['python3', '-u', 'translation.py', '-p', '-d']
+    } else {//正式包
+        translationCommand = ['python3', '-u', 'translation.py', '-r']
+    }
+    commandLine translationCommand
+}
+
+task checkTranslation(type: Exec) {
+    workingDir '../python'
+    println("check translation task: start checking translation")
+    def translationCommand = ['python3', '-u', 'translation.py', '-r']
+    commandLine translationCommand
+}
+
+preBuild.dependsOn translation

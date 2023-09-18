@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Chat" />
+
+    <style name="Chat.Button" parent="Chat" />
+
+    <style name="Chat.Button.Primary" parent="Chat.Button">
+        <item name="android:background">@drawable/chat_primary_button_bg</item>
+        <item name="android:textColor">@drawable/chat_primary_button_text_color</item>
+        <item name="android:gravity">center</item>
+        <item name="desty_text_style">bold</item>
+    </style>
+
+    <style name="Chat.Button.Primary.Big" parent="Chat.Button.Primary">
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:textSize">@dimen/text_sm</item>
+    </style>
+
+    <style name="Chat.Button.Primary.Base" parent="Chat.Button.Primary">
+        <item name="android:paddingTop">11dp</item>
+        <item name="android:paddingBottom">11dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:textSize">@dimen/text_sm</item>
+    </style>
+
+    <style name="Chat.Button.Primary.Small" parent="Chat.Button.Primary">
+        <item name="android:paddingTop">7dp</item>
+        <item name="android:paddingBottom">7dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:textSize">@dimen/text_xs</item>
+    </style>
+
+    <style name="Chat.Button.Secondary" parent="Chat.Button">
+        <item name="android:background">@drawable/chat_secondary_button_bg</item>
+        <item name="android:textColor">@drawable/chat_secondary_button_text_color</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Chat.Button.Secondary.Big" parent="Chat.Button.Secondary">
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:textSize">@dimen/text_sm</item>
+    </style>
+
+    <style name="Chat.Button.Secondary.Base" parent="Chat.Button.Secondary">
+        <item name="android:paddingTop">11dp</item>
+        <item name="android:paddingBottom">11dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:textSize">@dimen/text_sm</item>
+    </style>
+
+    <style name="Chat.Button.Secondary.Small" parent="Chat.Button.Secondary">
+        <item name="android:paddingTop">7dp</item>
+        <item name="android:paddingBottom">7dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">@dimen/text_xs</item>
+    </style>
+
+
+</resources>

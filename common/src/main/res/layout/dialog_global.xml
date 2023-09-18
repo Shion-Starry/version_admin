@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="app.desty.chat_admin.common.widget.GlobalDialog.Config" />
+
+        <variable
+            name="click"
+            type="app.desty.chat_admin.common.widget.GlobalDialog.ClickProxy" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        drawable_radius="@{12}"
+        drawable_solidColor="@{@color/color_white}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_white">
+
+        <app.desty.chat_admin.common.widget.base.BaseBoldTextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@{data.title}"
+            android:textColor="@color/grey_900"
+            android:textSize="@dimen/text_base"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <app.desty.chat_admin.common.widget.base.BaseTextView
+            android:id="@+id/tv_content"
+            visible="@{!data.content.isEmpty()}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@{data.content}"
+            android:textColor="@color/grey_900"
+            android:textSize="@dimen/text_sm"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+        <View
+            android:id="@+id/v_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/grey_100"
+            app:layout_constraintTop_toBottomOf="@id/tv_content" />
+
+        <app.desty.chat_admin.common.widget.base.BaseTextView
+            android:id="@+id/tv_negative"
+            visible="@{!data.negative.isEmpty()}"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:gravity="center"
+            android:onClick="@{click::clickNegative}"
+            android:text="@{data.negative}"
+            android:textColor="@color/grey_900"
+            android:textSize="@dimen/text_sm"
+            app:layout_constraintEnd_toStartOf="@id/v_vertical_divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v_divider" />
+
+        <View
+            android:id="@+id/v_vertical_divider"
+            visible="@{!data.negative.isEmpty()}"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:background="@color/grey_50"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_positive"
+            app:layout_constraintStart_toEndOf="@id/tv_negative"
+            app:layout_constraintTop_toBottomOf="@id/v_divider" />
+
+        <app.desty.chat_admin.common.widget.base.BaseBoldTextView
+            android:id="@+id/tv_positive"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:gravity="center"
+            android:onClick="@{click::clickPositive}"
+            android:text="@{data.positive}"
+            android:textColor="@color/chat_600"
+            android:textSize="@dimen/text_sm"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/v_vertical_divider"
+            app:layout_constraintTop_toBottomOf="@id/v_divider" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

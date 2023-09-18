@@ -1,0 +1,86 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlinx-serialization'
+}
+apply from: "${project.rootDir.path}/module-common.gradle"
+
+android {
+    defaultConfig {
+
+        buildConfigField "int", "ENV", project.ENVIRONMENT
+        buildConfigField "int", "LANG", project.LANGUAGE
+    }
+}
+dependencies {
+
+    kapt commonLibraries.sqLite
+    // 支持库
+    api supportLibraries.supportAppcompat
+    api supportLibraries.supportDesign
+    api supportLibraries.supportRecycleView
+    api supportLibraries.supportCarview
+    api supportLibraries.supportConstraint
+    api supportLibraries.supportAnimation
+    api supportLibraries.splashScreen
+    api supportLibraries.startup
+    api supportLibraries.workManager
+
+    // kotlin 协程
+    api ktxDependencies.coroutine_core
+    api ktxDependencies.coroutine_android
+    api ktxDependencies.collection
+    api ktxDependencies.fragment
+    api ktxDependencies.lifecycle
+    api ktxDependencies.liveData
+    api ktxDependencies.reactiveStreams
+    api ktxDependencies.viewmodel
+    api ktxDependencies.ktSerialization
+
+
+    api commonLibraries.multidex
+    // 状态栏适配器
+    api commonLibraries.immersionBar
+
+    //网络请求
+    api commonLibraries.okhttp
+    api commonLibraries.net
+
+    api commonLibraries.brv
+    api commonLibraries.flexbox
+
+    //glide
+    api commonLibraries.glide
+//    api commonLibraries.glideCompiler
+
+    // 工具
+    api commonLibraries.floatingview
+    api commonLibraries.easyFloatingView
+    api commonLibraries.X_Popup
+    api commonLibraries.magicIndicator
+    api commonLibraries.eventbus
+    api commonLibraries.XXPermissions
+    api commonLibraries.storage_serialize
+    api commonLibraries.agentWebview
+
+    //只在debug模式引入chucker
+    if (project.DESTY_DEBUG == 'true') {
+        api commonLibraries.chucker
+    }
+
+
+    //引入desty库
+    api destyLibraries.sdk_logcat
+    api destyLibraries.sdk_utilcode
+    api destyLibraries.sdk_push
+    api destyLibraries.sdk_picker
+    api destyLibraries.sdk_base_adapter
+
+
+    // 多语言
+    api project(path: ':sdk_string')
+    api project(path: ':widget')
+//    api project(path: ':core')
+
+    api commonLibraries.ActivityResultApi
+}

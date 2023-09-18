@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <attr name="checked" format="boolean" />
+    <declare-styleable name="CheckLinearLayout">
+        <attr name="checked" />
+    </declare-styleable>
+    <declare-styleable name="CheckRelativeLayout">
+        <attr name="checked" />
+    </declare-styleable>
+    <declare-styleable name="CheckImageView">
+        <attr name="checked" />
+    </declare-styleable>
+    <declare-styleable name="CheckTextView">
+        <attr name="checked" />
+    </declare-styleable>
+    <declare-styleable name="CheckEditTextView">
+        <attr name="checked" />
+    </declare-styleable>
+    <declare-styleable name="CheckConstraintLayout">
+        <attr name="checked" />
+    </declare-styleable>
+
+
+    <!--圆角的角度-->
+    <attr name="sl_cornerRadius" format="dimension" />
+    <attr name="sl_cornerRadiusLT" format="dimension" />
+    <attr name="sl_cornerRadiusRT" format="dimension" />
+    <attr name="sl_cornerRadiusRB" format="dimension" />
+    <attr name="sl_cornerRadiusLB" format="dimension" />
+    <!--模糊半径  可以用默认的-->
+    <attr name="sl_shadowRadius" format="dimension" />
+    <attr name="sl_shadowColor" format="color" />
+    <attr name="sl_dx" format="dimension" />
+    <attr name="sl_dy" format="dimension" />
+    <!--右边的阴影距离-->
+    <attr name="sl_dRight" format="dimension" />
+    <!--顶部的阴影距离-->
+    <attr name="sl_dTop" format="dimension" />
+    <!--左边的阴影距离-->
+    <attr name="sl_dLeft" format="dimension" />
+    <!--底部的阴影距离-->
+    <attr name="sl_dBottom" format="dimension" />
+    <!--是否要画左边的阴影，默认是true-->
+    <attr name="sl_drawLeft" format="boolean" />
+    <!--是否要画右边的阴影，默认是true-->
+    <attr name="sl_drawRight" format="boolean" />
+    <!--是否要画顶部的阴影，默认是true-->
+    <attr name="sl_drawTop" format="boolean" />
+    <!--是否要画底部的阴影，默认是true-->
+    <attr name="sl_drawBottom" format="boolean" />
+    <!--是否要圆角-->
+    <attr name="sl_isCircle" format="boolean" />
+    <attr name="sl_bgColor" format="color" />
+    <declare-styleable name="ShadowLayout">
+        <attr name="sl_cornerRadius" />
+        <attr name="sl_shadowRadius" />
+        <attr name="sl_shadowColor" />
+        <attr name="sl_dx" />
+        <attr name="sl_dy" />
+        <attr name="sl_dRight" />
+        <attr name="sl_dTop" />
+        <attr name="sl_dLeft" />
+        <attr name="sl_dBottom" />
+        <attr name="sl_drawLeft" />
+        <attr name="sl_drawRight" />
+        <attr name="sl_drawTop" />
+        <attr name="sl_drawBottom" />
+        <attr name="sl_isCircle" />
+        <attr name="sl_bgColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ShadowConstraintLayout">
+        <attr name="sl_cornerRadius" />
+        <attr name="sl_cornerRadiusLT" />
+        <attr name="sl_cornerRadiusRT" />
+        <attr name="sl_cornerRadiusLB" />
+        <attr name="sl_cornerRadiusRB" />
+        <attr name="sl_shadowRadius" />
+        <attr name="sl_shadowColor" />
+        <attr name="sl_dx" />
+        <attr name="sl_dy" />
+        <attr name="sl_dRight" />
+        <attr name="sl_dTop" />
+        <attr name="sl_dLeft" />
+        <attr name="sl_dBottom" />
+        <attr name="sl_drawLeft" />
+        <attr name="sl_drawRight" />
+        <attr name="sl_drawTop" />
+        <attr name="sl_drawBottom" />
+        <attr name="sl_isCircle" />
+        <attr name="sl_bgColor" />
+
+    </declare-styleable>
+
+
+    <declare-styleable name="ScrollShrinkView">
+
+        <!-- 滑块半径 -->
+        <attr name="thumbCircleRadius" format="dimension" />
+        <!-- 滑块颜色 -->
+        <attr name="thumbCircleColor" format="color" />
+        <!-- 轨道高度 -->
+        <attr name="trackHeight" format="dimension" />
+        <!-- 轨道颜色 -->
+        <attr name="trackColor" format="color" />
+        <!-- 边框宽度 -->
+        <attr name="strokeWidth" format="dimension" />
+        <!-- 文字颜色 -->
+        <attr name="messageTextColor" format="color" />
+        <!-- 字体大小 -->
+        <attr name="messageTextSize" format="dimension" />
+
+
+    </declare-styleable>
+
+    <attr name="cropImageStyle" format="reference" />
+
+    <declare-styleable name="CropImageView">
+        <attr name="highlightColor" format="reference|color" />
+        <attr name="showThirds" format="boolean" />
+        <attr name="showHandles">
+            <enum name="changing" value="0" />
+            <enum name="always" value="1" />
+            <enum name="never" value="2" />
+        </attr>
+    </declare-styleable>
+
+
+    <declare-styleable name="Banner">
+        <attr name="delay_time" format="integer" />
+        <attr name="scroll_time" format="integer" />
+        <attr name="is_auto_play" format="boolean" />
+        <attr name="is_loop" format="boolean" />
+        <attr name="title_background" format="color|reference" />
+        <attr name="title_textcolor" format="color" />
+        <attr name="title_textsize" format="dimension" />
+        <attr name="title_height" format="dimension" />
+        <attr name="indicator_width" format="dimension" />
+        <attr name="indicator_height" format="dimension" />
+        <attr name="indicator_margin" format="dimension" />
+        <attr name="indicator_padding" format="dimension" />
+        <attr name="indicator_drawable_selected" format="reference" />
+        <attr name="indicator_drawable_unselected" format="reference" />
+        <attr name="banner_default_image" format="reference" />
+        <!-- 设置左右2边缩进距离 -->
+        <attr name="page_left_margin" format="dimension" />
+        <attr name="page_right_margin" format="dimension" />
+        <attr name="arc_height" format="dimension" />
+        <attr name="arc_start_color" format="color|reference" />
+        <attr name="arc_end_color" format="color|reference" />
+        <attr name="arc_direction" format="enum">
+            <enum name="up" value="0" />
+            <enum name="down" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <attr name="clearSrc" format="reference" />
+    <declare-styleable name="ClearableEditText">
+        <attr name="clearSrc" />
+    </declare-styleable>
+
+
+    <declare-styleable name="StickyScrollView">
+        <attr name="stuckShadowHeight" format="dimension" />
+        <attr name="stuckShadowDrawable" format="reference" />
+    </declare-styleable>
+
+
+</resources>
