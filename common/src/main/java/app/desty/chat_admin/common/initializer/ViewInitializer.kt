@@ -74,15 +74,15 @@ class ViewInitializer : Initializer<String> {
     }
 
     private fun initFloatingView() {
-        if (!BuildConfig.desty_debug) return
-        FloatingView.get().icon(EnvConfig.getCurrentEnvIconRes())
-        FloatingView.get().customView(R.layout.floating_dev)
-        FloatingView.get().add()
-        FloatingView.get().listener(object : MagnetViewListener {
-            override fun onRemove(magnetView: FloatingMagnetView) {}
-            override fun onClick(magnetView: FloatingMagnetView) {
-                ARouter.getInstance().build(app.desty.chat_admin.common.constants.RouteConstants.Internal.internal).navigation()
-            }
-        })
+//        if (!BuildConfig.desty_debug) return
+//        FloatingView.get().icon(EnvConfig.getCurrentEnvIconRes())
+//        FloatingView.get().customView(R.layout.floating_dev)
+//        FloatingView.get().add()
+//        FloatingView.get().listener(object : MagnetViewListener {
+//            override fun onRemove(magnetView: FloatingMagnetView) {}
+//            override fun onClick(magnetView: FloatingMagnetView) {
+//                ARouter.getInstance().build(app.desty.chat_admin.common.constants.RouteConstants.Internal.internal).navigation()
+//            }
+//        })
     }
 }
