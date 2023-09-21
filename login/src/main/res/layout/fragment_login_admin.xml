@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="mState"
+            type="app.desty.chat_admin.login.page.login_admin.LoginAdminViewModel" />
+        
+        <variable
+            name="click"
+            type="app.desty.chat_admin.login.page.login_admin.LoginAdminFragment.ClickEvents" />
+
+        <!-- Why should I import this type of attribute here? -->
+        <import type="android.text.InputType" />
+    </data>
+
+    <app.desty.chat_admin.common.widget.ClearFocusConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp">
+
+        <app.desty.chat_admin.common.widget.base.BaseBoldTextView
+            android:id="@+id/tv_page_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:text="@string/login_with_email_title"
+            android:textColor="@color/grey_900"
+            android:textSize="@dimen/text_2xl"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <app.desty.chat_admin.common.widget.base.BaseTextView
+            android:id="@+id/tv_sub_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="App Management System"
+            android:textColor="@color/grey_900"
+            android:textSize="@dimen/text_lg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_page_title" />
+
+        <app.desty.chat_admin.common.widget.base.BaseEditWithoutTitleView
+            android:id="@+id/et_account"
+            selectable="@{true}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:gravity="center_vertical"
+            android:hint="Please input your username"
+            android:inputType="textEmailAddress"
+            android:minHeight="40dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:text="@={mState.username}"
+            android:textColor="@color/grey_900"
+            android:textSize="@dimen/text_sm"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sub_title" />
+
+        <app.desty.chat_admin.common.widget.base.BaseEditWithoutTitleView
+            android:id="@+id/et_password"
+            selectable="@{true}"
+            showPassword="@{mState.isShowPassword}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:hint="Please input your password"
+            android:minHeight="40dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="30dp"
+            android:singleLine="true"
+            android:text="@={mState.password}"
+            android:textColor="@color/grey_900"
+            android:textSize="@dimen/text_sm"
+            app:layout_constraintTop_toBottomOf="@id/et_account" />
+
+        <app.desty.chat_admin.common.widget.base.BaseImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:onClick="@{click::clickShowPassword}"
+            android:padding="12dp"
+            android:src="@{mState.isShowPassword()?@drawable/ic_eye:@drawable/ic_eye_off}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_password"
+            app:layout_constraintTop_toTopOf="@id/et_password" />
+
+        <app.desty.chat_admin.common.widget.base.BaseTextView
+            android:id="@+id/tv_login"
+            style="@style/Chat.Button.Primary.Base"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:onClick="@{click::clickLogin}"
+            android:text="@string/login_email_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_password" />
+
+        <app.desty.chat_admin.common.widget.base.BaseImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_login_brand"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </app.desty.chat_admin.common.widget.ClearFocusConstraintLayout>
+</layout>

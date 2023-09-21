@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import app.desty.chat_admin.R
 import app.desty.chat_admin.common.constants.RouteConstants
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 
 @Route(path = RouteConstants.Main.splash)
 class RouteActivity : Activity() {
@@ -17,6 +18,14 @@ class RouteActivity : Activity() {
         WindowInsetsControllerCompat(window, window.decorView)
             .hide(WindowInsetsCompat.Type.statusBars())
         setContentView(R.layout.activity_route)
-//        splashScreen.setKeepOnScreenCondition { true } }
+//        splashScreen.setKeepOnScreenCondition { true }
+
+        goToNextActivity()
+
+    }
+
+    private fun goToNextActivity() {
+        ARouter.getInstance().build(RouteConstants.Main.welcome).navigation()
+        finish()
     }
 }

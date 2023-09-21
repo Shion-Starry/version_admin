@@ -19,11 +19,7 @@ class WelcomeActivity : BaseVmActivity<WelcomeVM>() {
     }
 
     override fun getDataBindingConfig(): DataBindingConfig =
-        DataBindingConfig(
-            R.layout.activity_welcome,
-            BR.mState,
-            mState
-                                                          )
+        DataBindingConfig(R.layout.activity_welcome, BR.mState, mState)
             .addBindingParam(BR.click, ClickProxy())
 
     inner class ClickProxy {

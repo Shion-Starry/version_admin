@@ -202,7 +202,7 @@ public class ActivityLifecycleManager implements Application.ActivityLifecycleCa
 
     public void routeToHome(@Nullable HomeRouteBean homeRouteBean) {
         routeToPath(
-                RouteConstants.Home.homaPage,
+                RouteConstants.Home.homePage,
                 activity -> {
                     if (homeRouteBean != null) {
                         try {

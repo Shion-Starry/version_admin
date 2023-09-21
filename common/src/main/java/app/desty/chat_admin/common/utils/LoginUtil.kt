@@ -38,7 +38,7 @@ object LoginUtil {
         val tmpUserInfo = userInfo ?: UserConfig.userInfo
         if (tmpUserInfo?.isAdmin != 1) {
             //去首页
-            ARouter.getInstance().build(app.desty.chat_admin.common.constants.RouteConstants.Home.homaPage)
+            ARouter.getInstance().build(app.desty.chat_admin.common.constants.RouteConstants.Home.homePage)
                 .withFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                 .navigation()
             return true
@@ -61,7 +61,7 @@ object LoginUtil {
 
             else                       -> {
                 //去首页
-                ARouter.getInstance().build(app.desty.chat_admin.common.constants.RouteConstants.Home.homaPage)
+                ARouter.getInstance().build(app.desty.chat_admin.common.constants.RouteConstants.Home.homePage)
                     .withFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     .navigation()
             }

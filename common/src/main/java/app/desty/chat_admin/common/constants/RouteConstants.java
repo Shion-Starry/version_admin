@@ -18,15 +18,13 @@ public interface RouteConstants {
     interface Login {
         String moduleName = "/login";
         String login = moduleName + "/login";
-        String loginWithOtp = moduleName + "/loginWithOtp";
-        String loginWithEmail = moduleName + "/loginWithEmail";
-        String loginRefresh = moduleName +"/loginRefresh";
+        String loginAdmin = moduleName + "/loginAdmin";
         String completeUserInfo = moduleName + "/completeUserInfo";
     }
 
     interface Home {
         String moduleName = "/home";
-        String homaPage = moduleName + "/home";
+        String homePage = moduleName + "/home";
 
     }
 

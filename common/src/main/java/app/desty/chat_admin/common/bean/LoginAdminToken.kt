@@ -3,6 +3,7 @@ package app.desty.chat_admin.common.bean
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class EmailLoginToken(
-    val token: String = ""
+data class LoginAdminToken(
+    val token: String = "",
+    val expirationTime: Int = 86400
                           )
