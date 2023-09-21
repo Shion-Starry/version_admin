@@ -51,6 +51,9 @@ _7390f19c,login_check_email_invaild,Invalid email account,Format email salah
 _14e242ac,login_check_password_empty,Please input your email password,Masukkan password anda
 _fadb4312,login_check_phone_number_empty,Please input your phone number first,Masukkan nomer hp
 _b572c422,login_check_phone_number_invaild,Invalid phone number,Nomer hp anda salah
+_60d7cc33,login_check_psw_empty,Please input your password,Tolong masukkan kata sandimu
+_fb294f75,login_check_username_empty,Please input your username,Tolong masukan nama pengguna anda
+_2186405c,login_check_username_invalid,The input username is Invalid,Username masukan tidak valid
 _544d458a,login_email_account_input_hint,Please input the Email account,Harap input email
 _bc1e9ee2,login_email_login,Log in,Log in
 _c8ec64c7,login_email_password_hint,Please input the password,Harap input kata sandi
@@ -73,8 +76,11 @@ _61d34745,login_refresh_title,Login successfu!,Login Berhasil
 _ad448021,login_switch_to_email,Email login,Email Log in
 _4d2c83c4,login_switch_to_otp,Phone number login,Masuk dengan Telp
 _1551b724,login_title,Log in,Masuk
+_8b1c27f6,login_username_input_hint,Please input your username,Tolong masukan nama pengguna anda
 _0da195b5,login_with_email_title,Log in,Masuk
 ,【Onboarding】,,
+_702ee5a1,login_management_system,App Management System, Sistem manajemen aplikasi
+_5c48aab4,login_password_input_hint,Please input your password,Tolong masukkan kata sandimu
 _86d5df35,onboarding_error_email,Invalid email address,Email salah
 _b13f6943,onboarding_error_name,Please enter the correct full name,Masukkan nama lengkap yang benar
 _5303ebe1,onboarding_user_info_email_hint,Input your email,Alamat email

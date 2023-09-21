@@ -31,7 +31,7 @@ class LoginAdminViewModel : BaseVM() {
                 )
             }.await()
             if (loginToken.token.isNotEmpty()) {
-                loginSuccessfully(loginToken.token)
+                loginSuccessfully(loginToken.token, loginToken.expirationTime)
             }
         }
     }
@@ -40,9 +40,9 @@ class LoginAdminViewModel : BaseVM() {
         val account = username.value
         val psw = password.value
         val toastText = when {
-            account.isNullOrBlank()              -> R.string.login_check_email_empty
-            !RegexUtils.isUsername(account)       -> R.string.login_check_email_invaild
-            psw.isNullOrBlank()             -> R.string.login_check_password_empty
+            account.isNullOrBlank()              -> R.string.login_check_username_empty
+            !RegexUtils.isUsername(account)       -> R.string.login_check_username_invalid
+            psw.isNullOrBlank()             -> R.string.login_check_psw_empty
             else                                  -> 0
         }
         if (toastText != 0) {
@@ -60,10 +60,19 @@ class LoginAdminViewModel : BaseVM() {
      * @param token - 登录请求成功后从后端得到的令牌
      *
      */
-    private fun loginSuccessfully(token: String) {
+    private fun loginSuccessfully(token: String, expirationTime: Int) {
         LoginUtil.login()
         UserConfig.token = token
         UserConfig.isLoginStatus = true
+        checkCurrentDateTime(expirationTime)
         Log.d("Check Login Status", "Login Request is successfully responded.")
+    }
+
+    private fun checkCurrentDateTime(expirationTime: Int) {
+        val currentTime = System.currentTimeMillis()
+        val tokenExpirationTime = currentTime + expirationTime
+        UserConfig.tokenExpirationTime = tokenExpirationTime
+        Log.d("Current time", "The current time is：$currentTime")
+        Log.d("Expiration time", "The expiration time of the token is：$tokenExpirationTime")
     }
 }

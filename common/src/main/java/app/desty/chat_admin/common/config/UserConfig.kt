@@ -5,7 +5,6 @@ import app.desty.sdk.logcat.Logcat
 import com.drake.serialize.serialize.annotation.SerializeConfig
 import com.drake.serialize.serialize.serial
 import com.drake.serialize.serialize.serialLazy
-import java.sql.Time
 
 @SerializeConfig(mmapID = "user_config", cryptKey = "~P)*ulzNT9E@4JlJIuPB")
 object UserConfig {
@@ -13,7 +12,7 @@ object UserConfig {
     var token: String by serialLazy("")
     var imAccount: String by serialLazy("")
     var userInfo: UserInfo? by serialLazy(null)
-    var tokenExpirationTime: Time by serialLazy()
+    var tokenExpirationTime: Long? by serialLazy(null)
 
     fun updateUserInfo(userInfo: UserInfo){
         this.userInfo = userInfo
@@ -26,5 +25,6 @@ object UserConfig {
         token = ""
         imAccount = ""
         userInfo = null
+        tokenExpirationTime = null
     }
 }

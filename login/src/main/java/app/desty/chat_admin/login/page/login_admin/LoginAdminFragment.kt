@@ -16,10 +16,9 @@ class LoginAdminFragment : BaseVMFragment<LoginAdminViewModel>() {
     override fun initViewModel() {
     }
 
-    override fun getDataBindingConfig(): DataBindingConfig {
-        return DataBindingConfig(R.layout.fragment_login_admin, BR.mState, mState)
-                    .addBindingParam(BR.click, ClickEvents())
-    }
+    override fun getDataBindingConfig(): DataBindingConfig =
+        DataBindingConfig(R.layout.fragment_login_admin, BR.mState, mState)
+            .addBindingParam(BR.click, ClickEvents())
 
     override fun init(savedInstanceState: Bundle?) {
     }
