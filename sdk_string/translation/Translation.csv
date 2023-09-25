@@ -58,6 +58,7 @@ _544d458a,login_email_account_input_hint,Please input the Email account,Harap in
 _bc1e9ee2,login_email_login,Log in,Log in
 _c8ec64c7,login_email_password_hint,Please input the password,Harap input kata sandi
 _86619ce4,login_email_title,with Email account,dengan Email
+_abadafd4,login_expired,Your login has expired,Login Anda telah kedaluwarsa
 _f6db0733,login_otp_count_down,%ds later get the OTP again,%ds untuk kirim ulang OTP
 _b9c6cfcf,login_otp_get_otp,Get the OTP,Dapatkan kode OTP
 _b8013d15,login_otp_get_otp_again,<u>Get the OTP again</u>,<u>Kirim ulang OTP</u>

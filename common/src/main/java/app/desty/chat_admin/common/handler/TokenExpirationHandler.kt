@@ -1,9 +1,12 @@
 package app.desty.chat_admin.common.handler
 
 import android.os.Handler
+import app.desty.chat_admin.common.R
 import app.desty.chat_admin.common.config.UserConfig
+import app.desty.chat_admin.common.utils.LoginUtil
+import app.desty.chat_admin.common.utils.MyToast
 
-class TokenExpirationHandler(private val onTokenExpired: () -> Unit) {
+object TokenExpirationHandler {
 
     private val handler = Handler()
     private val checkExpirationRunnable = Runnable { checkExpirationTime() }
@@ -20,9 +23,14 @@ class TokenExpirationHandler(private val onTokenExpired: () -> Unit) {
         val currentTime = System.currentTimeMillis()
         val expirationTime = UserConfig.tokenExpirationTime
         if (expirationTime != null && expirationTime < currentTime) {
-            onTokenExpired.invoke()
+            handleTokenExpired()
         } else {
             handler.postDelayed(checkExpirationRunnable, 1000)
         }
+    }
+
+    private fun handleTokenExpired() {
+        MyToast.showToast(R.string.login_expired)
+        LoginUtil.logout(true)
     }
 }

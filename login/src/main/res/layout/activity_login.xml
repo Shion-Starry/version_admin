@@ -10,8 +10,6 @@
 
     </data>
 
-    <!-- What does the attribute
-```tools:context=".page.LoginActivity"``` do in line 15? -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
