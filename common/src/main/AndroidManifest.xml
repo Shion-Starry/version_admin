@@ -48,6 +48,10 @@
                 android:name="app.desty.chat_admin.common.initializer.ViewInitializer"
                 android:value="androidx.startup" />
 
+            <meta-data
+                android:name="app.desty.chat_admin.common.initializer.OtpInitializer"
+                android:value="androidx.startup" />
+
         </provider>
     </application>
 </manifest>

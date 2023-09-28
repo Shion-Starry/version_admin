@@ -160,6 +160,9 @@ ext {
             getuiOppo                 : 'com.assist-v3:oppo:3.3.0',
             //getui-vivo
             getuiVivo                 : 'com.assist-v3:vivo:3.1.1',
+
+            //otp
+            otp                       : 'dev.turingcomplete:kotlin-onetimepassword:2.4.0',
     ]
 
 }

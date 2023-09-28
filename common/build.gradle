@@ -80,6 +80,7 @@ dependencies {
     // 多语言
     api project(path: ':sdk_string')
     api project(path: ':widget')
+    api project(path: ':otp')
 //    api project(path: ':core')
 
     api commonLibraries.ActivityResultApi
