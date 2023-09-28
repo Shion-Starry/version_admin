@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        
+        <variable
+            name="data"
+            type="app.desty.chat_admin.common.enum_bean.HomePageType" />
+        
+        <variable
+            name="count"
+            type="java.lang.Integer" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp">
+
+        <app.desty.chat_admin.common.widget.base.BaseImageView
+            srcRes="@{data.iconRes}"
+            android:id="@+id/iv_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_navi_category"
+            android:layout_marginStart="6dp"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <app.desty.chat_admin.common.widget.base.BaseTextView
+            isBold="@{true}"
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@color/chat_600"
+            android:textSize="@dimen/text_lg"
+            android:text="@{data.titleStringRes}"
+            android:layout_marginStart="4dp"
+            app:layout_constraintWidth_default="wrap"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            bind:text="Upgrade Release" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

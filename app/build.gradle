@@ -209,5 +209,6 @@ dependencies {
 
     implementation project(path: ':common')
     implementation project(path: ':login')
+    implementation project(path: ':home')
 
 }

@@ -18,6 +18,9 @@ _dac7e27b,permission_battery_title,Allow App to run in background?,Izinkan App b
 _2ef1bb05,permission_notification_content,"Your notifications are not turned on, you will not be notified of new messages","Notifikasi anda tidak aktif, anda tidak akan menerima notifikasi jik ada pesan baru"
 _6c14d946,permission_notification_operate,Set,Atur
 _81597753,permission_notification_title,Notification prompt,Permintaan Notifikasi
+,【Home】,,
+_97c47e07,navigation_logout,Logout,Keluar
+_51444f01,username_default_administrator,Administrator,Administrator
 ,【Platform】,,
 _918b7a11,platform_blibli,BliBli,BliBli
 _853432e4,platform_instagram,Instagram,Instagram
@@ -73,7 +76,7 @@ _34039c01,login_policy_highlight_privacy_policy,Privacy Policy,Kebijakan Privasi
 _3be82bff,login_policy_highlight_terms_conditions,Terms &amp; Conditions,Syarat &amp; Ketentuan
 _533972a2,login_refresh_content,"Failed to connect to the service, please click Refresh to try again","Gagal menghubungkan servis, coba lagi dengan klik refresh"
 _64826f25,login_refresh_positive,Refresh,Refresh
-_61d34745,login_refresh_title,Login successfu!,Login Berhasil
+_61d34745,login_refresh_title,Login successful,Login Berhasil
 _ad448021,login_switch_to_email,Email login,Email Log in
 _4d2c83c4,login_switch_to_otp,Phone number login,Masuk dengan Telp
 _1551b724,login_title,Log in,Masuk

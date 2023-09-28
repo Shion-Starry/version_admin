@@ -16,7 +16,8 @@
         paddingTop="@{config.statusBarHeight}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@{config.background}">
+        android:background="@{config.background}"
+        tools:background="@color/chat_100">
 
         <app.desty.chat_admin.common.widget.base.BaseImageView
             android:id="@+id/iv_back"
@@ -30,8 +31,23 @@
             android:padding="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_back_tint" />
 
+        <app.desty.chat_admin.common.widget.base.BaseImageView
+            android:id="@+id/iv_menu"
+            srcRes="@{config.menuIconResId}"
+            tint="@{config.menuTintColor}"
+            visible="@{config.showMenu}"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="4dp"
+            android:onClick="@{config.menuClick::onClick}"
+            android:padding="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_menu_tint" />
 
         <app.desty.chat_admin.common.widget.base.BaseImageView
             android:id="@+id/iv_right_operate"
@@ -44,9 +60,8 @@
             android:onClick="@{config.rightOperateClick::onClick}"
             android:padding="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_back_tint" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <app.desty.chat_admin.common.widget.base.BaseTextView
             style="@style/Chat.Button.Primary.Small"
@@ -60,7 +75,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Send" />
-
 
         <app.desty.chat_admin.common.widget.base.BaseBoldTextView
             isBold="@{config.titleTextBold}"

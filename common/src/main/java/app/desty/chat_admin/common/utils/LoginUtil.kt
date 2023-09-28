@@ -1,12 +1,9 @@
 package app.desty.chat_admin.common.utils
 
 import android.content.Intent
-import app.desty.chat_admin.common.bean.UserInfo
 import app.desty.chat_admin.common.config.UserConfig
-import app.desty.chat_admin.common.enum_bean.TourGuide
+import app.desty.chat_admin.common.constants.RouteConstants
 import com.alibaba.android.arouter.launcher.ARouter
-import com.drake.net.utils.scope
-import kotlinx.coroutines.Dispatchers
 
 object LoginUtil {
 
@@ -34,6 +31,13 @@ object LoginUtil {
     /**
      * 登录后的路由跳转
      */
+    fun routeToHomePage() {
+        ARouter.getInstance().build(RouteConstants.Home.homePage)
+            .withFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            .navigation()
+    }
+
+    /*
     fun routeToNextPageAfterLogin(userInfo: UserInfo?=null): Boolean {
         val tmpUserInfo = userInfo ?: UserConfig.userInfo
         if (tmpUserInfo?.isAdmin != 1) {
@@ -68,4 +72,5 @@ object LoginUtil {
         }
         return true
     }
+     */
 }

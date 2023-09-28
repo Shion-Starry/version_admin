@@ -2,13 +2,13 @@ package app.desty.chat_admin.login.page.login_admin
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import app.desty.chat_admin.login.R
-import app.desty.chat_admin.login.api.LoginApi
 import app.desty.chat_admin.common.base.BaseVM
 import app.desty.chat_admin.common.bean.LoginAdminToken
 import app.desty.chat_admin.common.config.UserConfig
 import app.desty.chat_admin.common.utils.LoginUtil
 import app.desty.chat_admin.common.utils.MyToast
+import app.desty.chat_admin.login.R
+import app.desty.chat_admin.login.api.LoginApi
 import com.blankj.utilcode.util.RegexUtils
 import com.drake.net.Post
 import kotlinx.coroutines.CoroutineScope
@@ -62,10 +62,11 @@ class LoginAdminViewModel : BaseVM() {
      */
     private fun loginSuccessfully(token: String, expirationTime: Int) {
         LoginUtil.login()
+        Log.d("Check Login Status", "Login Request is successfully responded.")
         UserConfig.token = token
         UserConfig.isLoginStatus = true
         checkCurrentDateTime(expirationTime)
-        Log.d("Check Login Status", "Login Request is successfully responded.")
+        LoginUtil.routeToHomePage()
     }
 
     private fun checkCurrentDateTime(expirationTime: Int) {
