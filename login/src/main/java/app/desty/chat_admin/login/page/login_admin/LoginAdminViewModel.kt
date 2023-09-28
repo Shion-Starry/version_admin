@@ -71,7 +71,7 @@ class LoginAdminViewModel : BaseVM() {
 
     private fun checkCurrentDateTime(expirationTime: Int) {
         val currentTime = System.currentTimeMillis()
-        val tokenExpirationTime = currentTime + expirationTime
+        val tokenExpirationTime = currentTime + expirationTime * 1000
         UserConfig.tokenExpirationTime = tokenExpirationTime
         Log.d("Current time", "The current time is：$currentTime")
         Log.d("Expiration time", "The expiration time of the token is：$tokenExpirationTime")
