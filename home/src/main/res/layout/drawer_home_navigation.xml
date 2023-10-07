@@ -105,6 +105,7 @@
 
             <include
                 layout="@layout/item_navigation_module"
+                android:onClick="@{click::clickLogout}"
                 bind:data="@{HomePageType.Logout}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

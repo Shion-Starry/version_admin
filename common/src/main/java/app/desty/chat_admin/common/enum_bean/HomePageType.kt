@@ -16,6 +16,12 @@ enum class HomePageType(
     val rightIconRes: Int = 0,
     val rightIconRes2: Int = 0
 ) : Parcelable {
+    Home(
+        1000,
+        R.drawable.ic_navi_home,
+        R.string.navigation_home,
+        "",
+        0),
     Logout(
         8000,
         R.drawable.ic_navi_logout,

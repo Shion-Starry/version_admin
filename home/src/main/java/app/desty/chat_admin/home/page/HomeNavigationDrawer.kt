@@ -3,17 +3,18 @@ package app.desty.chat_admin.home.page
 import android.content.Context
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import app.desty.chat_admin.common.enum_bean.ChatAdminDialog
 import app.desty.chat_admin.common.enum_bean.HomePageType
+import app.desty.chat_admin.common.utils.LoginUtil
+import app.desty.chat_admin.common.utils.MyDialog
 import app.desty.chat_admin.home.R
 import app.desty.chat_admin.home.adapter.HomeNaviAdapter
 import app.desty.chat_admin.home.databinding.DrawerHomeNavigationBinding
 import com.blankj.utilcode.util.BarUtils
+import com.chad.library.adapter.base.BaseQuickAdapter
 import com.lxj.xpopup.core.DrawerPopupView
 
-class HomeNavigationDrawer(
-    private val homeActivity: HomeActivity,
-    context: Context
-) : DrawerPopupView(context) {
+class HomeNavigationDrawer(context: Context) : DrawerPopupView(context) {
     var binding: DrawerHomeNavigationBinding? = null
     var clickListener: NaviClickListener? = null
     var homeNaviAdapter: HomeNaviAdapter? = null
@@ -26,9 +27,9 @@ class HomeNavigationDrawer(
         super.onCreate()
         binding = DataBindingUtil.bind(popupImplView)
         binding?.apply {
-            click = ClickEvents()
-            statusBarHeight = BarUtils.getStatusBarHeight()
-            adapter = homeNaviAdapter
+            this.click = ClickEvents()
+            this.statusBarHeight = BarUtils.getStatusBarHeight()
+            this.adapter = homeNaviAdapter
         }
     }
 
@@ -38,7 +39,7 @@ class HomeNavigationDrawer(
 
     private fun createAdapter(): HomeNaviAdapter {
         val homeNaviAdapter = HomeNaviAdapter()
-        homeNaviAdapter.setOnItemClickListener { adapter, view, position ->
+        homeNaviAdapter.setOnItemClickListener { adapter: BaseQuickAdapter<*, *>, view: View, position: Int ->
             val item = adapter.getItem(position)
             if (item is HomePageType) {
                 clickListener?.onClick(this@HomeNavigationDrawer, view, item)
@@ -50,6 +51,12 @@ class HomeNavigationDrawer(
     inner class ClickEvents {
         fun clickClose(view: View) {
             dismiss()
+        }
+
+        fun clickLogout(view: View) {
+            MyDialog.show(ChatAdminDialog.Logout, {
+                LoginUtil.logout(true)
+            })
         }
     }
 

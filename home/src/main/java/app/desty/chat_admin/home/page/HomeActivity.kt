@@ -18,7 +18,6 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.lxj.xpopup.XPopup
 import com.lxj.xpopup.core.BasePopupView
 import com.lxj.xpopup.enums.PopupPosition
-import org.greenrobot.eventbus.EventBus
 
 @Route(path = RouteConstants.Home.homePage)
 class HomeActivity : BaseVmActivity<HomeViewModel>() {
@@ -29,7 +28,7 @@ class HomeActivity : BaseVmActivity<HomeViewModel>() {
             add(it)
         }
     }
-    private val defaultPageType = HomePageType.Logout
+    private val defaultPageType = HomePageType.Home
     private var nowPageType: HomePageType? = null
     private val menuClick = View.OnClickListener { _: View? ->
         if (basePopupView != null) {
@@ -79,7 +78,7 @@ class HomeActivity : BaseVmActivity<HomeViewModel>() {
 
     private fun initDrawer() {
         if (homeNavigationDrawer != null) return
-        homeNavigationDrawer = HomeNavigationDrawer(this@HomeActivity, this)
+        homeNavigationDrawer = HomeNavigationDrawer(this)
         homeNavigationDrawer?.homeNaviAdapter?.setList(naviModuleList)
         homeNavigationDrawer?.clickListener = (object : HomeNavigationDrawer.NaviClickListener {
             override fun onClick(
@@ -151,11 +150,6 @@ class HomeActivity : BaseVmActivity<HomeViewModel>() {
             }
             mState.toolbarConfig = value
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        EventBus.getDefault().unregister(this)
     }
 
 }

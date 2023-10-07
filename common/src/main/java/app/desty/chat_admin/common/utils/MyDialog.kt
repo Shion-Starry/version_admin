@@ -2,13 +2,40 @@ package app.desty.chat_admin.common.utils
 
 import android.content.Context
 import android.net.Uri
+import app.desty.chat_admin.common.enum_bean.ChatAdminDialog
 import app.desty.chat_admin.common.enum_bean.GlobalDialogEnum
+import app.desty.chat_admin.common.widget.ChatAdminDialogPopup
 import app.desty.chat_admin.common.widget.GlobalDialog
 import app.desty.chat_admin.common.widget.GlobalImageDialog
 import com.lxj.xpopup.XPopup
 import com.lxj.xpopup.core.BasePopupView
+import com.lxj.xpopup.interfaces.OnCancelListener
+import com.lxj.xpopup.interfaces.OnConfirmListener
 
 object MyDialog {
+
+    fun show(
+        chatAdminDialog: ChatAdminDialog?,
+        onConfirmListener: OnConfirmListener? = null,
+        onCancelListener: OnCancelListener? = null
+    ): BasePopupView =
+        showAdminDialog(null, chatAdminDialog, onConfirmListener, onCancelListener)
+
+    private fun showAdminDialog(
+        httpErrorCode: String?,
+        chatAdminDialog: ChatAdminDialog?,
+        confirmListener: OnConfirmListener?,
+        cancelListener: OnCancelListener?
+    ): BasePopupView =
+        XPopup.Builder(ActivityLifecycleManager.getInstance().topActivity)
+            .asCustom(
+                ChatAdminDialogPopup(
+                    ActivityLifecycleManager.getInstance().topActivity,
+                    chatAdminDialog!!
+                )
+                    .setHttpErrorCode(httpErrorCode)
+                    .setListener(confirmListener, cancelListener)
+            ).show()
 
     fun showDialog(
         dialogEnum: GlobalDialogEnum,

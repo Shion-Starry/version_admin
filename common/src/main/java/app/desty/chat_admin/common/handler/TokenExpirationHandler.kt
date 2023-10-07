@@ -20,8 +20,8 @@ object TokenExpirationHandler {
     }
 
     private fun checkExpirationTime() {
-        val currentTime = System.currentTimeMillis()
         val expirationTime = UserConfig.tokenExpirationTime
+        val currentTime = System.currentTimeMillis()
         if (expirationTime != null && expirationTime < currentTime) {
             handleTokenExpired()
         } else {

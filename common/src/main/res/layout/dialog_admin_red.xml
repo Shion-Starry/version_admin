@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="adminDialog"
+            type="app.desty.chat_admin.common.enum_bean.ChatAdminDialog" />
+
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
+
+        <import type="com.blankj.utilcode.util.StringUtils" />
+        <import type="android.text.TextUtils" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_round_rect_r16_tint"
+        android:backgroundTint="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <app.desty.chat_admin.common.widget.base.BaseImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_dialog_question_tint"
+            app:tint="@color/red_500" />
+
+        <app.desty.chat_admin.common.widget.base.BaseTextView
+            isBold="@{true}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            android:text="@{adminDialog.finalTitle}"
+            android:textColor="@color/red_500"
+            android:textSize="@dimen/text_2xl"
+            tools:text="Red Title" />
+
+        <app.desty.chat_admin.common.widget.base.BaseTextView
+            isBold="@{true}"
+            visible="@{!TextUtils.isEmpty(adminDialog.finalSubTitle)}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_horizontal"
+            android:text="@{adminDialog.finalSubTitle}"
+            android:textColor="@color/grey_700"
+            android:textSize="@dimen/text_2xl"
+            tools:text="Are you sure to logout?" />
+
+        <app.desty.chat_admin.common.widget.base.BaseTextView
+            visible="@{!TextUtils.isEmpty(adminDialog.finalContent)}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_horizontal"
+            android:text="@{adminDialog.finalContent}"
+            android:textColor="@color/grey_700"
+            android:textSize="@dimen/text_sm"
+            tools:text="This is the extra content" />
+
+        <app.desty.chat_admin.common.widget.base.BaseTextView
+            android:id="@+id/tv_confirm"
+            drawable_radius="@{6}"
+            drawable_solidColor="@{@color/chat_500}"
+            isBold="@{true}"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/chat_500"
+            android:gravity="center"
+            android:onClick="@{click::onClick}"
+            android:text="@{adminDialog.okRes}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_lg"
+            tools:text="Confirm" />
+
+        <app.desty.chat_admin.common.widget.base.BaseTextView
+            android:id="@+id/tv_cancel"
+            drawable_radius="@{6}"
+            drawable_strokeColor="@{@color/grey_300}"
+            drawable_strokeWidth="@{2}"
+            visible="@{adminDialog.cancelRes!=0}"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/grey_300"
+            android:gravity="center"
+            android:onClick="@{click::onClick}"
+            android:text="@{adminDialog.cancelRes}"
+            android:textColor="@color/grey_700"
+            android:textSize="@dimen/text_lg"
+            tools:text="Cancel" />
+
+        <app.desty.chat_admin.common.widget.base.BaseTextView
+            android:id="@+id/tv_error_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:textColor="@color/grey_300"
+            android:textSize="@dimen/text_xs"
+            android:visibility="gone"
+            tools:text="Error code:[214]"
+            tools:visibility="visible" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

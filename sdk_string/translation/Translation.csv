@@ -3,7 +3,7 @@ Code,Android-key,English,Bahasa
 _10aec353,cancel,Cancel,Batalkan
 _a14fa216,loading,Loading…,Loading…
 _828905a2,login_out,Log out,Keluar
-_444bcb3a,ok,ok,OK
+_444bcb3a,ok,OK,OK
 _0020d1a4,over_max_limit,Max limit reached,Telah mencapai batas maksimum
 _018110ff,over_min_limit,Min limit reached,Telah mencapai limit minimum
 _43781db5,save,Save,Simpan
@@ -18,9 +18,15 @@ _dac7e27b,permission_battery_title,Allow App to run in background?,Izinkan App b
 _2ef1bb05,permission_notification_content,"Your notifications are not turned on, you will not be notified of new messages","Notifikasi anda tidak aktif, anda tidak akan menerima notifikasi jik ada pesan baru"
 _6c14d946,permission_notification_operate,Set,Atur
 _81597753,permission_notification_title,Notification prompt,Permintaan Notifikasi
+,【Dialog】,,
+_03571343,logout_dialog_subtitle,Are you sure to logout?,Apakah Anda yakin untuk logout?
+_daba9214,logout_dialog_title,Logout,Keluar
 ,【Home】,,
+_03315ed0,navigation_home,Home,Beranda
 _97c47e07,navigation_logout,Logout,Keluar
 _51444f01,username_default_administrator,Administrator,Administrator
+_63463a0d,welcome_admin_system,Welcome to App Management System,Selamat datang di Sistem Manajemen Aplikasi
+_ac9c077b,welcome_admin_system_content,App Management System can help you edit and manage your app configuration.,Sistem Manajemen Aplikasi dapat membantu Anda mengedit dan mengelola konfigurasi aplikasi Anda.
 ,【Platform】,,
 _918b7a11,platform_blibli,BliBli,BliBli
 _853432e4,platform_instagram,Instagram,Instagram
