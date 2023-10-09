@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="mState"
+            type="app.desty.chat_admin.upload.page.UploadMainViewModel" />
+
+        <variable
+            name="verInfo"
+            type="app.desty.chat_admin.common.bean.VersionInfo" />
+
+        <variable
+            name="time"
+            type="java.lang.String" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            visible="@{mState.showInfo}"
+            android:id="@+id/scroll_viewer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintHeight_max="400dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                drawable_radius="@{8}"
+                drawable_solidColor="@{@color/white}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="8dp"
+                app:divider="@drawable/divider_transparent_8"
+                app:showDividers="beginning|middle|end">
+
+                <app.desty.chat_admin.common.widget.base.BaseBoldTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="12dp"
+                    android:text="@string/latest_version_info_title"
+                    android:textColor="@color/grey_900"
+                    android:textSize="@dimen/text_lg"
+                    android:layout_gravity="center_horizontal" />
+
+                <include
+                    layout="@layout/item_version_key_value"
+                    bind:key="@{@string/latest_version_version_id}" />
+
+                <include
+                    layout="@layout/item_version_key_value"
+                    bind:key="@{@string/latest_version_name}" />
+
+                <include
+                    layout="@layout/item_version_key_value"
+                    bind:key="@{@string/latest_version_config_value}" />
+
+                <include
+                    layout="@layout/item_version_key_value"
+                    bind:key="@{@string/latest_version_latest_version}" />
+
+                <include
+                    layout="@layout/item_version_key_value"
+                    bind:key="@{@string/latest_version_compat_version}" />
+
+                <include
+                    layout="@layout/item_version_key_value"
+                    bind:key="@{@string/latest_version_channel}" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </ScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            visible="@{mState.showInfo}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            app:layout_constraintTop_toBottomOf="@id/scroll_viewer">
+
+            <app.desty.chat_admin.common.widget.base.BaseTextView
+                android:id="@+id/update_time_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/updated_time_title"
+                android:textColor="@color/grey_500"
+                android:textSize="@dimen/text_sm"
+                app:layout_constraintEnd_toStartOf="@id/update_time_value"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <app.desty.chat_admin.common.widget.base.BaseTextView
+                android:id="@+id/update_time_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{time}"
+                android:textColor="@color/grey_900"
+                android:textSize="@dimen/text_sm"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:paddingStart="2dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <app.desty.chat_admin.common.widget.base.BaseTextView
+                android:id="@+id/tv_upload"
+                style="@style/Chat.Button.Primary.Base"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/upload_button_text"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

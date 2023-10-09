@@ -9,6 +9,7 @@
         <variable
             name="config"
             type="app.desty.chat_admin.common.bean.ToolbarConfig" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

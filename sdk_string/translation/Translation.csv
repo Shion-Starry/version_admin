@@ -22,11 +22,23 @@ _81597753,permission_notification_title,Notification prompt,Permintaan Notifikas
 _03571343,logout_dialog_subtitle,Are you sure to logout?,Apakah Anda yakin untuk logout?
 _daba9214,logout_dialog_title,Logout,Keluar
 ,【Home】,,
+_f4831c7b,navigation_cloud,Cloud Setting,pengaturan awan
 _03315ed0,navigation_home,Home,Beranda
 _97c47e07,navigation_logout,Logout,Keluar
+_11395f2d,navigation_upload,Upload Upgrades,Unggah Peningkatan
 _51444f01,username_default_administrator,Administrator,Administrator
 _63463a0d,welcome_admin_system,Welcome to App Management System,Selamat datang di Sistem Manajemen Aplikasi
 _ac9c077b,welcome_admin_system_content,App Management System can help you edit and manage your app configuration.,Sistem Manajemen Aplikasi dapat membantu Anda mengedit dan mengelola konfigurasi aplikasi Anda.
+,【Upload】,,
+_f1e5dc91,latest_version_channel,Channel,Saluran
+_5983eb3b,latest_version_compat_version,Compat Version,Versi Kompatibel
+_4744803a,latest_version_config_value,Config Value,Nilai Konfigurasi
+_bb973cbe,latest_version_info_title,Latest Version,Versi terbaru
+_79e57685,latest_version_latest_version,Latest Version,Versi terbaru
+_8ecefbdd,latest_version_name,Version Name,Nama Versi
+_204a0600,latest_version_version_id,Version ID,ID Versi
+_38dfffef,updated_time_title,Updated Time:,Waktu yang Diperbarui:
+_4ead2c37,upload_button_text,Upload New,Unggah Baru
 ,【Platform】,,
 _918b7a11,platform_blibli,BliBli,BliBli
 _853432e4,platform_instagram,Instagram,Instagram

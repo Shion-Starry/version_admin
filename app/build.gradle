@@ -207,8 +207,11 @@ dependencies {
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
 
+    implementation project(path: ':cloud')
     implementation project(path: ':common')
-    implementation project(path: ':login')
     implementation project(path: ':home')
+    implementation project(path: ':login')
+    implementation project(path: ':otp')
+    implementation project(path: ':upload')
 
 }

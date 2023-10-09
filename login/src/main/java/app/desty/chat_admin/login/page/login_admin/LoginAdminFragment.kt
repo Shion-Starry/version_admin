@@ -2,8 +2,8 @@ package app.desty.chat_admin.login.page.login_admin
 
 import android.os.Bundle
 import android.view.View
-import app.desty.chat_admin.login.R
 import app.desty.chat_admin.login.BR
+import app.desty.chat_admin.login.R
 import app.desty.chat_admin.common.base.BaseVMFragment
 import app.desty.chat_admin.common.base.DataBindingConfig
 import app.desty.chat_admin.common.constants.RouteConstants

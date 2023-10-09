@@ -50,7 +50,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_icon"
             app:layout_constraintEnd_toEndOf="parent"
-            bind:text="Upgrade Release" />
+            bind:text="Upload Upgrades" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

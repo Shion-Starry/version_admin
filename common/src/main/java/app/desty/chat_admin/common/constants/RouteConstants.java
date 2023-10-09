@@ -25,7 +25,16 @@ public interface RouteConstants {
     interface Home {
         String moduleName = "/home";
         String homePage = moduleName + "/home";
+    }
 
+    interface Upload {
+        String moduleName = "/upload";
+        String main = moduleName + "/main";
+    }
+
+    interface Cloud {
+        String moduleName = "/cloud";
+        String main = moduleName + "/main";
     }
 
     interface Message {

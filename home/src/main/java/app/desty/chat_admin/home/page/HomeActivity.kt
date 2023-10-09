@@ -3,6 +3,7 @@ package app.desty.chat_admin.home.page
 import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import app.desty.chat_admin.common.base.BaseVmActivity
@@ -87,6 +88,9 @@ class HomeActivity : BaseVmActivity<HomeViewModel>() {
                 pageType: HomePageType
             ) {
                 homeNavigationDrawer.dismiss()
+                if (mState.isHome.value == true) {
+                    mState.isHome.value = false
+                }
                 switchFragment(pageType)
             }
         })
@@ -103,7 +107,12 @@ class HomeActivity : BaseVmActivity<HomeViewModel>() {
 
     private fun switchFragment(pageType: HomePageType?) {
         var thePageType: HomePageType = pageType ?: return
-        if (!naviModuleList.contains(thePageType)) thePageType = defaultPageType
+        if (!naviModuleList.contains(thePageType)) {
+            thePageType = defaultPageType
+        }
+        if (naviModuleList.size == 0) {
+            mState.isHome.value = true
+        }
         nowPageType = thePageType
         val fragmentName: String = thePageType.fragmentPath
         val fragmentManager = supportFragmentManager
@@ -141,14 +150,15 @@ class HomeActivity : BaseVmActivity<HomeViewModel>() {
     private fun buildToolbar(pageType: HomePageType) {
         val value = mState.toolbarConfig
         if (value != null) {
-            value.title = pageType.titleStringRes.toString()
+            value.title = getString(pageType.titleStringRes)
             if (pageType.rightIconRes != 0) {
                 value.showRightOperateIcon = true
                 value.rightOperateIconResId = pageType.rightIconRes
             } else {
                 value.showRightOperateIcon = false
             }
-            mState.toolbarConfig = value
+            this.mState.toolbarConfig = value
+            Log.d("Current Toolbar Title", "The current title should be ${mState.toolbarConfig!!.title}")
         }
     }
 

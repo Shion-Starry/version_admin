@@ -2,6 +2,7 @@ package app.desty.chat_admin.common.enum_bean
 
 import android.os.Parcelable
 import app.desty.chat_admin.common.R
+import app.desty.chat_admin.common.constants.RouteConstants
 import com.blankj.utilcode.util.ColorUtils
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
@@ -21,6 +22,18 @@ enum class HomePageType(
         R.drawable.ic_navi_home,
         R.string.navigation_home,
         "",
+        0),
+    Upload(
+        2000,
+        R.drawable.ic_navi_upload,
+        R.string.navigation_upload,
+        RouteConstants.Upload.main,
+        0),
+    Cloud(
+        3000,
+        R.drawable.ic_navi_cloud,
+        R.string.navigation_cloud,
+        RouteConstants.Upload.main,
         0),
     Logout(
         8000,

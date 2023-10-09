@@ -26,7 +26,7 @@ class LoginAdminViewModel : BaseVM() {
         if (checkInputFormat()) {
             val loginToken = Post<LoginAdminToken>(LoginApi.loginAdmin) {
                 json(
-                    "account" to (username.value?.trim()?: ""),
+                    "account" to (username.value?.trim()?:""),
                     "password" to password.value
                 )
             }.await()
