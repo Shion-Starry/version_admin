@@ -15,7 +15,8 @@ open class BaseVM : ViewModel() {
     var statusBarHeight = MutableLiveData<Int>()
     var statusBarHeightPx = MutableLiveData<Int>()
     var navigationBarHeight = MutableLiveData<Int>()
-    var toolbarConfig: ToolbarConfig? = null
+//    var toolbarConfig: ToolbarConfig? = null
+    var toolbarConfig = MutableLiveData<ToolbarConfig>()
     var showHttpLoadingDialog = MutableLiveData<Boolean?>(null)
     var sideTextString = MutableLiveData<String>()
     var showDialog = MutableLiveData<BasePopupView?>(null)

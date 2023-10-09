@@ -14,33 +14,38 @@ enum class HomePageType(
     val titleStringRes: Int,
     val fragmentPath: String,
     val navBarColorRes: Int,
-    val rightIconRes: Int = 0,
-    val rightIconRes2: Int = 0
+    val rightIconRes: Int = 0
 ) : Parcelable {
     Home(
         1000,
         R.drawable.ic_navi_home,
         R.string.navigation_home,
         "",
-        0),
+        0
+    ),
     Upload(
         2000,
         R.drawable.ic_navi_upload,
         R.string.navigation_upload,
         RouteConstants.Upload.main,
-        0),
+        0,
+        R.drawable.ic_refresh_tint
+    ),
     Cloud(
         3000,
         R.drawable.ic_navi_cloud,
         R.string.navigation_cloud,
         RouteConstants.Upload.main,
-        0),
+        0,
+        R.drawable.ic_refresh_tint
+    ),
     Logout(
         8000,
         R.drawable.ic_navi_logout,
         R.string.navigation_logout,
         "",
-        0);
+        0
+    );
 
     @IgnoredOnParcel
     val navBarColor: Int =

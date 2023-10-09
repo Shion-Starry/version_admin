@@ -3,7 +3,6 @@ package app.desty.chat_admin.home.page
 import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import app.desty.chat_admin.common.base.BaseVmActivity
@@ -148,7 +147,7 @@ class HomeActivity : BaseVmActivity<HomeViewModel>() {
     }
 
     private fun buildToolbar(pageType: HomePageType) {
-        val value = mState.toolbarConfig
+        val value = mState.toolbarConfig.value
         if (value != null) {
             value.title = getString(pageType.titleStringRes)
             if (pageType.rightIconRes != 0) {
@@ -157,8 +156,7 @@ class HomeActivity : BaseVmActivity<HomeViewModel>() {
             } else {
                 value.showRightOperateIcon = false
             }
-            this.mState.toolbarConfig = value
-            Log.d("Current Toolbar Title", "The current title should be ${mState.toolbarConfig!!.title}")
+            mState.toolbarConfig.value = value
         }
     }
 

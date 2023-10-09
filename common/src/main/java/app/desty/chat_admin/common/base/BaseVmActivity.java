@@ -91,7 +91,7 @@ public abstract class BaseVmActivity<Q extends BaseVM> extends AppCompatActivity
         if (titleBean != null) {
             titleBean.setStatusBarHeight(statusBarHeight);
         }
-        mState.setToolbarConfig(titleBean);
+        mState.getToolbarConfig().setValue(titleBean);
         DataBindingConfig dataBindingConfig = getDataBindingConfig();
 
         ViewDataBinding binding = DataBindingUtil.setContentView(this, dataBindingConfig.getLayout());
