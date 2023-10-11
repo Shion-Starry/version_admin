@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="key"
+            type="java.lang.String" />
+        
+        <variable
+            name="displayText"
+            type="java.lang.String" />
+
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
+        
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <app.desty.chat_admin.common.widget.base.BaseTextView
+            android:id="@+id/tv_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{key}"
+            android:textColor="@color/grey_400"
+            android:textSize="@dimen/text_lg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="key" />
+
+        <app.desty.chat_admin.common.widget.base.BaseTextView
+            android:id="@+id/tv_editor"
+            drawable_radius="@{6}"
+            drawable_solidColor="@{@color/color_white}"
+            drawable_strokeColor="@{@color/grey_300}"
+            drawable_strokeWidth="@{1}"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:minWidth="50dp"
+            android:onClick="@{click::onClick}"
+            android:text="@{displayText}"
+            android:textColor="@color/grey_800"
+            android:textSize="@dimen/text_lg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Edited Text" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

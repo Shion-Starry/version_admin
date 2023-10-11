@@ -13,5 +13,4 @@ data class VersionInfo(
     val latestVersion: Int = 1,
     val compatVersion: Int = 1,
     val channel: String = "android"
-    ) : Parcelable {
-}
+    ) : Parcelable

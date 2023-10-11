@@ -30,6 +30,7 @@ public interface RouteConstants {
     interface Upload {
         String moduleName = "/upload";
         String main = moduleName + "/main";
+        String uploadNew = moduleName + "/uploadNew";
     }
 
     interface Cloud {

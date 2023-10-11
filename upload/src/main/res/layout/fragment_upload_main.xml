@@ -10,8 +10,8 @@
             type="app.desty.chat_admin.upload.page.UploadMainViewModel" />
 
         <variable
-            name="verInfo"
-            type="app.desty.chat_admin.common.bean.VersionInfo" />
+            name="click"
+            type="app.desty.chat_admin.upload.page.UploadMainFragment.ClickEvents" />
 
         <variable
             name="time"
@@ -57,27 +57,33 @@
 
                 <include
                     layout="@layout/item_version_key_value"
-                    bind:key="@{@string/latest_version_version_id}" />
+                    bind:key="@{@string/latest_version_version_id}"
+                    bind:value="@{mState.verInfo.versionId}" />
 
                 <include
                     layout="@layout/item_version_key_value"
-                    bind:key="@{@string/latest_version_name}" />
+                    bind:key="@{@string/latest_version_name}"
+                    bind:value="@{mState.verInfo.versionName}" />
 
                 <include
                     layout="@layout/item_version_key_value"
-                    bind:key="@{@string/latest_version_config_value}" />
+                    bind:key="@{@string/latest_version_config_value}"
+                    bind:value="@{mState.verInfo.configValue}" />
 
                 <include
                     layout="@layout/item_version_key_value"
-                    bind:key="@{@string/latest_version_latest_version}" />
+                    bind:key="@{@string/latest_version_latest_version}"
+                    bind:value="@{String.valueOf(mState.verInfo.latestVersion)}" />
 
                 <include
                     layout="@layout/item_version_key_value"
-                    bind:key="@{@string/latest_version_compat_version}" />
+                    bind:key="@{@string/latest_version_compat_version}"
+                    bind:value="@{String.valueOf(mState.verInfo.compatVersion)}" />
 
                 <include
                     layout="@layout/item_version_key_value"
-                    bind:key="@{@string/latest_version_channel}" />
+                    bind:key="@{@string/latest_version_channel}"
+                    bind:value="@{mState.verInfo.channel}" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -134,6 +140,7 @@
                 style="@style/Chat.Button.Primary.Base"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="@{click::clickUploadNew}"
                 android:text="@string/upload_button_text"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
