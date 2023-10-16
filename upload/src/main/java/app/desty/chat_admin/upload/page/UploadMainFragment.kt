@@ -13,7 +13,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 @Route(path = RouteConstants.Upload.main)
 class UploadMainFragment : BaseVMFragment<UploadMainViewModel>() {
     override fun initViewModel() {
-        mState.getVersionInfo(true)
+        mState.getVersionInfo()
     }
 
     override fun getDataBindingConfig(): DataBindingConfig =
@@ -21,7 +21,7 @@ class UploadMainFragment : BaseVMFragment<UploadMainViewModel>() {
             .addBindingParam(BR.click, ClickEvents())
 
     override fun init(savedInstanceState: Bundle?) {
-
+        mState.getVersionInfo()
     }
 
     inner class ClickEvents {

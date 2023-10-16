@@ -39,6 +39,7 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
         fun clickUpload(view: View) {
 
         }
+
     }
 
 }

@@ -19,6 +19,20 @@ _2ef1bb05,permission_notification_content,"Your notifications are not turned on,
 _6c14d946,permission_notification_operate,Set,Atur
 _81597753,permission_notification_title,Notification prompt,Permintaan Notifikasi
 ,【Dialog】,,
+_2d6e7ef3,edit_subtitle_build_version,Build Version,Pembuatan Versi
+_dc3817da,edit_subtitle_channel,Channel,Saluran
+_a63a1a87,edit_subtitle_config_value,Config Value,Nilai Konfigurasi
+_f9e67259,edit_subtitle_fix_version,Fix Version,Perbaiki Versi
+_7f925dae,edit_subtitle_sub_version,Sub Version,Sub Versi
+_afa37871,edit_subtitle_version_id,ID,ID
+_c8fa8b10,edit_subtitle_version_name,Name,Nama
+_839e68f6,edit_subtitle_version_setting,Major Version,Versi Utama
+_e30156d7,edit_title_channel,Edit Channel,Sunting Saluran
+_e1e3c95f,edit_title_compat_version,Edit Compat Version,Edit Versi Kompat
+_6d7a8a39,edit_title_config_value,Edit Config Value,Edit Nilai Konfigurasi
+_93e8e1af,edit_title_latest_version,Edit Latest Version,Sunting Versi Terbaru
+_0b9e9a2e,edit_title_version_id,Edit Version ID,Edit ID Versi
+_dbc591aa,edit_title_version_name,Edit Version Name,Edit Nama Versi
 _03571343,logout_dialog_subtitle,Are you sure to logout?,Apakah Anda yakin untuk logout?
 _daba9214,logout_dialog_title,Logout,Keluar
 ,【Home】,,
@@ -32,15 +46,18 @@ _ac9c077b,welcome_admin_system_content,App Management System can help you edit a
 ,【Upload】,,
 _f1e5dc91,latest_version_channel,Channel,Saluran
 _5983eb3b,latest_version_compat_version,Compat Version,Versi Kompatibel
-_4744803a,latest_version_config_value,Config Value,Nilai Konfigurasi
 _bb973cbe,latest_version_info_title,Latest Version,Versi terbaru
 _79e57685,latest_version_latest_version,Latest Version,Versi terbaru
 _8ecefbdd,latest_version_name,Version Name,Nama Versi
 _204a0600,latest_version_version_id,Version ID,ID Versi
+_adee50df,latest_version_when2update,When to Update,Kapan Memperbarui
 _38dfffef,updated_time_title,Updated Time:,Waktu yang Diperbarui:
 _4ead2c37,upload_button_text,Upload New Version,Unggah Versi Baru
+_738d1564,upload_display_channel_android,android,android
 _ffc1dbfa,upload_new_title,Edit New Version,Sunting Versi Baru
 _2e366d3a,upload_ver_button_text,Upload,Mengunggah
+_21c75216,upload_ver_env_production,Production,Produksi
+_ea6d0c78,upload_ver_env_testing,Testing,Pengujian
 _6ed9d243,upload_ver_toolbar_title,Upload New Version,Unggah Versi Baru
 ,【Platform】,,
 _918b7a11,platform_blibli,BliBli,BliBli

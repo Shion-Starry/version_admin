@@ -12,10 +12,6 @@
         <variable
             name="click"
             type="app.desty.chat_admin.upload.page.upload_new.UploadNewActivity.ClickEvents" />
-
-        <variable
-            name="verInfo"
-            type="app.desty.chat_admin.common.bean.VersionInfo" />
         
     </data>
 
@@ -29,7 +25,6 @@
             bind:config="@{mState.toolbarConfig}"/>
 
         <ScrollView
-            visible="@{mState.showInfo}"
             android:id="@+id/scroll_viewer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,31 +57,60 @@
 
                 <include
                     layout="@layout/item_version_key_edit"
-                    bind:key="@{@string/latest_version_version_id}" />
+                    bind:key="@{@string/latest_version_version_id}"
+                    bind:displayText="@={mState.featureTextList[0]}"
+                    bind:click="@{mState.onclickListenerList[0]}" />
 
                 <include
                     layout="@layout/item_version_key_edit"
-                    bind:key="@{@string/latest_version_name}" />
+                    bind:key="@{@string/latest_version_name}"
+                    bind:displayText="@={mState.featureTextList[1]}"
+                    bind:click="@{mState.onclickListenerList[1]}" />
 
                 <include
                     layout="@layout/item_version_key_edit"
-                    bind:key="@{@string/latest_version_config_value}" />
+                    bind:key="@{@string/latest_version_when2update}"
+                    bind:displayText="@={mState.featureTextList[2]}"
+                    bind:click="@{mState.onclickListenerList[2]}" />
 
                 <include
                     layout="@layout/item_version_key_edit"
-                    bind:key="@{@string/latest_version_latest_version}" />
+                    bind:key="@{@string/latest_version_latest_version}"
+                    bind:displayText="@={mState.featureTextList[3]}"
+                    bind:click="@{mState.onclickListenerList[3]}" />
 
                 <include
                     layout="@layout/item_version_key_edit"
-                    bind:key="@{@string/latest_version_compat_version}" />
+                    bind:key="@{@string/latest_version_compat_version}"
+                    bind:displayText="@={mState.featureTextList[4]}"
+                    bind:click="@{mState.onclickListenerList[4]}" />
 
                 <include
                     layout="@layout/item_version_key_edit"
-                    bind:key="@{@string/latest_version_channel}" />
+                    bind:key="@{@string/latest_version_channel}"
+                    bind:displayText="@={mState.featureTextList[5]}"
+                    bind:click="@{mState.onclickListenerList[5]}" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </ScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            app:layout_constraintTop_toBottomOf="@id/scroll_viewer">
+
+            <include
+                layout="@layout/layout_either_radio_group"
+                bind:firstOption="@{@string/upload_ver_env_testing}"
+                bind:secondOption="@{@string/upload_ver_env_production}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -103,7 +127,8 @@
                 style="@style/Chat.Button.Primary.Base"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/upload_ver_button_text" />
+                android:text="@string/upload_ver_button_text"
+                android:enabled="@{mState.canUpload}" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

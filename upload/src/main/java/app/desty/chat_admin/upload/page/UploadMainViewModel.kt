@@ -12,15 +12,14 @@ class UploadMainViewModel : BaseVM() {
     val verInfo = MutableLiveData<VersionInfo>()
     val showInfo = MutableLiveData(true)
 
-    fun getVersionInfo(showAllParams: Boolean?) {
-        if (showAllParams == null) {
-            return
-        }
+    fun getVersionInfo() {
         scopeNetLife {
             val versionInfo = Get<VersionInfo>(UploadApi.getConfig) {
-                param("showAllParams", showAllParams)
+                param("channel", "android")
             }.await()
             verInfo.value = versionInfo
+
+            Log.d("What did I get", "What I have got is: ${versionInfo.channel}")
             Log.d("Obtain the version info",
                 "Get the version information successfully: ${verInfo.value!!.channel}")
         }
