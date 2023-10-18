@@ -8,11 +8,15 @@
         <variable
             name="key"
             type="java.lang.String" />
-
+        
         <variable
-            name="text"
+            name="displayText"
             type="java.lang.String" />
 
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
+        
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,27 +35,28 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="key" />
 
-        <app.desty.chat_admin.common.widget.NoSelectionEditText
+        <app.desty.chat_admin.common.widget.base.BaseTextView
             android:id="@+id/tv_editor"
-            drawable_focused_radius="@{6}"
-            drawable_focused_solidColor="@{@color/white}"
-            drawable_focused_strokeColor="@{@color/chat_500}"
-            drawable_focused_strokeWidth="@{2}"
             drawable_radius="@{6}"
-            drawable_solidColor="@{@color/white}"
+            drawable_solidColor="@{@color/color_white}"
             drawable_strokeColor="@{@color/grey_600}"
             drawable_strokeWidth="@{1}"
-            app:layout_constraintWidth_default="wrap"
-            android:layout_width="0dp"
-            android:layout_height="46dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:maxWidth="180dp"
             android:minWidth="80dp"
-            android:text="@={text}"
+            android:minHeight="46dp"
+            android:onClick="@{click::onClick}"
+            android:text="@{displayText}"
+            android:textColor="@color/grey_800"
+            android:textSize="@dimen/text_lg"
+            android:gravity="center"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Edited Text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

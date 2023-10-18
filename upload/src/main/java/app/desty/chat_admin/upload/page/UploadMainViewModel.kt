@@ -1,6 +1,5 @@
 package app.desty.chat_admin.upload.page
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.scopeNetLife
 import app.desty.chat_admin.common.base.BaseVM
@@ -18,10 +17,6 @@ class UploadMainViewModel : BaseVM() {
                 param("channel", "android")
             }.await()
             verInfo.value = versionInfo
-
-            Log.d("What did I get", "What I have got is: ${versionInfo.channel}")
-            Log.d("Obtain the version info",
-                "Get the version information successfully: ${verInfo.value!!.channel}")
         }
     }
 

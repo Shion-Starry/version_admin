@@ -21,7 +21,7 @@ class UploadMainFragment : BaseVMFragment<UploadMainViewModel>() {
             .addBindingParam(BR.click, ClickEvents())
 
     override fun init(savedInstanceState: Bundle?) {
-        mState.getVersionInfo()
+
     }
 
     inner class ClickEvents {

@@ -35,7 +35,7 @@ enum class HomePageType(
         3000,
         R.drawable.ic_navi_cloud,
         R.string.navigation_cloud,
-        RouteConstants.Upload.main,
+        "",
         0,
         R.drawable.ic_refresh_tint
     ),

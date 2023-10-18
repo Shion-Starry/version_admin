@@ -50,7 +50,7 @@ enum class Environment {
 //    Dev,
 //    Staging,
     Test,
-//    Prod
+    Prod
 
 
 }

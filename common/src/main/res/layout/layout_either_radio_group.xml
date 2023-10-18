@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
+        <variable
+            name="env"
+            type="app.desty.chat_admin.common.config.Environment" />
 
         <variable
             name="firstOption"
@@ -12,41 +16,66 @@
         <variable
             name="secondOption"
             type="java.lang.String" />
+        
+        <variable
+            name="clickFirstOp"
+            type="android.view.View.OnClickListener" />
+        
+        <variable
+            name="clickSecondOp"
+            type="android.view.View.OnClickListener" />
+
+        <import type="app.desty.chat_admin.common.config.Environment" />
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        
-        <RadioGroup
-            android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <app.desty.chat_admin.common.widget.CheckImageView
+            normalSrc="@{@drawable/ic_radio_unchecked}"
+            checkedSrc="@{@drawable/ic_radio_checked}"
+            android:id="@+id/civ_option1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_radio_checked"
+            android:scaleType="center"
+            checked="@{env == Environment.Test}"
+            android:onClick="@{clickFirstOp::onClick}" />
+
+        <app.desty.chat_admin.common.widget.base.BaseTextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
-            app:layout_constraintTop_toTopOf="parent">
+            android:text="@{firstOption}"
+            android:textColor="@color/grey_800"
+            android:textSize="@dimen/text_lg"
+            android:onClick="@{clickFirstOp::onClick}"
+            tools:text="Testing" />
 
-            <RadioButton
-                android:id="@+id/rb_option1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{firstOption}"
-                android:textColor="@color/grey_800"
-                android:textSize="@dimen/text_lg"
-                android:checked="true"
-                tools:text="Testing" />
+        <app.desty.chat_admin.common.widget.CheckImageView
+            normalSrc="@{@drawable/ic_radio_unchecked}"
+            checkedSrc="@{@drawable/ic_radio_checked}"
+            android:id="@+id/civ_option2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_radio_checked"
+            android:scaleType="center"
+            app:checked="@{env == Environment.Prod}"
+            android:onClick="@{clickSecondOp::onClick}" />
 
-            <RadioButton
-                android:id="@+id/rb_option2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="@{secondOption}"
-                android:textColor="@color/grey_800"
-                android:textSize="@dimen/text_lg"
-                tools:text="Production" />
+        <app.desty.chat_admin.common.widget.base.BaseTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{secondOption}"
+            android:textColor="@color/grey_800"
+            android:textSize="@dimen/text_lg"
+            android:onClick="@{clickSecondOp::onClick}"
+            tools:text="Production" />
 
-        </RadioGroup>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

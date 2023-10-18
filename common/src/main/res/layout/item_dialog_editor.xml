@@ -6,25 +6,16 @@
     <data>
 
         <variable
-            name="visible"
-            type="java.lang.Boolean" />
-
-        <variable
             name="subtitle"
             type="java.lang.String" />
 
         <variable
             name="inputText"
-            type="java.lang.String" />
-
-        <variable
-            name="inputType"
-            type="java.lang.Integer" />
+            type="androidx.lifecycle.MutableLiveData&lt;java.lang.String&gt;" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        visible="@{visible}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white">
@@ -47,14 +38,14 @@
             drawable_focused_strokeWidth="@{2}"
             drawable_focused_radius="@{6}"
             drawable_solidColor="@{@color/white}"
-            drawable_strokeColor="@{@color/grey_300}"
+            drawable_strokeColor="@{@color/grey_400}"
             drawable_strokeWidth="@{1}"
             drawable_radius="@{6}"
             android:id="@+id/et_input"
             android:layout_width="0dp"
             android:layout_height="46dp"
             android:text="@={inputText}"
-            android:inputType="@{inputType}"
+            android:inputType="number"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="18dp"
             android:layout_marginEnd="10dp"
