@@ -33,9 +33,7 @@ class HomeNavigationDrawer(context: Context) : DrawerPopupView(context) {
         }
     }
 
-    override fun getImplLayoutId(): Int {
-        return R.layout.drawer_home_navigation
-    }
+    override fun getImplLayoutId() = R.layout.drawer_home_navigation
 
     private fun createAdapter(): HomeNaviAdapter {
         val homeNaviAdapter = HomeNaviAdapter()

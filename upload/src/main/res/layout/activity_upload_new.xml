@@ -148,7 +148,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/upload_ver_button_text"
-                android:enabled="@{mState.canUpload}" />
+                android:enabled="@{mState.canUpload}"
+                android:onClick="@{click::clickUpload}" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

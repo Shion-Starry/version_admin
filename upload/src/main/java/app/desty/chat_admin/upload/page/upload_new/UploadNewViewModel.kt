@@ -4,18 +4,22 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import app.desty.chat_admin.common.base.BaseVM
 import app.desty.chat_admin.common.config.Environment
+import app.desty.chat_admin.common.utils.MyToast
+import app.desty.chat_admin.upload.api.UploadApi
+import com.drake.net.Post
+import kotlinx.coroutines.CoroutineScope
 
 class UploadNewViewModel : BaseVM() {
     val featureTextMap = mapOf<String, MutableLiveData<String>>(
         "channel" to MutableLiveData("android"),
-        "latestVersion" to MutableLiveData("1"),
-        "latestCode" to MutableLiveData("2"),
-        "compatVersion" to MutableLiveData("3"),
-        "compatCode" to MutableLiveData("4"),
-        "url" to MutableLiveData("5"),
-        "websiteUrl" to MutableLiveData("6"),
-        "marketUrl" to MutableLiveData("7"),
-        "content" to MutableLiveData("8")
+        "latestVersion" to MutableLiveData(""),
+        "latestCode" to MutableLiveData(""),
+        "compatVersion" to MutableLiveData(""),
+        "compatCode" to MutableLiveData(""),
+        "url" to MutableLiveData(""),
+        "websiteUrl" to MutableLiveData(""),
+        "marketUrl" to MutableLiveData(""),
+        "content" to MutableLiveData("")
     )
     val canUpload = MediatorLiveData(false)
     var env = MutableLiveData(Environment.Test)
@@ -36,6 +40,28 @@ class UploadNewViewModel : BaseVM() {
             }
         }
         canUpload.value = true
+    }
+
+    fun uploadNewVer(): suspend CoroutineScope.() -> Unit = {
+        val submitResult = Post<Boolean>(UploadApi.saveConfig) {
+            json(
+                "channel" to (featureTextMap["channel"]?.value ?: ""),
+                "latestVersion" to (featureTextMap["latestVersion"]?.value ?: ""),
+                "latestCode" to (featureTextMap["latestCode"]?.value?.toLongOrNull() ?: ""),
+                "compatibleVersion" to (featureTextMap["compatVersion"]?.value ?: ""),
+                "compatibleCode" to (featureTextMap["compatCode"]?.value?.toLongOrNull() ?: ""),
+                "url" to (featureTextMap["url"]?.value ?: ""),
+                "websiteUrl" to (featureTextMap["websiteUrl"]?.value ?: ""),
+                "marketUrl" to (featureTextMap["marketUrl"]?.value ?: ""),
+                "content" to (featureTextMap["content"]?.value ?: "")
+            )
+        }.await()
+        if (submitResult) {
+            MyToast.showToast("Successfully Submitted")
+            finishActivity()
+        } else {
+            MyToast.showToast("Submission Failed :(")
+        }
     }
 
 }

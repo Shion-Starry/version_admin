@@ -9,11 +9,12 @@ import app.desty.chat_admin.upload.BR
 import app.desty.chat_admin.upload.R
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.drake.net.utils.scopeDialog
 
 @Route(path = RouteConstants.Upload.main)
 class UploadMainFragment : BaseVMFragment<UploadMainViewModel>() {
     override fun initViewModel() {
-        mState.getVersionInfo()
+        scopeDialog (block = mState.getVersionInfo())
     }
 
     override fun getDataBindingConfig(): DataBindingConfig =

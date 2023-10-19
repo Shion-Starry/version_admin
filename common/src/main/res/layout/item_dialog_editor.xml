@@ -10,8 +10,8 @@
             type="java.lang.String" />
 
         <variable
-            name="inputText"
-            type="androidx.lifecycle.MutableLiveData&lt;java.lang.String&gt;" />
+            name="text"
+            type="java.lang.String" />
 
     </data>
 
@@ -20,8 +20,7 @@
         android:layout_height="wrap_content"
         android:background="@color/white">
 
-        <app.desty.chat_admin.common.widget.base.BaseTextView
-            isBold="@{true}"
+        <app.desty.chat_admin.common.widget.base.BaseBoldTextView
             android:id="@+id/tv_et_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,7 +43,7 @@
             android:id="@+id/et_input"
             android:layout_width="0dp"
             android:layout_height="46dp"
-            android:text="@={inputText}"
+            android:text="@={text}"
             android:inputType="number"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="18dp"

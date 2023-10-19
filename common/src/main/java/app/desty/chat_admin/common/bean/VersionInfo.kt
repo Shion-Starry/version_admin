@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Parcelable
 import androidx.annotation.RequiresApi
 import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import java.time.Instant
 import java.time.ZoneId
@@ -14,11 +15,11 @@ import java.time.format.DateTimeFormatter
 @Parcelize
 data class VersionInfo(
     val channel: String = "",
-    val compatCode: Int = 0,
-    val compatVersion: String = "",
+    @SerialName("compatibleCode") val compatCode: Int = 0,
+    @SerialName("compatibleVersion") val compatVersion: String = "",
     val content: String = "",
     val createTime: Long = 0,
-    val versionId: Int = 0,
+    @SerialName("id") val versionId: Int = 0,
     val latestCode: Int = 0,
     val latestVersion: String = "",
     val marketUrl: String = "",

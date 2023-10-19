@@ -18,7 +18,14 @@ enum class ChatAdminDialog(
     Logout(
         layoutRes = R.layout.dialog_admin_red,
         titleRes = R.string.logout_dialog_title,
-        subTitleRes = R.string.logout_dialog_subtitle
+        subTitleRes = R.string.logout_dialog_subtitle,
+        okRes = R.string.yes
+    ),
+    Upload(
+        layoutRes = R.layout.dialog_admin_green,
+        titleRes = R.string.upload_new_ver_title,
+        subTitleRes = R.string.upload_new_ver_subtitle,
+        okRes = R.string.yes
     );
 
     fun getFinalTitle(): String {
