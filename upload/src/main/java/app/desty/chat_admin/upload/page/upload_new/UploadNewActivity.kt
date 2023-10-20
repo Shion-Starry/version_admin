@@ -24,6 +24,7 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
     private val backClick = View.OnClickListener { _: View? ->
         super.onBackPressed()
     }
+
     override fun init(savedInstanceState: Bundle?) {
 
     }

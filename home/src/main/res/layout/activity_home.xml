@@ -8,6 +8,8 @@
             name="mState"
             type="app.desty.chat_admin.home.page.HomeViewModel" />
 
+        <import type="app.desty.chat_admin.common.enum_bean.HomePageType" />
+
     </data>
         
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -21,7 +23,7 @@
                 bind:config="@{mState.toolbarConfig}" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
-                visible="@{mState.isHome}"
+                visible="@{mState.pageType == HomePageType.Home}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="100dp"
@@ -57,7 +59,7 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <FrameLayout
-                visible="@{!mState.isHome}"
+                visible="@{mState.pageType != HomePageType.Home}"
                 android:id="@+id/fragment_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

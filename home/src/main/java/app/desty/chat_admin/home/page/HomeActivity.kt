@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import app.desty.chat_admin.common.base.BaseVmActivity
 import app.desty.chat_admin.common.base.DataBindingConfig
 import app.desty.chat_admin.common.bean.ToolbarConfig
+import app.desty.chat_admin.common.config.ToolbarClickListener
 import app.desty.chat_admin.common.constants.RouteConstants
 import app.desty.chat_admin.common.enum_bean.HomePageType
 import app.desty.chat_admin.common.handler.TokenExpirationHandler
@@ -42,7 +43,7 @@ class HomeActivity : BaseVmActivity<HomeViewModel>() {
     }
 
     override fun initViewModel() {
-
+        mState.pageType.observe(this, this::switchFragment)
     }
 
     override fun getDataBindingConfig(): DataBindingConfig =
@@ -64,8 +65,22 @@ class HomeActivity : BaseVmActivity<HomeViewModel>() {
             titleTextBold = true,
             title = getString(tmpType.titleStringRes),
             showMenu = true,
-            menuClick = menuClick
+            menuClick = menuClick,
+            rightOperateClick = { clickToolbar(it, ToolbarClickListener.RIGHT_OPERATE) },
+            backClick = { clickToolbar(it, ToolbarClickListener.BACK) }
         )
+    }
+
+    private fun clickToolbar(view: View, buttonType: Int) {
+        val fragmentManager = supportFragmentManager
+        val fragment = fragmentManager.findFragmentByTag(
+            (nowPageType ?: HomePageType.Home).fragmentPath
+        )
+        if (fragment is ToolbarClickListener) {
+            fragment.clickFragToolbar(view,
+                nowPageType ?: HomePageType.Home,
+                buttonType)
+        }
     }
 
     private fun initNaviList() {
@@ -87,10 +102,7 @@ class HomeActivity : BaseVmActivity<HomeViewModel>() {
                 pageType: HomePageType
             ) {
                 homeNavigationDrawer.dismiss()
-                if (mState.isHome.value == true) {
-                    mState.isHome.value = false
-                }
-                switchFragment(pageType)
+                mState.pageType.value = pageType
             }
         })
 
@@ -108,9 +120,6 @@ class HomeActivity : BaseVmActivity<HomeViewModel>() {
         var thePageType: HomePageType = pageType ?: return
         if (!naviModuleList.contains(thePageType)) {
             thePageType = defaultPageType
-        }
-        if (naviModuleList.size == 0) {
-            mState.isHome.value = true
         }
         nowPageType = thePageType
         val fragmentName: String = thePageType.fragmentPath

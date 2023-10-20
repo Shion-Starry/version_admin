@@ -6,5 +6,4 @@ import app.desty.chat_admin.common.enum_bean.HomePageType
 
 class HomeViewModel : BaseVM() {
     val pageType = MutableLiveData(HomePageType.Home)
-    val isHome = MutableLiveData(true)
 }

@@ -17,8 +17,8 @@ class GlobalHeaderInterceptor(
     /** 本方法每次请求发起都会调用, 这里添加的参数可以是动态参数 */
     override fun interceptor(request: BaseRequest) {
         request.setHeader("app-channel", "android")
-        request.setHeader("app-version-name", versionName)
-        request.setHeader("app-version", versionCode.toString())
+        request.setHeader("app-version-name", "99.99.99")
+        request.setHeader("app-version", "999999999")
         request.setHeader("App", "OmniChat")
         if (UserConfig.token.isNotEmpty() && request.headers().get("Token").isNullOrEmpty()) {
             request.setHeader("Token", UserConfig.token)
