@@ -17,18 +17,17 @@ import com.lxj.xpopup.core.CenterPopupView
 import com.lxj.xpopup.interfaces.OnCancelListener
 import com.lxj.xpopup.interfaces.OnConfirmListener
 
-open class ChatAdminDialogPopup(context: Context, chatAdminDialog: ChatAdminDialog)
-    : CenterPopupView(context), View.OnClickListener {
-    private var cancelListener: OnCancelListener? = null
-    private var confirmListener: OnConfirmListener? = null
-    protected var binding: ViewDataBinding? = null
-    private var chatAdminDialog: ChatAdminDialog
-    private var httpErrorCode: String? = null
+class ChatAdminDialogPopup(context: Context) : CenterPopupView(context), View.OnClickListener {
+
+    var chatAdminDialog: ChatAdminDialog? = null
+    var cancelListener: OnCancelListener? = null
+    var confirmListener: OnConfirmListener? = null
+    private var binding: ViewDataBinding? = null
+    var httpErrorCode: String? = null
     private var dismissByOption = false
 
     init {
-        bindLayoutId = chatAdminDialog.layoutRes
-        this.chatAdminDialog = chatAdminDialog
+        bindLayoutId = chatAdminDialog?.layoutRes ?: 0
         addInnerContent()
     }
 
@@ -40,8 +39,8 @@ open class ChatAdminDialogPopup(context: Context, chatAdminDialog: ChatAdminDial
         //DataBinding在onCreate方法中调用
         binding = DataBindingUtil.bind(popupImplView)
         if (binding != null) {
-            binding!!.setVariable(BR.adminDialog, chatAdminDialog)
-            binding!!.setVariable(BR.click, this)
+            binding?.setVariable(BR.adminDialog, chatAdminDialog)
+            binding?.setVariable(BR.click, this)
             val tvContent = binding!!.root.findViewById<TextView>(R.id.tv_content)
             if (tvContent != null) {
                 tvContent.movementMethod = LinkMovementMethod.getInstance()
@@ -58,31 +57,17 @@ open class ChatAdminDialogPopup(context: Context, chatAdminDialog: ChatAdminDial
         }
     }
 
-    fun setHttpErrorCode(httpErrorCode: String?): ChatAdminDialogPopup {
-        this.httpErrorCode = httpErrorCode
-        return this
-    }
-
-    fun setListener(
-        confirmListener: OnConfirmListener?,
-        cancelListener: OnCancelListener?
-    ): ChatAdminDialogPopup {
-        this.cancelListener = cancelListener
-        this.confirmListener = confirmListener
-        return this
-    }
-
     override fun onClick(v: View) {
         val id = v.id
         if (id == R.id.tv_cancel) {
             if (cancelListener != null) {
-                cancelListener!!.onCancel()
+                cancelListener?.onCancel()
             }
             dismissByOption = true
             dismiss()
         } else if (id == R.id.tv_confirm) {
             if (confirmListener != null) {
-                confirmListener!!.onConfirm()
+                confirmListener?.onConfirm()
             }
             dismissByOption = true
             if (popupInfo.autoDismiss) {
@@ -94,7 +79,7 @@ open class ChatAdminDialogPopup(context: Context, chatAdminDialog: ChatAdminDial
     override fun beforeDismiss() {
         super.beforeDismiss()
         if (!dismissByOption && cancelListener != null) {
-            cancelListener!!.onCancel()
+            cancelListener?.onCancel()
         }
     }
 

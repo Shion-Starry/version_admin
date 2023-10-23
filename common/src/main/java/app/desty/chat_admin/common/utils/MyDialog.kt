@@ -30,12 +30,15 @@ object MyDialog {
         XPopup.Builder(ActivityLifecycleManager.getInstance().topActivity)
             .asCustom(
                 ChatAdminDialogPopup(
-                    ActivityLifecycleManager.getInstance().topActivity,
-                    chatAdminDialog!!
-                )
-                    .setHttpErrorCode(httpErrorCode)
-                    .setListener(confirmListener, cancelListener)
-            ).show()
+                    ActivityLifecycleManager.getInstance().topActivity
+                ).apply {
+                    if (chatAdminDialog != null) {
+                        this.chatAdminDialog = chatAdminDialog
+                    }
+                    this.httpErrorCode = httpErrorCode
+                    this.confirmListener = confirmListener
+                    this.cancelListener = cancelListener
+                }).show()
 
     fun showDialog(
         dialogEnum: GlobalDialogEnum,
