@@ -2,7 +2,6 @@ package app.desty.chat_admin.common.widget
 
 import android.content.Context
 import android.view.View
-import androidx.databinding.BaseObservable
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.MutableLiveData
 import app.desty.chat_admin.common.BR
@@ -17,7 +16,7 @@ class InputVerDialog(context: Context) : BottomPopupView(context) {
     var versions: Versions = Versions()
     var title: String = StringUtils.getString(R.string.edit_title_latest_version)
     var okListener: ((VersionGroup) -> Unit)? = null
-    private val enableClickOK = MutableLiveData(true)
+    private var ifEnabled = true
     private var binding: DialogInputVerInfoBinding? = null
 
     override fun getImplLayoutId() = R.layout.dialog_input_ver_info
@@ -32,7 +31,7 @@ class InputVerDialog(context: Context) : BottomPopupView(context) {
         binding?.run {
             setVariable(BR.dialogTitle, title)
             setVariable(BR.versionInput, versions)
-            setVariable(BR.ifEnabled, enableClickOK)
+            setVariable(BR.isEnabled, ifEnabled)
             setVariable(BR.click, ClickEvents())
         }
         versions.majorInput.observe(this) { updateInterface() }
@@ -62,12 +61,15 @@ class InputVerDialog(context: Context) : BottomPopupView(context) {
 //            versionInput.buildInput.value?.let {
 //                NumberUtil.setInputRangeRules(it,0,999)
 //            }
-        enableClickOK.value = !(versions.majorInput.value.isNullOrBlank()
+        ifEnabled = !(versions.majorInput.value.isNullOrBlank()
                 || versions.subInput.value.isNullOrBlank()
                 || versions.fixInput.value.isNullOrBlank()
                 || versions.buildInput.value.isNullOrBlank())
 
-//        Log.d("The current enable state is: ", "${enableClickOK.value}")
+        binding?.run {
+            setVariable(BR.isEnabled, ifEnabled)
+        }
+
     }
 
     inner class ClickEvents {
@@ -98,7 +100,7 @@ data class Versions (
     val subInput: MutableLiveData<String> = MutableLiveData("0"),
     val fixInput: MutableLiveData<String> = MutableLiveData("0"),
     val buildInput: MutableLiveData<String> = MutableLiveData("0")
-) : BaseObservable() {
+) {
     fun setVersions(versionGroup: VersionGroup) {
         majorInput.value = versionGroup.major.toString()
         subInput.value = versionGroup.sub.toString()

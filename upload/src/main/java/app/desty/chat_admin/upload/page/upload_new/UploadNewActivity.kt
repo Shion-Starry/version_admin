@@ -30,7 +30,7 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
     }
 
     override fun initViewModel() {
-
+        mState.ifSuccessful.observe(this, this::checkSubmitted)
     }
 
     override fun getDataBindingConfig(): DataBindingConfig =
@@ -44,6 +44,13 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
             showBack = true,
             backClick = backClick
         )
+    }
+
+    private fun checkSubmitted(ifSuccess: Boolean) {
+        if (ifSuccess) {
+            setResult(RESULT_OK)
+            finish()
+        }
     }
 
     inner class ClickEvents {

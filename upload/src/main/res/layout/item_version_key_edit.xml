@@ -31,7 +31,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="key" />
 
-        <app.desty.chat_admin.common.widget.NoSelectionEditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/tv_editor"
             drawable_focused_radius="@{6}"
             drawable_focused_solidColor="@{@color/white}"

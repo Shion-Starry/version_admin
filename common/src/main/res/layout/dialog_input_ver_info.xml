@@ -14,8 +14,8 @@
             type="app.desty.chat_admin.common.widget.Versions" />
 
         <variable
-            name="ifEnabled"
-            type="androidx.lifecycle.MutableLiveData&lt;java.lang.Boolean&gt;" />
+            name="isEnabled"
+            type="java.lang.Boolean" />
         
         <variable
             name="click"
@@ -130,27 +130,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sv_info"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:enabled="@{ifEnabled}" />
-
-<!--        <androidx.appcompat.widget.LinearLayoutCompat-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@color/white"-->
-<!--            android:paddingTop="12dp"-->
-<!--            android:paddingBottom="12dp"-->
-<!--            android:gravity="center"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/sv_info"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent">-->
-
-<!--            <app.desty.chat_admin.common.widget.base.BaseTextView-->
-<!--                android:id="@+id/btv_save"-->
-<!--                style="@style/Chat.Button.Primary.Base"-->
-<!--                android:layout_width="120dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/save"-->
-<!--                android:enabled="@{ifEnabled}" />-->
-
-<!--        </androidx.appcompat.widget.LinearLayoutCompat>-->
+            android:enabled="@{isEnabled}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -16,7 +16,7 @@ enum class ChatAdminDialog(
     val okRes: Int = R.string.ok
 ) {
     Logout(
-        layoutRes = R.layout.dialog_admin_red,
+        layoutRes = R.layout.dialog_admin_yellow,
         titleRes = R.string.logout_dialog_title,
         subTitleRes = R.string.logout_dialog_subtitle,
         okRes = R.string.yes

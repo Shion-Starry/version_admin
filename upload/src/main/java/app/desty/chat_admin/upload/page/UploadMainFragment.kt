@@ -1,7 +1,10 @@
 package app.desty.chat_admin.upload.page
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultCallback
 import app.desty.chat_admin.common.base.BaseVMFragment
 import app.desty.chat_admin.common.base.DataBindingConfig
 import app.desty.chat_admin.common.config.ToolbarClickListener
@@ -12,6 +15,7 @@ import app.desty.chat_admin.upload.R
 import app.desty.chat_admin.upload.databinding.FragmentUploadMainBinding
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.core.result.navigation
 import com.drake.net.utils.scopeDialog
 import com.drake.net.utils.scopeLife
 
@@ -46,11 +50,17 @@ class UploadMainFragment : BaseVMFragment<UploadMainViewModel>(), ToolbarClickLi
         }
     }
 
+    private val uploadNewResult = ActivityResultCallback<ActivityResult> {
+        if (it.resultCode == Activity.RESULT_OK) {
+            scopeDialog(block = mState.getVersionInfo())
+        }
+    }
+
     inner class ClickEvents {
         fun clickUploadNew(view: View) {
             ARouter.getInstance()
                 .build(RouteConstants.Upload.uploadNew)
-                .navigation()
+                .navigation(this@UploadMainFragment, uploadNewResult)
         }
     }
 

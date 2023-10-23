@@ -16,6 +16,8 @@ import app.desty.chat_admin.common.config.UserConfig
 import app.desty.chat_admin.common.constants.DestyConstants
 import app.desty.chat_admin.common.constants.RouteConstants
 import app.desty.chat_admin.common.utils.ActivityLifecycleManager
+import app.desty.chat_admin.common.utils.LoginUtil
+import app.desty.chat_admin.common.utils.MyToast
 import app.desty.sdk.logcat.Logcat
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
@@ -24,7 +26,6 @@ import com.blankj.utilcode.util.ThrowableUtils
 @Route(path = RouteConstants.Main.splash)
 class RouteActivity : Activity() {
 
-    private val msgGetVerInfo = 1
     private val msgGoNextPage = 2
     private val handler = object : Handler(Looper.getMainLooper()) {
         override fun handleMessage(msg: Message) {
@@ -37,7 +38,14 @@ class RouteActivity : Activity() {
                             .navigation()
                         finish()
                     } else {
-                        executeIntent(intent)
+                        val expirationTime = UserConfig.tokenExpirationTime
+                        val currentTime = System.currentTimeMillis()
+                        if (expirationTime != null && expirationTime < currentTime) {
+                            MyToast.showToast(R.string.login_expired)
+                            LoginUtil.logout(true)
+                        } else {
+                            executeIntent(intent)
+                        }
                     }
                 }
             }

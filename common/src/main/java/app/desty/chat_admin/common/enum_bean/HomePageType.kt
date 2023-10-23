@@ -20,7 +20,7 @@ enum class HomePageType(
         1000,
         R.drawable.ic_navi_home,
         R.string.navigation_home,
-        "",
+        RouteConstants.Home.homeState,
         0
     ),
     Upload(

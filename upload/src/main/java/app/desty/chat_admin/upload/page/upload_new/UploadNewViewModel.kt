@@ -23,6 +23,7 @@ class UploadNewViewModel : BaseVM() {
     )
     val canUpload = MediatorLiveData(false)
     var env = MutableLiveData(Environment.Test)
+    var ifSuccessful = MutableLiveData(false)
 
     init {
 
@@ -58,9 +59,10 @@ class UploadNewViewModel : BaseVM() {
         }.await()
         if (submitResult) {
             MyToast.showToast("Successfully Submitted")
-            finishActivity()
+            ifSuccessful.value = true
         } else {
             MyToast.showToast("Submission Failed :(")
+            ifSuccessful.value = false
         }
     }
 

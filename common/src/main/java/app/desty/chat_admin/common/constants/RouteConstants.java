@@ -25,6 +25,7 @@ public interface RouteConstants {
     interface Home {
         String moduleName = "/home";
         String homePage = moduleName + "/home";
+        String homeState = moduleName + "/homeState";
     }
 
     interface Upload {
