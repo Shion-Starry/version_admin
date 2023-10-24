@@ -1,40 +1,41 @@
 package app.desty.chat_admin.common.utils
 
+import android.text.Editable
+
 object NumberUtil {
 
-    fun setInputRangeRules(string: String, min: Int, max: Int): String {
-        val content = StringBuilder(string)
-        if (content.isNotEmpty()) {
+    fun setInputRangeRules(editable: Editable, min: Int, max: Int) {
+        val content = editable.toString()
 
+        if (content.isNotEmpty()) {
             if (content.startsWith("-")) {
-                content.replace(0, 1, "")
-                return content.toString()
+                return
             } else if (content.length > 1 && content.startsWith("0")) {
-                content.replace(0 , 1 , "")
-                return content.toString()
+                editable.replace(0, 1, "")
+                return
             } else if (content.length > 2 && content.startsWith("-0")) {
-                content.replace(1, 2, "")
-                return content.toString()
+                editable.replace(1, 2, "")
+                return
             }
 
             val num: Int = try {
-                content.toString().toInt()
+                content.toInt()
             } catch (e: NumberFormatException) {
-                return ""
+                return
             }
 
             if (max > min) {
                 if (num > max) {
-                    MyToast.showToast("You've reached the maximum limit")
-                    return max.toString()
+                    MyToast.showToast("You've reached the maximum limit.")
+                    editable.clear()
+                    editable.append(max.toString())
                 } else if (num < min) {
-                    MyToast.showToast("You've reached the minimum limit")
+                    MyToast.showToast("You've reached the minimum limit.")
+                    editable.clear()
+                    editable.append(min.toString())
                 }
             }
-
         }
-
-        return ""
     }
 
     fun numbersOf1(a: Int): Int {

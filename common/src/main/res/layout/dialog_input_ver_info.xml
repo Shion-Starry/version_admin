@@ -10,16 +10,12 @@
             type="java.lang.String" />
 
         <variable
-            name="versionInput"
-            type="app.desty.chat_admin.common.widget.Versions" />
-
-        <variable
-            name="isEnabled"
-            type="java.lang.Boolean" />
+            name="dState"
+            type="app.desty.chat_admin.common.widget.DialogState" />
         
         <variable
-            name="click"
-            type="app.desty.chat_admin.common.widget.InputVerDialog.ClickEvents" />
+            name="proxy"
+            type="app.desty.chat_admin.common.widget.InputVerDialog.ProxyEvents" />
 
     </data>
 
@@ -55,7 +51,7 @@
             android:src="@drawable/ic_close_tint"
             app:tint="@color/grey_700"
             android:layout_marginEnd="4dp"
-            android:onClick="@{click::clickClose}"
+            android:onClick="@{proxy::clickClose}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/dlg_title"
             app:layout_constraintBottom_toBottomOf="@id/dlg_title" />
@@ -87,23 +83,27 @@
 
                 <include
                     layout="@layout/item_dialog_editor"
-                    bind:subtitle="@{@string/edit_subtitle_version_setting}"
-                    bind:text="@={versionInput.majorInput}" />
+                    bind:edtState="@{dState}"
+                    bind:proxy="@{proxy}"
+                    bind:type="@{1}" />
 
                 <include
                     layout="@layout/item_dialog_editor"
-                    bind:subtitle="@{@string/edit_subtitle_sub_version}"
-                    bind:text="@={versionInput.subInput}" />
+                    bind:edtState="@{dState}"
+                    bind:proxy="@{proxy}"
+                    bind:type="@{2}" />
 
                 <include
                     layout="@layout/item_dialog_editor"
-                    bind:subtitle="@{@string/edit_subtitle_fix_version}"
-                    bind:text="@={versionInput.fixInput}" />
+                    bind:edtState="@{dState}"
+                    bind:proxy="@{proxy}"
+                    bind:type="@{3}" />
 
                 <include
                     layout="@layout/item_dialog_editor"
-                    bind:subtitle="@{@string/edit_subtitle_build_version}"
-                    bind:text="@={versionInput.buildInput}" />
+                    bind:edtState="@{dState}"
+                    bind:proxy="@{proxy}"
+                    bind:type="@{4}" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -123,14 +123,14 @@
             android:layout_height="38dp"
             android:background="@color/chat_500"
             android:src="@drawable/ic_check_tint"
-            android:onClick="@{click::clickOk}"
+            android:onClick="@{proxy::clickOk}"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sv_info"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:enabled="@{isEnabled}" />
+            android:enabled="@{dState.ifEnabled}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

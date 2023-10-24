@@ -51,21 +51,14 @@ data class VersionInfo(
 
 @Serializable
 data class VersionGroup(
-    var major: Int = 0,
-    var sub: Int = 0,
-    var fix: Int = 0,
-    var build: Int = 0
+    var major: Long = 0,
+    var sub: Long = 0,
+    var fix: Long = 0,
+    var build: Long = 0
 ) {
 
-    constructor(versionCode: Int): this() {
-        major = versionCode / 10000000
-        sub = (versionCode / 100000) % 100
-        fix = (versionCode / 1000) % 100
-        build = versionCode % 1000
-    }
-
     constructor(versionStr: String): this() {
-        val versionCode = versionStr.toIntOrNull()
+        val versionCode = versionStr.toLongOrNull()
         if (versionCode != null) {
             major = versionCode / 10000000
             sub = (versionCode / 100000) % 100
@@ -81,10 +74,6 @@ data class VersionGroup(
 
     fun getVersionStr(): String {
         return "${major}.${sub}.${fix}"
-    }
-
-    fun getVersionCode(): Int {
-        return major * 10000000 + sub * 100000 + fix * 1000 + build
     }
 
     fun getVersionCodeStr(): String {

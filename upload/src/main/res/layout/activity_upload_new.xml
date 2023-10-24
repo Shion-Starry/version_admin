@@ -62,7 +62,7 @@
                 <include
                     layout="@layout/item_version_key_edit"
                     bind:key="@{@string/latest_release_channel}"
-                    bind:text="@={mState.featureTextMap[`channel`]}" />
+                    bind:edtState="@{mState}" />
 
                 <include
                     layout="@layout/item_version_key_text"
@@ -91,22 +91,22 @@
                 <include
                     layout="@layout/item_version_key_edit"
                     bind:key="@{@string/latest_release_url}"
-                    bind:text="@={mState.featureTextMap[`url`]}" />
+                    bind:edtState="@{mState}" />
 
                 <include
                     layout="@layout/item_version_key_edit"
                     bind:key="@{@string/latest_release_website_url}"
-                    bind:text="@={mState.featureTextMap[`websiteUrl`]}" />
+                    bind:edtState="@{mState}" />
 
                 <include
                     layout="@layout/item_version_key_edit"
                     bind:key="@{@string/latest_release_market_url}"
-                    bind:text="@={mState.featureTextMap[`marketUrl`]}" />
+                    bind:edtState="@{mState}" />
 
                 <include
                     layout="@layout/item_version_key_edit"
                     bind:key="@{@string/latest_release_content}"
-                    bind:text="@={mState.featureTextMap[`content`]}" />
+                    bind:edtState="@{mState}" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

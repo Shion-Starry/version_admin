@@ -6,11 +6,11 @@
     <data>
 
         <variable
-            name="key"
-            type="java.lang.String" />
+            name="edtState"
+            type="app.desty.chat_admin.upload.page.upload_new.UploadNewViewModel" />
 
         <variable
-            name="text"
+            name="key"
             type="java.lang.String" />
 
     </data>
@@ -41,12 +41,12 @@
             drawable_solidColor="@{@color/white}"
             drawable_strokeColor="@{@color/grey_600}"
             drawable_strokeWidth="@{1}"
-            app:layout_constraintWidth_default="wrap"
-            android:layout_width="0dp"
+            app:layout_constrainedWidth="true"
+            android:layout_width="wrap_content"
             android:layout_height="46dp"
             android:maxWidth="180dp"
             android:minWidth="80dp"
-            android:text="@={text}"
+            android:text="@={edtState.getSpecified(key)}"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -6,12 +6,16 @@
     <data>
 
         <variable
-            name="subtitle"
-            type="java.lang.String" />
+            name="edtState"
+            type="app.desty.chat_admin.common.widget.DialogState" />
 
         <variable
-            name="text"
-            type="java.lang.String" />
+            name="proxy"
+            type="app.desty.chat_admin.common.widget.InputVerDialog.ProxyEvents" />
+
+        <variable
+            name="type"
+            type="java.lang.Integer" />
 
     </data>
 
@@ -24,7 +28,7 @@
             android:id="@+id/tv_et_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{subtitle}"
+            android:text="@{edtState.getSubTitle(type)}"
             android:textSize="@dimen/text_lg"
             android:textColor="@color/grey_700"
             app:layout_constraintTop_toTopOf="parent"
@@ -43,7 +47,7 @@
             android:id="@+id/et_input"
             android:layout_width="0dp"
             android:layout_height="46dp"
-            android:text="@={text}"
+            android:text="@={edtState.getSpecified(type)}"
             android:inputType="number"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="18dp"
@@ -51,6 +55,7 @@
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:cursorVisible="false"
+            android:afterTextChanged="@{e -> proxy.getTextWatcher(type, e)}"
             app:layout_constraintTop_toBottomOf="@id/tv_et_title"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

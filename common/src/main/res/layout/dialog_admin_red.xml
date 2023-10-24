@@ -33,8 +33,7 @@
             android:src="@drawable/ic_dialog_question_tint"
             app:tint="@color/red_500" />
 
-        <app.desty.chat_admin.common.widget.base.BaseTextView
-            isBold="@{true}"
+        <app.desty.chat_admin.common.widget.base.BaseBoldTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -44,8 +43,7 @@
             android:textSize="@dimen/text_2xl"
             tools:text="Red Title" />
 
-        <app.desty.chat_admin.common.widget.base.BaseTextView
-            isBold="@{true}"
+        <app.desty.chat_admin.common.widget.base.BaseBoldTextView
             visible="@{!TextUtils.isEmpty(adminDialog.finalSubTitle)}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,7 +65,7 @@
             android:textSize="@dimen/text_sm"
             tools:text="This is the extra content" />
 
-        <app.desty.chat_admin.common.widget.base.BaseTextView
+        <app.desty.chat_admin.common.widget.base.BaseBoldTextView
             android:id="@+id/tv_confirm"
             drawable_radius="@{6}"
             drawable_solidColor="@{@color/chat_500}"
@@ -83,7 +81,7 @@
             android:textSize="@dimen/text_lg"
             tools:text="Confirm" />
 
-        <app.desty.chat_admin.common.widget.base.BaseTextView
+        <app.desty.chat_admin.common.widget.base.BaseBoldTextView
             android:id="@+id/tv_cancel"
             drawable_radius="@{6}"
             drawable_strokeColor="@{@color/grey_300}"

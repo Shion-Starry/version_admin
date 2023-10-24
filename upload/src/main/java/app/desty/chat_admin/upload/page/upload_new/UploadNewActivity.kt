@@ -69,7 +69,7 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
                 .asCustom(
                     InputVerDialog(context).apply {
                         title = StringUtils.getString(R.string.edit_title_latest_version)
-                        versions.setVersions(versionGroup)
+                        dlgState.setVersions(versionGroup)
                         okListener = {
                             mState.featureTextMap["latestVersion"]?.value = it.getVersionStr()
                             mState.featureTextMap["latestCode"]?.value = it.getVersionCodeStr()
@@ -85,7 +85,7 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
                 .asCustom(
                     InputVerDialog(context).apply {
                         title = StringUtils.getString(R.string.edit_title_compat_version)
-                        versions.setVersions(versionGroup)
+                        dlgState.setVersions(versionGroup)
                         okListener = {
                             mState.featureTextMap["compatVersion"]?.value = it.getVersionStr()
                             mState.featureTextMap["compatCode"]?.value = it.getVersionCodeStr()

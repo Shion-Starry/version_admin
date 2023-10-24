@@ -26,11 +26,11 @@ class UploadNewViewModel : BaseVM() {
     var ifSuccessful = MutableLiveData(false)
 
     init {
-
         for (editorText in featureTextMap.values) {
-            canUpload.addSource(editorText) { updateUploadEnabled() }
+            canUpload.addSource(editorText) {
+                updateUploadEnabled()
+            }
         }
-
     }
 
     private fun updateUploadEnabled() {
@@ -41,6 +41,17 @@ class UploadNewViewModel : BaseVM() {
             }
         }
         canUpload.value = true
+    }
+
+    fun getSpecified(key: String): MutableLiveData<String> {
+        return when (key) {
+            "Channel"             -> featureTextMap["channel"] ?: MutableLiveData("")
+            "URL"                  -> featureTextMap["url"] ?: MutableLiveData("")
+            "Website URL"       -> featureTextMap["websiteUrl"] ?: MutableLiveData("")
+            "Market URL"        -> featureTextMap["marketUrl"] ?: MutableLiveData("")
+            "Update Content"  -> featureTextMap["content"] ?: MutableLiveData("")
+            else                     -> MutableLiveData("")
+        }
     }
 
     fun uploadNewVer(): suspend CoroutineScope.() -> Unit = {

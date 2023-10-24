@@ -34,10 +34,10 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
-        <app.desty.chat_admin.common.widget.base.BaseTextView
-            isBold="@{true}"
+        <app.desty.chat_admin.common.widget.base.BaseBoldTextView
             android:id="@+id/tv_title"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
+            app:layout_constrainedWidth="true"
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:ellipsize="end"
@@ -45,7 +45,6 @@
             android:textSize="@dimen/text_lg"
             android:text="@{data.titleStringRes}"
             android:layout_marginStart="4dp"
-            app:layout_constraintWidth_default="wrap"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_icon"
