@@ -12,7 +12,7 @@ object EnvConfig {
     private fun getEnvironment() =
         if (BuildConfig.desty_debug) currentEnvironment else Environment.Test
 
-    fun getBaseUrl() = when (getEnvironment()) {
+    fun getBaseUrl(env: Environment? = null) = when (env ?: getEnvironment()) {
 //        Environment.Dev     -> "https://platform-gateway-dev.desty.one"
 //        Environment.Staging -> "https://platform-gateway-staging.desty.one"
         Environment.Test    -> "https://platform-gateway.desty.one"

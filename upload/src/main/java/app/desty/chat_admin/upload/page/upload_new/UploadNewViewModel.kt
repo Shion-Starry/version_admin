@@ -3,6 +3,7 @@ package app.desty.chat_admin.upload.page.upload_new
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import app.desty.chat_admin.common.base.BaseVM
+import app.desty.chat_admin.common.config.EnvConfig
 import app.desty.chat_admin.common.config.Environment
 import app.desty.chat_admin.common.utils.MyToast
 import app.desty.chat_admin.upload.api.UploadApi
@@ -54,8 +55,8 @@ class UploadNewViewModel : BaseVM() {
         }
     }
 
-    fun uploadTestingVer(): suspend CoroutineScope.() -> Unit = {
-        val submitResult = Post<Boolean>(UploadApi.saveConfig) {
+    fun uploadNewVer(): suspend CoroutineScope.() -> Unit = {
+        val submitResult = Post<Boolean>("${EnvConfig.getBaseUrl(env.value)}${UploadApi.saveConfig}") {
             json(
                 "channel" to (featureTextMap["channel"]?.value ?: ""),
                 "latestVersion" to (featureTextMap["latestVersion"]?.value ?: ""),
