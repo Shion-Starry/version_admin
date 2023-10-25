@@ -54,7 +54,7 @@ class UploadNewViewModel : BaseVM() {
         }
     }
 
-    fun uploadNewVer(): suspend CoroutineScope.() -> Unit = {
+    fun uploadTestingVer(): suspend CoroutineScope.() -> Unit = {
         val submitResult = Post<Boolean>(UploadApi.saveConfig) {
             json(
                 "channel" to (featureTextMap["channel"]?.value ?: ""),

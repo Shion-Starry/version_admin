@@ -20,8 +20,8 @@ import com.lxj.xpopup.interfaces.OnConfirmListener
 class ChatAdminDialogPopup(context: Context) : CenterPopupView(context), View.OnClickListener {
 
     var chatAdminDialog: ChatAdminDialog? = null
-    var cancelListener: OnCancelListener? = null
     var confirmListener: OnConfirmListener? = null
+    var cancelListener: OnCancelListener? = null
     private var binding: ViewDataBinding? = null
     var httpErrorCode: String? = null
     private var dismissByOption = false

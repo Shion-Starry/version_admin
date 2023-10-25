@@ -46,8 +46,8 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
         )
     }
 
-    private fun checkSubmitted(ifSuccess: Boolean) {
-        if (ifSuccess) {
+    private fun checkSubmitted(success: Boolean) {
+        if (success) {
             setResult(RESULT_OK)
             finish()
         }
@@ -58,8 +58,14 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
         fun clickUpload(view: View) {
             if (mState.env.value == Environment.Test) {
                 MyDialog.show(ChatAdminDialog.Upload, {
-                    scopeDialog (block = mState.uploadNewVer())
+                    scopeDialog(block = mState.uploadTestingVer())
                 })
+            } else if (mState.env.value == Environment.Prod) {
+                MyDialog.showOtpDialog {
+                    if (it) {
+                        scopeDialog(block = mState.uploadTestingVer())
+                    }
+                }
             }
         }
 

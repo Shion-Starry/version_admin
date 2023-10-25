@@ -7,6 +7,7 @@ import app.desty.chat_admin.common.enum_bean.GlobalDialogEnum
 import app.desty.chat_admin.common.widget.ChatAdminDialogPopup
 import app.desty.chat_admin.common.widget.GlobalDialog
 import app.desty.chat_admin.common.widget.GlobalImageDialog
+import app.desty.chat_admin.common.widget.OtpVerifyDialog
 import com.lxj.xpopup.XPopup
 import com.lxj.xpopup.core.BasePopupView
 import com.lxj.xpopup.interfaces.OnCancelListener
@@ -38,6 +39,17 @@ object MyDialog {
                     this.httpErrorCode = httpErrorCode
                     this.confirmListener = confirmListener
                     this.cancelListener = cancelListener
+                }).show()
+
+    fun showOtpDialog(
+        confirmListener: ((Boolean) -> Unit)?,
+    ): BasePopupView =
+        XPopup.Builder(ActivityLifecycleManager.getInstance().topActivity)
+            .asCustom(
+                OtpVerifyDialog(
+                    ActivityLifecycleManager.getInstance().topActivity
+                ).apply {
+                    this.confirmListener = confirmListener
                 }).show()
 
     fun showDialog(

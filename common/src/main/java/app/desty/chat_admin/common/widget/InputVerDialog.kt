@@ -69,7 +69,7 @@ class InputVerDialog(context: Context) : BottomPopupView(context) {
             dismiss()
         }
 
-        fun getTextWatcher(type:Int, editable: Editable){
+        fun getTextWatcher(type:Int, editable: Editable) {
             when (type) {
                 1 -> { NumberUtil.setInputRangeRules(editable, 0, 999) }
                 2 -> { NumberUtil.setInputRangeRules(editable, 0, 99) }

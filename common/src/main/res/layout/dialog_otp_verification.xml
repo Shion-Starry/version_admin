@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
-            name="click"
-            type="android.view.View.OnClickListener" />
+            name="codeList"
+            type="app.desty.chat_admin.common.widget.AuthCodeList" />
+
+        <variable
+            name="proxy"
+            type="app.desty.chat_admin.common.widget.OtpVerifyDialog.ProxyEvents" />
 
     </data>
 
@@ -23,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_dialog_question_tint"
-            app:tint="@color/chat_500" />
+            app:tint="@color/sunflower_500" />
 
         <app.desty.chat_admin.common.widget.base.BaseBoldTextView
             android:layout_width="match_parent"
@@ -31,7 +36,7 @@
             android:layout_marginTop="8dp"
             android:gravity="center_horizontal"
             android:text="@string/two_step_vrf_title"
-            android:textColor="@color/chat_500"
+            android:textColor="@color/sunflower_500"
             android:textSize="@dimen/text_2xl" />
 
         <app.desty.chat_admin.common.widget.base.BaseBoldTextView
@@ -43,6 +48,189 @@
             android:textColor="@color/grey_700"
             android:textSize="@dimen/text_2xl" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+            
+            <app.desty.chat_admin.common.widget.base.BaseBoldTextView
+                android:id="@+id/btv_input1"
+                drawable_solidColor="@{@color/white}"
+                drawable_strokeColor="@{@color/grey_500}"
+                drawable_strokeWidth="@{1}"
+                drawable_radius="@{6}"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:text="@{codeList.authList[0]}"
+                app:layout_constraintWidth_percent="0.12"
+                android:inputType="number"
+                android:textSize="@dimen/text_2xl"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btv_input2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:background="@color/grey_200"
+                tools:text="6" />
+
+            <app.desty.chat_admin.common.widget.base.BaseBoldTextView
+                android:id="@+id/btv_input2"
+                drawable_solidColor="@{@color/white}"
+                drawable_strokeColor="@{@color/grey_400}"
+                drawable_strokeWidth="@{1}"
+                drawable_radius="@{6}"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:text="@{codeList.authList[1]}"
+                app:layout_constraintWidth_percent="0.12"
+                android:inputType="number"
+                android:textSize="@dimen/text_2xl"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                app:layout_constraintStart_toEndOf="@id/btv_input1"
+                app:layout_constraintEnd_toStartOf="@id/btv_input3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:background="@color/grey_200"
+                tools:text="6" />
+
+            <app.desty.chat_admin.common.widget.base.BaseBoldTextView
+                android:id="@+id/btv_input3"
+                drawable_solidColor="@{@color/white}"
+                drawable_strokeColor="@{@color/grey_400}"
+                drawable_strokeWidth="@{1}"
+                drawable_radius="@{6}"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:text="@{codeList.authList[2]}"
+                app:layout_constraintWidth_percent="0.12"
+                android:inputType="number"
+                android:textSize="@dimen/text_2xl"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                app:layout_constraintStart_toEndOf="@id/btv_input2"
+                app:layout_constraintEnd_toStartOf="@id/btv_input4"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:background="@color/grey_200"
+                tools:text="6" />
+
+            <app.desty.chat_admin.common.widget.base.BaseBoldTextView
+                android:id="@+id/btv_input4"
+                drawable_solidColor="@{@color/white}"
+                drawable_strokeColor="@{@color/grey_400}"
+                drawable_strokeWidth="@{1}"
+                drawable_radius="@{6}"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:text="@{codeList.authList[3]}"
+                app:layout_constraintWidth_percent="0.12"
+                android:inputType="number"
+                android:textSize="@dimen/text_2xl"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                app:layout_constraintStart_toEndOf="@id/btv_input3"
+                app:layout_constraintEnd_toStartOf="@id/btv_input5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:background="@color/grey_200"
+                tools:text="6" />
+
+            <app.desty.chat_admin.common.widget.base.BaseBoldTextView
+                android:id="@+id/btv_input5"
+                drawable_solidColor="@{@color/white}"
+                drawable_strokeColor="@{@color/grey_400}"
+                drawable_strokeWidth="@{1}"
+                drawable_radius="@{6}"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:text="@{codeList.authList[4]}"
+                app:layout_constraintWidth_percent="0.12"
+                android:inputType="number"
+                android:textSize="@dimen/text_2xl"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                app:layout_constraintStart_toEndOf="@id/btv_input4"
+                app:layout_constraintEnd_toStartOf="@id/btv_input6"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:background="@color/grey_200"
+                tools:text="6" />
+
+            <app.desty.chat_admin.common.widget.base.BaseBoldTextView
+                android:id="@+id/btv_input6"
+                drawable_solidColor="@{@color/white}"
+                drawable_strokeColor="@{@color/grey_400}"
+                drawable_strokeWidth="@{1}"
+                drawable_radius="@{6}"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:text="@{codeList.authList[5]}"
+                app:layout_constraintWidth_percent="0.12"
+                android:inputType="number"
+                android:textSize="@dimen/text_2xl"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                app:layout_constraintStart_toEndOf="@id/btv_input5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:background="@color/grey_200"
+                tools:text="6" />
+
+            <app.desty.chat_admin.common.widget.NoSelectionEditText
+                android:id="@+id/et_otp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@={codeList.authCode}"
+                android:background="@color/color_transparent"
+                android:textColor="@color/color_transparent"
+                android:longClickable="false"
+                android:maxLength="6"
+                android:inputType="number"
+                android:cursorVisible="false"
+                android:afterTextChanged="@{proxy::getTextWatcher}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+            
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        
+        <app.desty.chat_admin.common.widget.base.BaseBoldTextView
+            drawable_radius="@{6}"
+            drawable_solidColor="@{@color/chat_500}"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/chat_500"
+            android:gravity="center"
+            android:text="@string/confirm"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_lg"
+            android:onClick="@{proxy::clickConfirm}" />
+
+        <app.desty.chat_admin.common.widget.base.BaseTextView
+            drawable_radius="@{6}"
+            drawable_solidColor="@{@color/grey_300}"
+            drawable_strokeWidth="@{2}"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/grey_300"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="@color/grey_700"
+            android:textSize="@dimen/text_lg"
+            android:onClick="@{proxy::clickCancel}" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+
 </layout>
