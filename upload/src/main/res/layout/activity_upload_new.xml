@@ -60,51 +60,51 @@
                 app:showDividers="beginning|middle|end">
 
                 <include
-                    layout="@layout/item_version_key_edit"
+                    layout="@layout/item_key_edit"
                     bind:key="@{@string/latest_release_channel}"
                     bind:edtState="@{mState}" />
 
                 <include
-                    layout="@layout/item_version_key_text"
+                    layout="@layout/item_key_text"
                     bind:key="@{@string/latest_release_latest_version}"
                     bind:displayText="@{mState.featureTextMap[`latestVersion`]}"
                     bind:click="@{click::clickLatestVer}" />
 
                 <include
-                    layout="@layout/item_version_key_text"
+                    layout="@layout/item_key_text"
                     bind:key="@{@string/latest_release_latest_code}"
                     bind:displayText="@{mState.featureTextMap[`latestCode`]}"
                     bind:click="@{click::clickLatestVer}" />
 
                 <include
-                    layout="@layout/item_version_key_text"
+                    layout="@layout/item_key_text"
                     bind:key="@{@string/latest_release_compat_version}"
                     bind:displayText="@{mState.featureTextMap[`compatVersion`]}"
                     bind:click="@{click::clickCompatVer}" />
 
                 <include
-                    layout="@layout/item_version_key_text"
+                    layout="@layout/item_key_text"
                     bind:key="@{@string/latest_release_compat_code}"
                     bind:displayText="@{mState.featureTextMap[`compatCode`]}"
                     bind:click="@{click::clickCompatVer}" />
 
                 <include
-                    layout="@layout/item_version_key_edit"
+                    layout="@layout/item_key_edit"
                     bind:key="@{@string/latest_release_url}"
                     bind:edtState="@{mState}" />
 
                 <include
-                    layout="@layout/item_version_key_edit"
+                    layout="@layout/item_key_edit"
                     bind:key="@{@string/latest_release_website_url}"
                     bind:edtState="@{mState}" />
 
                 <include
-                    layout="@layout/item_version_key_edit"
+                    layout="@layout/item_key_edit"
                     bind:key="@{@string/latest_release_market_url}"
                     bind:edtState="@{mState}" />
 
                 <include
-                    layout="@layout/item_version_key_edit"
+                    layout="@layout/item_key_edit"
                     bind:key="@{@string/latest_release_content}"
                     bind:edtState="@{mState}" />
 

@@ -50,6 +50,7 @@ import com.blankj.utilcode.util.ResourceUtils;
 import com.blankj.utilcode.util.SizeUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.TimeUtils;
+import com.drake.brv.PageRefreshLayout;
 import com.drake.statelayout.StateLayout;
 
 import java.util.ArrayList;
@@ -858,6 +859,12 @@ public class CommonBindingAdapter {
         view.setColorSchemeColors(color);
     }
 
+    @BindingAdapter(value = {"refreshing"})
+    public static void refresh(PageRefreshLayout pageRefreshLayout, boolean refresh) {
+        if (refresh && pageRefreshLayout != null) {
+            pageRefreshLayout.autoRefresh();
+        }
+    }
 
     public interface OnScroll {
         void onScrolled(RecyclerView recyclerView, int dx, int dy);

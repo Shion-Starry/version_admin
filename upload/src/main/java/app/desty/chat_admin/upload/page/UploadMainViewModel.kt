@@ -3,6 +3,8 @@ package app.desty.chat_admin.upload.page
 import androidx.lifecycle.MutableLiveData
 import app.desty.chat_admin.common.base.BaseVM
 import app.desty.chat_admin.common.bean.VersionInfo
+import app.desty.chat_admin.common.config.EnvConfig
+import app.desty.chat_admin.common.config.Environment
 import app.desty.chat_admin.upload.api.UploadApi
 import com.blankj.utilcode.util.TimeUtils
 import com.drake.net.Get
@@ -11,10 +13,12 @@ import kotlinx.coroutines.CoroutineScope
 class UploadMainViewModel : BaseVM() {
     val verInfo = MutableLiveData<VersionInfo>()
     val showInfo = MutableLiveData(true)
-    val updatedTime =MutableLiveData("")
+    val updatedTime = MutableLiveData("")
+    val refreshState = MutableLiveData(false)
+    val env = MutableLiveData(Environment.Test)
 
     fun getVersionInfo(): suspend CoroutineScope.() -> Unit = {
-        val versionInfo = Get<VersionInfo>(UploadApi.getConfig) {
+        val versionInfo = Get<VersionInfo>("${EnvConfig.getBaseUrl(env.value)}${UploadApi.getConfig}") {
             param("channel", "android")
         }.await()
         verInfo.value = versionInfo

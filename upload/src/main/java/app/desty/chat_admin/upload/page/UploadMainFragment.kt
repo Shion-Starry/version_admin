@@ -7,6 +7,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
 import app.desty.chat_admin.common.base.BaseVMFragment
 import app.desty.chat_admin.common.base.DataBindingConfig
+import app.desty.chat_admin.common.config.Environment
 import app.desty.chat_admin.common.config.ToolbarClickListener
 import app.desty.chat_admin.common.constants.RouteConstants
 import app.desty.chat_admin.common.enum_bean.HomePageType
@@ -16,7 +17,6 @@ import app.desty.chat_admin.upload.databinding.FragmentUploadMainBinding
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.core.result.navigation
-import com.drake.net.utils.scopeDialog
 import com.drake.net.utils.scopeLife
 
 @Route(path = RouteConstants.Upload.main)
@@ -44,6 +44,7 @@ class UploadMainFragment : BaseVMFragment<UploadMainViewModel>(), ToolbarClickLi
                             finish()
                         }
                     }
+                    mState?.refreshState?.value = false
                 }.autoRefresh()
                 prlRefresh.setEnableLoadMore(false)
             }
@@ -52,7 +53,7 @@ class UploadMainFragment : BaseVMFragment<UploadMainViewModel>(), ToolbarClickLi
 
     private val uploadNewResult = ActivityResultCallback<ActivityResult> {
         if (it.resultCode == Activity.RESULT_OK) {
-            scopeDialog(block = mState.getVersionInfo())
+            mState.refreshState.value = true
         }
     }
 
@@ -62,6 +63,17 @@ class UploadMainFragment : BaseVMFragment<UploadMainViewModel>(), ToolbarClickLi
                 .build(RouteConstants.Upload.uploadNew)
                 .navigation(this@UploadMainFragment, uploadNewResult)
         }
+
+        fun clickFirstOp(view: View) {
+            mState.env.value = Environment.Test
+            mState.refreshState.value = true
+        }
+
+        fun clickSecondOp(view: View) {
+            mState.env.value = Environment.Prod
+            mState.refreshState.value = true
+        }
+
     }
 
     override fun clickFragToolbar(view: View, homePageType: HomePageType, buttonType: Int) {
@@ -70,7 +82,7 @@ class UploadMainFragment : BaseVMFragment<UploadMainViewModel>(), ToolbarClickLi
         }
 
         if (buttonType == ToolbarClickListener.RIGHT_OPERATE) {
-            scopeDialog(block = mState.getVersionInfo())
+            mState.refreshState.value = true
         }
 
     }

@@ -23,8 +23,8 @@ class UploadNewViewModel : BaseVM() {
         "content" to MutableLiveData("")
     )
     val canUpload = MediatorLiveData(false)
-    var env = MutableLiveData(Environment.Test)
-    var ifSuccessful = MutableLiveData(false)
+    val env = MutableLiveData(Environment.Test)
+    val ifSuccessful = MutableLiveData(false)
 
     init {
         for (editorText in featureTextMap.values) {
