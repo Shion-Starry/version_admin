@@ -37,7 +37,7 @@ enum class HomePageType(
         R.string.navigation_cloud,
         "",
         0,
-        R.drawable.ic_refresh_tint
+        R.drawable.ic_arrow_up_tint
     ),
     Logout(
         8000,

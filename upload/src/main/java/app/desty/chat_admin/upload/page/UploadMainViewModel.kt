@@ -12,13 +12,11 @@ import kotlinx.coroutines.CoroutineScope
 
 class UploadMainViewModel : BaseVM() {
     val verInfo = MutableLiveData<VersionInfo>()
-    val showInfo = MutableLiveData(true)
     val updatedTime = MutableLiveData("")
-    val refreshState = MutableLiveData(false)
     val env = MutableLiveData(Environment.Test)
 
     fun getVersionInfo(): suspend CoroutineScope.() -> Unit = {
-        val versionInfo = Get<VersionInfo>("${EnvConfig.getBaseUrl(env.value)}${UploadApi.getConfig}") {
+        val versionInfo = Get<VersionInfo>("${EnvConfig.getBaseUrl(env.value)}${UploadApi.getVersion}") {
             param("channel", "android")
         }.await()
         verInfo.value = versionInfo

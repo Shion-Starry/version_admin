@@ -23,12 +23,13 @@
             android:id="@+id/tv_key"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxWidth="150dp"
             android:text="@{key}"
             android:textColor="@color/grey_500"
             android:textSize="@dimen/text_base"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:text="key" />
 
         <app.desty.chat_admin.common.widget.base.BaseTextView
@@ -39,10 +40,11 @@
             android:text="@{value}"
             android:textColor="@color/grey_900"
             android:textSize="@dimen/text_base"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="10dp"
             app:layout_constraintStart_toEndOf="@id/tv_key"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:text="value" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,13 +25,13 @@
             android:layout_height="wrap_content"
             android:text="@{key}"
             android:textColor="@color/grey_400"
+            android:maxWidth="150dp"
             android:textSize="@dimen/text_lg"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="key" />
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <app.desty.chat_admin.common.widget.base.BaseEditText
             android:id="@+id/tv_editor"
             drawable_focused_radius="@{6}"
             drawable_focused_solidColor="@{@color/white}"
@@ -42,16 +42,21 @@
             drawable_strokeColor="@{@color/grey_600}"
             drawable_strokeWidth="@{1}"
             app:layout_constrainedWidth="true"
-            android:layout_width="wrap_content"
-            android:layout_height="46dp"
-            android:maxWidth="180dp"
-            android:minWidth="80dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="46dp"
+            android:maxLines="1"
             android:text="@={edtState.getSpecified(key)}"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
+            android:textColor="@color/grey_800"
+            android:textSize="@dimen/text_lg"
+            android:gravity="center_vertical|start"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:layout_marginTop="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/tv_key" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

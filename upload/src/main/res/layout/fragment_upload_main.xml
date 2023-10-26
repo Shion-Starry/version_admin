@@ -13,6 +13,10 @@
             name="click"
             type="app.desty.chat_admin.upload.page.UploadMainFragment.ClickEvents" />
 
+        <import type="android.view.View"/>
+
+        <import type="com.drake.statelayout.Status"/>
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,15 +37,15 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <com.drake.brv.PageRefreshLayout
-            refreshing="@{mState.refreshState}"
+            layoutState="@{mState.layoutState}"
             android:id="@+id/prl_refresh"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.6"
             app:layout_constraintHeight_max="400dp"
             app:layout_constraintTop_toBottomOf="@id/btv_title">
 
             <ScrollView
-                visible="@{mState.showInfo}"
                 android:id="@+id/sv_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -63,62 +67,62 @@
                     app:showDividers="beginning|middle|end">
 
                     <include
-                        layout="@layout/item_version_key_value"
+                        layout="@layout/item_key_value"
                         bind:key="@{@string/latest_release_version_id}"
                         bind:value="@{String.valueOf(mState.verInfo.versionId)}" />
 
                     <include
-                        layout="@layout/item_version_key_value"
+                        layout="@layout/item_key_value"
                         bind:key="@{@string/latest_release_channel}"
                         bind:value="@{mState.verInfo.channel}" />
 
                     <include
-                        layout="@layout/item_version_key_value"
+                        layout="@layout/item_key_value"
                         bind:key="@{@string/latest_release_latest_version}"
                         bind:value="@{mState.verInfo.latestVersion}" />
 
                     <include
-                        layout="@layout/item_version_key_value"
+                        layout="@layout/item_key_value"
                         bind:key="@{@string/latest_release_latest_code}"
                         bind:value="@{String.valueOf(mState.verInfo.latestCode)}" />
 
                     <include
-                        layout="@layout/item_version_key_value"
+                        layout="@layout/item_key_value"
                         bind:key="@{@string/latest_release_compat_version}"
                         bind:value="@{mState.verInfo.compatVersion}" />
 
                     <include
-                        layout="@layout/item_version_key_value"
+                        layout="@layout/item_key_value"
                         bind:key="@{@string/latest_release_compat_code}"
                         bind:value="@{String.valueOf(mState.verInfo.compatCode)}" />
 
                     <include
-                        layout="@layout/item_version_key_value"
+                        layout="@layout/item_key_value"
                         bind:key="@{@string/latest_release_create_time}"
                         bind:value="@{mState.verInfo.getCreateDateTime()}" />
 
                     <include
-                        layout="@layout/item_version_key_value"
+                        layout="@layout/item_key_value"
                         bind:key="@{@string/latest_release_update_time}"
                         bind:value="@{mState.verInfo.getUpdateDateTime()}" />
 
                     <include
-                        layout="@layout/item_version_key_value"
+                        layout="@layout/item_key_value"
                         bind:key="@{@string/latest_release_url}"
                         bind:value="@{mState.verInfo.url}" />
 
                     <include
-                        layout="@layout/item_version_key_value"
+                        layout="@layout/item_key_value"
                         bind:key="@{@string/latest_release_website_url}"
                         bind:value="@{mState.verInfo.websiteUrl}" />
 
                     <include
-                        layout="@layout/item_version_key_value"
+                        layout="@layout/item_key_value"
                         bind:key="@{@string/latest_release_market_url}"
                         bind:value="@{mState.verInfo.marketUrl}" />
 
                     <include
-                        layout="@layout/item_version_key_value"
+                        layout="@layout/item_key_value"
                         bind:key="@{@string/latest_release_content}"
                         bind:value="@{mState.verInfo.content}" />
 
@@ -129,7 +133,7 @@
         </com.drake.brv.PageRefreshLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            visible="@{mState.showInfo}"
+            android:visibility="@{mState.layoutState.showingContent() ? View.VISIBLE : View.INVISIBLE}"
             android:id="@+id/rb_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -167,6 +171,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:visibility="@{mState.layoutState.showingContent() ? View.VISIBLE : View.INVISIBLE}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"

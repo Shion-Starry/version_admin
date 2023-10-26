@@ -6,58 +6,46 @@
     <data>
 
         <variable
-            name="key"
-            type="java.lang.String" />
-        
-        <variable
             name="displayText"
             type="java.lang.String" />
 
         <variable
             name="click"
             type="android.view.View.OnClickListener" />
-        
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <app.desty.chat_admin.common.widget.base.BaseTextView
-            android:id="@+id/tv_key"
+        <app.desty.chat_admin.common.widget.base.BaseImageView
+            android:id="@+id/biv_filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{key}"
-            android:textColor="@color/grey_400"
-            android:maxWidth="150dp"
-            android:textSize="@dimen/text_lg"
+            app:layout_constraintWidth_percent="0.2"
+            android:src="@drawable/ic_filter_tint"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/tv_editor"
-            tools:text="key" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:tint="@color/grey_600" />
 
         <app.desty.chat_admin.common.widget.base.BaseTextView
-            android:id="@+id/tv_editor"
-            drawable_radius="@{6}"
-            drawable_solidColor="@{@color/color_white}"
-            drawable_strokeColor="@{@color/grey_600}"
-            drawable_strokeWidth="@{1}"
+            android:id="@+id/btv_version"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:minHeight="46dp"
-            android:onClick="@{click::onClick}"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_percent="0.8"
+            app:layout_constraintWidth_default="percent"
+            android:textSize="@dimen/text_sm"
+            android:textColor="@color/grey_600"
             android:text="@{displayText}"
-            android:textColor="@color/grey_800"
-            android:textSize="@dimen/text_lg"
-            android:gravity="center_vertical|start"
+            android:gravity="center"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:layout_marginTop="5dp"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_key"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="Displayed Text" />
+            tools:text="Version: 10300007" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
