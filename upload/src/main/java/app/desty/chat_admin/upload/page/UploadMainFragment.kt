@@ -46,7 +46,7 @@ class UploadMainFragment : BaseVMFragment<UploadMainViewModel>(), ToolbarClickLi
                         }
                     }
                 }
-                mState?.layoutState?.showLoading(isRefresh = true, isAutoRefresh = false)
+                mState?.layoutState?.showLoading()
                 prlRefresh.setEnableLoadMore(false)
             }
         }
@@ -54,7 +54,7 @@ class UploadMainFragment : BaseVMFragment<UploadMainViewModel>(), ToolbarClickLi
 
     private val uploadNewResult = ActivityResultCallback<ActivityResult> {
         if (it.resultCode == Activity.RESULT_OK) {
-            mState.layoutState.showLoading(isAutoRefresh = true)
+            mState.layoutState.showRefreshing()
         }
     }
 
@@ -67,12 +67,12 @@ class UploadMainFragment : BaseVMFragment<UploadMainViewModel>(), ToolbarClickLi
 
         fun clickFirstOp(view: View) {
             mState.env.value = Environment.Test
-            mState.layoutState.showLoading(isAutoRefresh = true)
+            mState.layoutState.showRefreshing()
         }
 
         fun clickSecondOp(view: View) {
             mState.env.value = Environment.Prod
-            mState.layoutState.showLoading(isAutoRefresh = true)
+            mState.layoutState.showRefreshing()
         }
 
     }
@@ -83,7 +83,7 @@ class UploadMainFragment : BaseVMFragment<UploadMainViewModel>(), ToolbarClickLi
         }
 
         if (buttonType == ToolbarClickListener.RIGHT_OPERATE) {
-            mState.layoutState.showLoading(isAutoRefresh = true)
+            mState.layoutState.showRefreshing()
         }
 
     }

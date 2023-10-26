@@ -15,6 +15,7 @@ import app.desty.chat_admin.common.widget.InputVerDialog
 import app.desty.chat_admin.upload.BR
 import app.desty.chat_admin.upload.R
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.blankj.utilcode.util.KeyboardUtils
 import com.blankj.utilcode.util.StringUtils
 import com.drake.net.utils.scopeDialog
 import com.lxj.xpopup.XPopup
@@ -26,7 +27,7 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
     }
 
     override fun init(savedInstanceState: Bundle?) {
-
+        KeyboardUtils.fixAndroidBug5497(this)
     }
 
     override fun initViewModel() {

@@ -12,25 +12,21 @@ class StateLayoutKtx {
     companion object {
         private fun StateLayout.setLayoutState(layoutState: LayoutState) {
             when (layoutState.state) {
-                Status.LOADING -> showLoading(layoutState.tag)
-                Status.EMPTY -> showEmpty(layoutState.tag)
-                Status.CONTENT -> showContent(layoutState.tag)
-                Status.ERROR -> showError(layoutState.tag)
+                MyStatus.LOADING -> showLoading(layoutState.tag)
+                MyStatus.EMPTY -> showEmpty(layoutState.tag)
+                MyStatus.CONTENT -> showContent(layoutState.tag)
+                MyStatus.ERROR -> showError(layoutState.tag)
+                MyStatus.REFRESHING -> showContent(layoutState.tag)
             }
         }
 
         private fun PageRefreshLayout.setLayoutState(layoutState: LayoutState) {
             when (layoutState.state) {
-                Status.LOADING -> {
-                    if (layoutState.isAutoRefresh) {
-                        autoRefresh()
-                    } else {
-                        showLoading(layoutState.tag, layoutState.isRefresh)
-                    }
-                }
-                Status.EMPTY -> showEmpty(layoutState.tag)
-                Status.CONTENT -> showContent(layoutState.hasMore, layoutState.tag)
-                Status.ERROR -> showError(layoutState.tag)
+                MyStatus.LOADING -> showLoading(layoutState.tag, layoutState.isRefresh)
+                MyStatus.EMPTY -> showEmpty(layoutState.tag)
+                MyStatus.CONTENT -> showContent(layoutState.hasMore, layoutState.tag)
+                MyStatus.ERROR -> showError(layoutState.tag)
+                MyStatus.REFRESHING -> autoRefresh()
             }
         }
 
@@ -61,40 +57,49 @@ class StateLayoutKtx {
     }
 }
 
+enum class MyStatus {
+    LOADING, EMPTY, ERROR, CONTENT, REFRESHING
+}
+
 data class LayoutState(
-    var state: Status = Status.CONTENT,
+    var state: MyStatus = MyStatus.CONTENT,
     var tag: Any? = null,
     var hasMore: Boolean = true,
     var isRefresh: Boolean = true,
-    var isAutoRefresh: Boolean = true,
     var defaultBlock: ((Status) -> Any?)? = null
 ) : BaseObservable() {
-    fun showingContent(): Boolean = (state == Status.CONTENT) || (state == Status.LOADING && isAutoRefresh)
-    fun showLoading(tag: Any? = null, isRefresh: Boolean = true, isAutoRefresh: Boolean = true) {
-        state = Status.LOADING
+    fun showingContent(): Boolean = (state == MyStatus.CONTENT) || (state == MyStatus.REFRESHING)
+    fun showLoading(tag: Any? = null, isRefresh: Boolean = true) {
+        state = MyStatus.LOADING
         this.tag = tag ?: defaultBlock?.invoke(Status.LOADING)
         this.isRefresh = isRefresh
-        this.isAutoRefresh = isAutoRefresh
         notifyChange()
     }
 
     fun showEmpty(tag: Any? = null) {
-        state = Status.EMPTY
+        state = MyStatus.EMPTY
         this.tag = tag ?: defaultBlock?.invoke(Status.EMPTY)
         notifyChange()
     }
 
     fun showContent(tag: Any? = null, hasMore: Boolean = true) {
-        state = Status.CONTENT
+        state = MyStatus.CONTENT
         this.tag = tag ?: defaultBlock?.invoke(Status.CONTENT)
         this.hasMore = hasMore
         notifyChange()
     }
 
     fun showError(tag: Any? = null) {
-        state = Status.ERROR
+        state = MyStatus.ERROR
         this.tag = tag ?: defaultBlock?.invoke(Status.ERROR)
         notifyChange()
     }
+
+    fun showRefreshing(tag: Any? = null) {
+        state = MyStatus.REFRESHING
+        this.tag = tag ?: defaultBlock?.invoke(Status.CONTENT)
+        notifyChange()
+    }
+
 }
 
