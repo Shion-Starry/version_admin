@@ -3,7 +3,6 @@ package app.desty.chat_admin.common.bean
 import android.os.Build
 import android.os.Parcelable
 import androidx.annotation.RequiresApi
-import androidx.lifecycle.MutableLiveData
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -29,20 +28,6 @@ data class VersionInfo(
     val url: String = "",
     val websiteUrl: String = ""
     ) : Parcelable {
-
-    fun setPostVer(
-        channel: MutableLiveData<String>,
-        latestVersion: MutableLiveData<String>,
-        latestCode: MutableLiveData<String>,
-        compatVersion: MutableLiveData<String>,
-        compatCode: MutableLiveData<String>,
-        url: MutableLiveData<String>,
-        websiteUrl: MutableLiveData<String>,
-        marketUrl: MutableLiveData<String>,
-        content: MutableLiveData<String>
-    ) {
-
-    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun getUpdateDateTime(): String {
