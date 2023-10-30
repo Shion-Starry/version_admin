@@ -1,22 +1,18 @@
 package app.desty.chat_admin.common.model
 
 import androidx.lifecycle.ViewModel
-import app.desty.chat_admin.common.widget.crop.util.Log
 import app.desty.sdk.logcat.Logcat
+import com.blankj.utilcode.util.KsonUtils
 import com.drake.net.request.BodyRequest
 import com.drake.net.request.MediaConst
 import com.drake.net.scope.AndroidScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.encodeToJsonElement
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
-import org.json.JSONArray
 import org.json.JSONObject
 
 
@@ -75,6 +71,10 @@ fun BodyRequest.baseJson(baseJsonString: String) {
 fun BodyRequest.baseJson(baseJson: JSONObject) = baseJson(baseJson.toString())
 
 fun BodyRequest.baseJson(vararg params: Pair<String, Any?>) = baseJson(params.toMap())
+
+fun BodyRequest.bean(bean: Any?) {
+    body = KsonUtils.getKson().encodeToString(this).toRequestBody(MediaConst.JSON)
+}
 
 inline fun <reified T> BodyRequest.baseJson(data: T?) {
     baseJson(Json.encodeToString(BasicData(data = data)))

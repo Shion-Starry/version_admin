@@ -23,19 +23,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-<!--        <app.desty.chat_admin.common.widget.base.BaseBoldTextView-->
-<!--            android:id="@+id/btv_title"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:paddingTop="8dp"-->
-<!--            android:paddingBottom="12dp"-->
-<!--            android:text="@string/latest_release_info_title"-->
-<!--            android:textColor="@color/grey_900"-->
-<!--            android:textSize="@dimen/text_lg"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent" />-->
-
         <com.drake.brv.PageRefreshLayout
             layoutState="@{mState.layoutState}"
             android:id="@+id/prl_refresh"

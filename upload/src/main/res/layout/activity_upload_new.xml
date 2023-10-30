@@ -87,25 +87,25 @@
                 <include
                     layout="@layout/item_key_text"
                     bind:key="@{@string/latest_release_latest_version}"
-                    bind:displayText="@{mState.featureTextMap[`latestVersion`]}"
+                    bind:displayText="@{mState.latestVersion}"
                     bind:click="@{click::clickLatestVer}" />
 
                 <include
                     layout="@layout/item_key_text"
                     bind:key="@{@string/latest_release_latest_code}"
-                    bind:displayText="@{mState.featureTextMap[`latestCode`]}"
+                    bind:displayText="@{mState.latestCode}"
                     bind:click="@{click::clickLatestVer}" />
 
                 <include
                     layout="@layout/item_key_text"
                     bind:key="@{@string/latest_release_compat_version}"
-                    bind:displayText="@{mState.featureTextMap[`compatVersion`]}"
+                    bind:displayText="@{mState.compatVersion}"
                     bind:click="@{click::clickCompatVer}" />
 
                 <include
                     layout="@layout/item_key_text"
                     bind:key="@{@string/latest_release_compat_code}"
-                    bind:displayText="@{mState.featureTextMap[`compatCode`]}"
+                    bind:displayText="@{mState.compatCode}"
                     bind:click="@{click::clickCompatVer}" />
 
                 <include

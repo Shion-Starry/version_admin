@@ -39,14 +39,14 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
 
     override fun initViewModel() {
         passedVerInfo?.apply {
-            mState.featureTextMap["channel"]?.value = this.channel
-            mState.featureTextMap["latestVersion"]?.value = this.latestVersion
-            mState.featureTextMap["latestCode"]?.value = VersionGroup(this.latestCode.toLong()).getVersionCodeStr()
-            mState.featureTextMap["compatVersion"]?.value = this.compatVersion
-            mState.featureTextMap["compatCode"]?.value = VersionGroup(this.compatCode.toLong()).getVersionCodeStr()
-            mState.featureTextMap["url"]?.value = this.url
-            mState.featureTextMap["websiteUrl"]?.value = this.websiteUrl
-            mState.featureTextMap["marketUrl"]?.value = this.marketUrl
+            mState.channel.value = this.channel
+            mState.latestVersion.value = this.latestVersion
+            mState.latestCode.value = VersionGroup(this.latestCode).getVersionCodeStr()
+            mState.compatVersion.value = this.compatVersion
+            mState.compatCode.value = VersionGroup(this.compatCode).getVersionCodeStr()
+            mState.url.value = this.url
+            mState.websiteUrl.value = this.websiteUrl
+            mState.marketUrl.value = this.marketUrl
         }
         mState.ifSuccessful.observe(this, this::checkSubmitted)
     }
@@ -88,15 +88,15 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
         }
 
         fun clickLatestVer(view: View) {
-            val versionGroup = VersionGroup(mState.featureTextMap["latestCode"]?.value ?: "")
+            val versionGroup = VersionGroup(mState.latestCode.value ?: "")
             XPopup.Builder(ActivityLifecycleManager.getInstance().topActivity)
                 .asCustom(
                     InputVerDialog(context).apply {
                         title = StringUtils.getString(R.string.edit_title_latest_version)
                         dlgState.setVersions(versionGroup)
                         okListener = {
-                            mState.featureTextMap["latestVersion"]?.value = it.getVersionStr()
-                            mState.featureTextMap["latestCode"]?.value = it.getVersionCodeStr()
+                            mState.latestVersion.value = it.getVersionStr()
+                            mState.latestCode.value = it.getVersionCodeStr()
                         }
                     }
                 )
@@ -104,15 +104,15 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
         }
 
         fun clickCompatVer(view: View) {
-            val versionGroup = VersionGroup(mState.featureTextMap["compatCode"]?.value ?: "")
+            val versionGroup = VersionGroup(mState.compatCode.value ?: "")
             XPopup.Builder(ActivityLifecycleManager.getInstance().topActivity)
                 .asCustom(
                     InputVerDialog(context).apply {
                         title = StringUtils.getString(R.string.edit_title_compat_version)
                         dlgState.setVersions(versionGroup)
                         okListener = {
-                            mState.featureTextMap["compatVersion"]?.value = it.getVersionStr()
-                            mState.featureTextMap["compatCode"]?.value = it.getVersionCodeStr()
+                            mState.compatVersion.value = it.getVersionStr()
+                            mState.compatCode.value = it.getVersionCodeStr()
                         }
                     }
                 )

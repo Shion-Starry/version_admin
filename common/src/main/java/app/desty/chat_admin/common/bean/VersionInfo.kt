@@ -3,6 +3,7 @@ package app.desty.chat_admin.common.bean
 import android.os.Build
 import android.os.Parcelable
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.MutableLiveData
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -29,6 +30,20 @@ data class VersionInfo(
     val websiteUrl: String = ""
     ) : Parcelable {
 
+    fun setPostVer(
+        channel: MutableLiveData<String>,
+        latestVersion: MutableLiveData<String>,
+        latestCode: MutableLiveData<String>,
+        compatVersion: MutableLiveData<String>,
+        compatCode: MutableLiveData<String>,
+        url: MutableLiveData<String>,
+        websiteUrl: MutableLiveData<String>,
+        marketUrl: MutableLiveData<String>,
+        content: MutableLiveData<String>
+    ) {
+
+    }
+
     @RequiresApi(Build.VERSION_CODES.O)
     fun getUpdateDateTime(): String {
         val instant = Instant.ofEpochMilli(updateTime)
@@ -51,13 +66,13 @@ data class VersionInfo(
 
 @Serializable
 data class VersionGroup(
-    var major: Long = 0,
-    var sub: Long = 0,
-    var fix: Long = 0,
-    var build: Long = 0
+    var major: Int = 0,
+    var sub: Int = 0,
+    var fix: Int = 0,
+    var build: Int = 0
 ) {
 
-    constructor(versionCode: Long):this() {
+    constructor(versionCode: Int):this() {
         if (versionCode > 0) {
             major = versionCode / 10000000
             sub = (versionCode / 100000) % 100
@@ -72,7 +87,7 @@ data class VersionGroup(
     }
 
     constructor(versionStr: String): this() {
-        val versionCode = versionStr.toLongOrNull()
+        val versionCode = versionStr.toIntOrNull()
         if (versionCode != null) {
             major = versionCode / 10000000
             sub = (versionCode / 100000) % 100

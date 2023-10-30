@@ -59,10 +59,10 @@ class InputVerDialog(context: Context) : BottomPopupView(context) {
         fun clickOk(view: View) {
             okListener?.run {
                 val versionGroup = VersionGroup(
-                    dlgState.versions.majorInput.value?.toLong() ?: 0,
-                    dlgState.versions.subInput.value?.toLong() ?: 0,
-                    dlgState.versions.fixInput.value?.toLong() ?: 0,
-                    dlgState.versions.buildInput.value?.toLong() ?: 0
+                    dlgState.versions.majorInput.value?.toInt() ?: 0,
+                    dlgState.versions.subInput.value?.toInt() ?: 0,
+                    dlgState.versions.fixInput.value?.toInt() ?: 0,
+                    dlgState.versions.buildInput.value?.toInt() ?: 0
                 )
                 this(versionGroup)
             }
@@ -71,7 +71,7 @@ class InputVerDialog(context: Context) : BottomPopupView(context) {
 
         fun getTextWatcher(type:Int, editable: Editable) {
             when (type) {
-                1 -> { NumberUtil.setInputRangeRules(editable, 0, 999) }
+                1 -> { NumberUtil.setInputRangeRules(editable, 0, 209) }
                 2 -> { NumberUtil.setInputRangeRules(editable, 0, 99) }
                 3 -> { NumberUtil.setInputRangeRules(editable, 0, 99) }
                 4 -> { NumberUtil.setInputRangeRules(editable, 0, 999) }
