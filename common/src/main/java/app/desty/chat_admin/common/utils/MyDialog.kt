@@ -2,11 +2,13 @@ package app.desty.chat_admin.common.utils
 
 import android.content.Context
 import android.net.Uri
+import app.desty.chat_admin.common.bean.VersionGroup
 import app.desty.chat_admin.common.enum_bean.ChatAdminDialog
 import app.desty.chat_admin.common.enum_bean.GlobalDialogEnum
 import app.desty.chat_admin.common.widget.ChatAdminDialogPopup
 import app.desty.chat_admin.common.widget.GlobalDialog
 import app.desty.chat_admin.common.widget.GlobalImageDialog
+import app.desty.chat_admin.common.widget.InputVerDialog
 import app.desty.chat_admin.common.widget.OtpVerifyDialog
 import com.lxj.xpopup.XPopup
 import com.lxj.xpopup.core.BasePopupView
@@ -50,6 +52,21 @@ object MyDialog {
                     ActivityLifecycleManager.getInstance().topActivity
                 ).apply {
                     this.confirmListener = confirmListener
+                }).show()
+
+    fun showInputVerDialog(
+        title: String,
+        versionGroup: VersionGroup,
+        okListener: ((VersionGroup) -> Unit)?
+    ): BasePopupView =
+        XPopup.Builder(ActivityLifecycleManager.getInstance().topActivity)
+            .asCustom(
+                InputVerDialog(
+                    ActivityLifecycleManager.getInstance().topActivity
+                ).apply {
+                    this.title = title
+                    this.dlgState.setVersions(versionGroup)
+                    this.okListener = okListener
                 }).show()
 
     fun showDialog(

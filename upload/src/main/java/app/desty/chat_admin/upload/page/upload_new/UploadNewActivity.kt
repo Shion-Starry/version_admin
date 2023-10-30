@@ -10,9 +10,7 @@ import app.desty.chat_admin.common.bean.VersionInfo
 import app.desty.chat_admin.common.config.Environment
 import app.desty.chat_admin.common.constants.RouteConstants
 import app.desty.chat_admin.common.enum_bean.ChatAdminDialog
-import app.desty.chat_admin.common.utils.ActivityLifecycleManager
 import app.desty.chat_admin.common.utils.MyDialog
-import app.desty.chat_admin.common.widget.InputVerDialog
 import app.desty.chat_admin.upload.BR
 import app.desty.chat_admin.upload.R
 import com.alibaba.android.arouter.facade.annotation.Autowired
@@ -20,7 +18,6 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.KeyboardUtils
 import com.blankj.utilcode.util.StringUtils
 import com.drake.net.utils.scopeDialog
-import com.lxj.xpopup.XPopup
 
 @Route(path = RouteConstants.Upload.uploadNew)
 class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
@@ -89,34 +86,24 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
 
         fun clickLatestVer(view: View) {
             val versionGroup = VersionGroup(mState.latestCode.value ?: "")
-            XPopup.Builder(ActivityLifecycleManager.getInstance().topActivity)
-                .asCustom(
-                    InputVerDialog(context).apply {
-                        title = StringUtils.getString(R.string.edit_title_latest_version)
-                        dlgState.setVersions(versionGroup)
-                        okListener = {
-                            mState.latestVersion.value = it.getVersionStr()
-                            mState.latestCode.value = it.getVersionCodeStr()
-                        }
-                    }
-                )
-                .show()
+            MyDialog.showInputVerDialog(
+                StringUtils.getString(R.string.edit_title_latest_version),
+                versionGroup
+            ) {
+                mState.latestVersion.value = it.getVersionStr()
+                mState.latestCode.value = it.getVersionCodeStr()
+            }
         }
 
         fun clickCompatVer(view: View) {
             val versionGroup = VersionGroup(mState.compatCode.value ?: "")
-            XPopup.Builder(ActivityLifecycleManager.getInstance().topActivity)
-                .asCustom(
-                    InputVerDialog(context).apply {
-                        title = StringUtils.getString(R.string.edit_title_compat_version)
-                        dlgState.setVersions(versionGroup)
-                        okListener = {
-                            mState.compatVersion.value = it.getVersionStr()
-                            mState.compatCode.value = it.getVersionCodeStr()
-                        }
-                    }
-                )
-                .show()
+            MyDialog.showInputVerDialog(
+                StringUtils.getString(R.string.edit_title_compat_version),
+                versionGroup
+            ) {
+                mState.compatVersion.value = it.getVersionStr()
+                mState.compatCode.value = it.getVersionCodeStr()
+            }
         }
 
         fun clickFirstOp(view: View) {
