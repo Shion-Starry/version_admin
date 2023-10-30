@@ -3,6 +3,7 @@ package app.desty.chat_admin.upload.page.upload_new
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import app.desty.chat_admin.common.base.BaseVM
+import app.desty.chat_admin.common.bean.VersionGroup
 import app.desty.chat_admin.common.config.EnvConfig
 import app.desty.chat_admin.common.config.Environment
 import app.desty.chat_admin.common.utils.MyToast
@@ -12,7 +13,7 @@ import kotlinx.coroutines.CoroutineScope
 
 class UploadNewViewModel : BaseVM() {
     val featureTextMap = mapOf<String, MutableLiveData<String>>(
-        "channel" to MutableLiveData("android"),
+        "channel" to MutableLiveData(""),
         "latestVersion" to MutableLiveData(""),
         "latestCode" to MutableLiveData(""),
         "compatVersion" to MutableLiveData(""),
@@ -22,11 +23,14 @@ class UploadNewViewModel : BaseVM() {
         "marketUrl" to MutableLiveData(""),
         "content" to MutableLiveData("")
     )
+//    val realTimeInfo = MutableLiveData(VersionInfo())
     val canUpload = MediatorLiveData(false)
     val env = MutableLiveData(Environment.Test)
     val ifSuccessful = MutableLiveData(false)
 
     init {
+//        canUpload.addSource(realTimeInfo) { updateUploadEnabled() }
+
         for (editorText in featureTextMap.values) {
             canUpload.addSource(editorText) {
                 updateUploadEnabled()
@@ -35,6 +39,15 @@ class UploadNewViewModel : BaseVM() {
     }
 
     private fun updateUploadEnabled() {
+//        canUpload.value = !(realTimeInfo.value?.channel.isNullOrBlank()
+//                || realTimeInfo.value?.compatCode == 0
+//                || realTimeInfo.value?.compatVersion.isNullOrBlank()
+//                || realTimeInfo.value?.content.isNullOrBlank()
+//                || realTimeInfo.value?.latestCode == 0
+//                || realTimeInfo.value?.latestVersion.isNullOrBlank()
+//                || realTimeInfo.value?.marketUrl.isNullOrBlank()
+//                || realTimeInfo.value?.url.isNullOrBlank()
+//                || realTimeInfo.value?.websiteUrl.isNullOrBlank())
         for (text in featureTextMap.values) {
             if (text.value.isNullOrBlank()) {
                 canUpload.value = false
@@ -42,6 +55,16 @@ class UploadNewViewModel : BaseVM() {
             }
         }
         canUpload.value = true
+    }
+
+    fun getVersionInfo(versionCode: Long): String {
+        val versionGroup = VersionGroup(versionCode)
+        return versionGroup.getVersionStr()
+    }
+
+    fun getVersionCode(versionCode: Long): String {
+        val versionGroup = VersionGroup(versionCode)
+        return versionGroup.getVersionCodeStr()
     }
 
     fun getSpecified(key: String): MutableLiveData<String> {
@@ -52,6 +75,12 @@ class UploadNewViewModel : BaseVM() {
             "Market URL"        -> featureTextMap["marketUrl"] ?: MutableLiveData("")
             "Update Content"  -> featureTextMap["content"] ?: MutableLiveData("")
             else                     -> MutableLiveData("")
+//            "Channel"             -> featureTextMap["channel"] ?: MutableLiveData("")
+//            "URL"                  -> featureTextMap["url"] ?: MutableLiveData("")
+//            "Website URL"       -> featureTextMap["websiteUrl"] ?: MutableLiveData("")
+//            "Market URL"        -> featureTextMap["marketUrl"] ?: MutableLiveData("")
+//            "Update Content"  -> featureTextMap["content"] ?: MutableLiveData("")
+//            else                     -> MutableLiveData("")
         }
     }
 

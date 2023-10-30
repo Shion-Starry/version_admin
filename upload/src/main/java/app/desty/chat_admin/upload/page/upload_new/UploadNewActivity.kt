@@ -6,6 +6,7 @@ import app.desty.chat_admin.common.base.BaseVmActivity
 import app.desty.chat_admin.common.base.DataBindingConfig
 import app.desty.chat_admin.common.bean.ToolbarConfig
 import app.desty.chat_admin.common.bean.VersionGroup
+import app.desty.chat_admin.common.bean.VersionInfo
 import app.desty.chat_admin.common.config.Environment
 import app.desty.chat_admin.common.constants.RouteConstants
 import app.desty.chat_admin.common.enum_bean.ChatAdminDialog
@@ -14,6 +15,7 @@ import app.desty.chat_admin.common.utils.MyDialog
 import app.desty.chat_admin.common.widget.InputVerDialog
 import app.desty.chat_admin.upload.BR
 import app.desty.chat_admin.upload.R
+import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.KeyboardUtils
 import com.blankj.utilcode.util.StringUtils
@@ -22,6 +24,11 @@ import com.lxj.xpopup.XPopup
 
 @Route(path = RouteConstants.Upload.uploadNew)
 class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
+
+    @JvmField
+    @Autowired(name = "verInfo")
+    var passedVerInfo: VersionInfo? = null
+
     private val backClick = View.OnClickListener { _: View? ->
         super.onBackPressed()
     }
@@ -31,6 +38,16 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
     }
 
     override fun initViewModel() {
+        passedVerInfo?.apply {
+            mState.featureTextMap["channel"]?.value = this.channel
+            mState.featureTextMap["latestVersion"]?.value = this.latestVersion
+            mState.featureTextMap["latestCode"]?.value = VersionGroup(this.latestCode.toLong()).getVersionCodeStr()
+            mState.featureTextMap["compatVersion"]?.value = this.compatVersion
+            mState.featureTextMap["compatCode"]?.value = VersionGroup(this.compatCode.toLong()).getVersionCodeStr()
+            mState.featureTextMap["url"]?.value = this.url
+            mState.featureTextMap["websiteUrl"]?.value = this.websiteUrl
+            mState.featureTextMap["marketUrl"]?.value = this.marketUrl
+        }
         mState.ifSuccessful.observe(this, this::checkSubmitted)
     }
 

@@ -62,6 +62,7 @@ class UploadMainFragment : BaseVMFragment<UploadMainViewModel>(), ToolbarClickLi
         fun clickUploadNew(view: View) {
             ARouter.getInstance()
                 .build(RouteConstants.Upload.uploadNew)
+                .withParcelable("verInfo", mState.verInfo.value)
                 .navigation(this@UploadMainFragment, uploadNewResult)
         }
 

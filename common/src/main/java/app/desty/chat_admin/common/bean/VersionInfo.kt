@@ -57,6 +57,20 @@ data class VersionGroup(
     var build: Long = 0
 ) {
 
+    constructor(versionCode: Long):this() {
+        if (versionCode > 0) {
+            major = versionCode / 10000000
+            sub = (versionCode / 100000) % 100
+            fix = (versionCode / 1000) % 100
+            build = versionCode % 1000
+        } else {
+            major = 0
+            sub = 0
+            fix = 0
+            build = 0
+        }
+    }
+
     constructor(versionStr: String): this() {
         val versionCode = versionStr.toLongOrNull()
         if (versionCode != null) {

@@ -2,6 +2,8 @@ Code,Android-key,English,Bahasa
 ,【Common】,,
 _10aec353,cancel,Cancel,Batalkan
 _d0cf705f,confirm,Confirm,Konfirmasi
+_fedd01b6,delete_button_text,Delete,Menghapus
+_f7c91379,edit_button_text,Edit,Sunting
 _a14fa216,loading,Loading…,Loading…
 _828905a2,login_out,Log out,Keluar
 _444bcb3a,ok,OK,OK
@@ -70,6 +72,11 @@ _2e366d3a,upload_ver_button_text,Upload,Mengunggah
 _21c75216,upload_ver_env_production,Production,Produksi
 _ea6d0c78,upload_ver_env_testing,Testing,Pengujian
 _6ed9d243,upload_ver_toolbar_title,Upload New Version,Unggah Versi Baru
+,【Cloud】,,
+_fa8bd164,cloud_config_channel,Channel,Saluran
+_06afd06b,cloud_config_from_version,From Version,Dari Versi
+_d316e2cb,cloud_config_to_version,To Version,Ke Versi
+_ede4ec51,cloud_config_value,Setting,Pengaturan
 ,【Platform】,,
 _918b7a11,platform_blibli,BliBli,BliBli
 _853432e4,platform_instagram,Instagram,Instagram

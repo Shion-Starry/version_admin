@@ -26,7 +26,7 @@ enum class HomePageType(
     Upload(
         2000,
         R.drawable.ic_navi_upload,
-        R.string.navigation_upload,
+        R.string.latest_release_info_title,
         RouteConstants.Upload.main,
         0,
         R.drawable.ic_refresh_tint
@@ -35,7 +35,7 @@ enum class HomePageType(
         3000,
         R.drawable.ic_navi_cloud,
         R.string.navigation_cloud,
-        "",
+        RouteConstants.Cloud.main,
         0,
         R.drawable.ic_arrow_up_tint
     ),

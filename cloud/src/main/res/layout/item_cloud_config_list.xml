@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="app.desty.chat_admin.common.bean.CloudConfigInfo" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        drawable_radius="@{8}"
+        drawable_solidColor="@{@color/white}"
+        drawable_strokeColor="@{@color/grey_300}"
+        drawable_strokeWidth="@{1}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="12dp">
+
+        <app.desty.chat_admin.common.widget.base.BaseBoldTextView
+            android:id="@+id/bbtv_config_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.name}"
+            android:textColor="@color/grey_900"
+            android:textSize="@dimen/text_sm"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:text="Time Out" />
+
+        <app.desty.chat_admin.common.widget.base.BaseBoldTextView
+            android:id="@+id/bbtv_unique_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.uniqueKey}"
+            android:textColor="@color/grey_900"
+            android:textSize="@dimen/text_sm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@id/bbtv_config_name"
+            bind:text="231009F3GQ0966" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llc_config_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            app:divider="@drawable/divider_transparent_8"
+            app:showDividers="middle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bbtv_config_name">
+
+            <include
+                layout="@layout/item_key_value"
+                bind:key="@{@string/cloud_config_value}"
+                bind:value="@{data.value}" />
+
+            <include
+                layout="@layout/item_key_value"
+                bind:key="@{@string/cloud_config_from_version}"
+                bind:value="@{String.valueOf(data.fromVersionCode)}" />
+
+            <include
+                layout="@layout/item_key_value"
+                bind:key="@{@string/cloud_config_to_version}"
+                bind:value="@{String.valueOf(data.toVersionCode)}" />
+
+            <include
+                layout="@layout/item_key_value"
+                bind:key="@{@string/cloud_config_channel}"
+                bind:value="@{data.channel}" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <View
+            android:id="@+id/v_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/grey_200"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/llc_config_info" />
+
+        <app.desty.chat_admin.common.widget.base.BaseBoldTextView
+            drawable_radius="@{8}"
+            android:id="@+id/bbtv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="80dp"
+            android:background="@color/orange_500"
+            android:text="@string/delete_button_text"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_sm"
+            android:gravity="center"
+            android:layout_marginTop="12dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v_divider" />
+
+        <app.desty.chat_admin.common.widget.base.BaseBoldTextView
+            drawable_radius="@{8}"
+            android:id="@+id/bbtv_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="80dp"
+            android:background="@color/chat_500"
+            android:text="@string/edit_button_text"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_sm"
+            android:gravity="center"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintEnd_toStartOf="@id/bbtv_delete"
+            app:layout_constraintTop_toBottomOf="@id/v_divider" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
