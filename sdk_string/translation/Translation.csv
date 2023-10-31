@@ -6,6 +6,7 @@ _fedd01b6,delete_button_text,Delete,Menghapus
 _f7c91379,edit_button_text,Edit,Sunting
 _a14fa216,loading,Loading…,Loading…
 _828905a2,login_out,Log out,Keluar
+_7fa3b767,no,No,TIDAK
 _444bcb3a,ok,OK,OK
 _0020d1a4,over_max_limit,Max limit reached,Telah mencapai batas maksimum
 _018110ff,over_min_limit,Min limit reached,Telah mencapai limit minimum
@@ -33,11 +34,17 @@ _839e68f6,edit_subtitle_version_setting,Major Version,Versi Utama
 _e30156d7,edit_title_channel,Edit Channel,Sunting Saluran
 _e1e3c95f,edit_title_compat_version,Edit Compat Version,Edit Versi Kompat
 _6d7a8a39,edit_title_config_value,Edit Config Value,Edit Nilai Konfigurasi
+_d6c0d5a4,edit_title_from_which_version,From Which Version,Dari Versi Yang Mana
 _93e8e1af,edit_title_latest_version,Edit Latest Version,Sunting Versi Terbaru
+_f141a011,edit_title_to_which_version,To Which Version,Ke Versi Yang Mana
 _0b9e9a2e,edit_title_version_id,Edit Version ID,Edit ID Versi
 _dbc591aa,edit_title_version_name,Edit Version Name,Edit Nama Versi
+_3d3715f8,load_draft_subtitle,Would you like to load the previously saved draft?,Apakah Anda ingin memuat draf yang disimpan sebelumnya?
+_320a8d60,load_draft_title,Load Draft,Memuat Draf
 _03571343,logout_dialog_subtitle,Are you sure to logout?,Apakah Anda yakin untuk logout?
 _daba9214,logout_dialog_title,Logout,Keluar
+_0b7808b6,save_draft_subtitle,Would you like to save your edits as a draft?,
+_d0c81936,save_draft_title,Save Draft,Menyimpan konsep
 _d43f5c3e,two_step_vrf_subtitle,Please enter your OTP,Silakan masukkan OTP Anda
 _0c92d549,two_step_vrf_title,Two-Step Verification,Verifikasi Dua Langkah
 _29e8355a,upload_new_ver_subtitle,Are you sure to submit your edited version?,Apakah Anda yakin untuk mengirimkan versi editan Anda?
@@ -74,9 +81,12 @@ _ea6d0c78,upload_ver_env_testing,Testing,Pengujian
 _6ed9d243,upload_ver_toolbar_title,Upload New Version,Unggah Versi Baru
 ,【Cloud】,,
 _fa8bd164,cloud_config_channel,Channel,Saluran
-_06afd06b,cloud_config_from_version,From Version,Dari Versi
-_d316e2cb,cloud_config_to_version,To Version,Ke Versi
+_06afd06b,cloud_config_from_version,From Which Version,Dari Versi
+_9242635a,cloud_config_name,Config Name,Nama Konfigurasi
+_d316e2cb,cloud_config_to_version,To Which Version,Ke Versi
+_867c2cc7,cloud_config_unique_id,Unique ID,Identitas unik
 _ede4ec51,cloud_config_value,Setting,Pengaturan
+_6caa8280,upload_cloud_toolbar_title,Upload Cloud Configuration,Unggah Konfigurasi Cloud
 ,【Platform】,,
 _918b7a11,platform_blibli,BliBli,BliBli
 _853432e4,platform_instagram,Instagram,Instagram

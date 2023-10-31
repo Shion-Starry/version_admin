@@ -4,15 +4,15 @@
     xmlns:bind="http://schemas.android.com/tools">
 
     <data>
-        
+
         <variable
             name="mState"
-            type="app.desty.chat_admin.upload.page.upload_new.UploadNewViewModel" />
-        
+            type="app.desty.chat_admin.cloud.pages.cloud_upload.CloudUploadViewModel" />
+
         <variable
             name="click"
-            type="app.desty.chat_admin.upload.page.upload_new.UploadNewActivity.ClickEvents" />
-        
+            type="app.desty.chat_admin.cloud.pages.cloud_upload.CloudUploadActivity.ClickEvents" />
+
     </data>
 
     <app.desty.chat_admin.common.widget.ClearFocusConstraintLayout
@@ -53,8 +53,6 @@
             app:layout_constraintBottom_toTopOf="@id/llc_upload_button">
 
             <androidx.appcompat.widget.LinearLayoutCompat
-                drawable_radius="@{8}"
-                drawable_solidColor="@{@color/white}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -66,52 +64,35 @@
                 app:showDividers="beginning|middle|end">
 
                 <include
-                    layout="@layout/item_key_edit"
-                    bind:key="@{@string/latest_release_channel}"
+                    layout="@layout/item_key_edit_cloud"
+                    bind:key="@{@string/cloud_config_name}"
+                    bind:edtState="@{mState}" />
+
+                <include
+                    layout="@layout/item_key_edit_cloud"
+                    bind:key="@{@string/cloud_config_value}"
                     bind:edtState="@{mState}" />
 
                 <include
                     layout="@layout/item_key_text"
-                    bind:key="@{@string/latest_release_latest_version}"
-                    bind:displayText="@{mState.latestVersion}"
-                    bind:click="@{click::clickLatestVer}" />
+                    bind:key="@{@string/cloud_config_from_version}"
+                    bind:displayText="@{mState.fromVersion}"
+                    bind:click="@{click::clickFromVer}" />
 
                 <include
                     layout="@layout/item_key_text"
-                    bind:key="@{@string/latest_release_latest_code}"
-                    bind:displayText="@{mState.latestCode}"
-                    bind:click="@{click::clickLatestVer}" />
+                    bind:key="@{@string/cloud_config_to_version}"
+                    bind:displayText="@{mState.toVersion}"
+                    bind:click="@{click::clickToVer}" />
 
                 <include
-                    layout="@layout/item_key_text"
-                    bind:key="@{@string/latest_release_compat_version}"
-                    bind:displayText="@{mState.compatVersion}"
-                    bind:click="@{click::clickCompatVer}" />
-
-                <include
-                    layout="@layout/item_key_text"
-                    bind:key="@{@string/latest_release_compat_code}"
-                    bind:displayText="@{mState.compatCode}"
-                    bind:click="@{click::clickCompatVer}" />
-
-                <include
-                    layout="@layout/item_key_edit"
-                    bind:key="@{@string/latest_release_url}"
+                    layout="@layout/item_key_edit_cloud"
+                    bind:key="@{@string/cloud_config_unique_id}"
                     bind:edtState="@{mState}" />
 
                 <include
-                    layout="@layout/item_key_edit"
-                    bind:key="@{@string/latest_release_website_url}"
-                    bind:edtState="@{mState}" />
-
-                <include
-                    layout="@layout/item_key_edit"
-                    bind:key="@{@string/latest_release_market_url}"
-                    bind:edtState="@{mState}" />
-
-                <include
-                    layout="@layout/item_key_edit"
-                    bind:key="@{@string/latest_release_content}"
+                    layout="@layout/item_key_edit_cloud"
+                    bind:key="@{@string/cloud_config_channel}"
                     bind:edtState="@{mState}" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>

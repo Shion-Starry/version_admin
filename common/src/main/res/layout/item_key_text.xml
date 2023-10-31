@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:text="@{key}"
             android:textColor="@color/grey_400"
-            android:maxWidth="150dp"
+            android:maxWidth="230dp"
             android:textSize="@dimen/text_lg"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

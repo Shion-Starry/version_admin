@@ -7,6 +7,7 @@ import app.desty.chat_admin.common.base.DataBindingConfig
 import app.desty.chat_admin.common.bean.ToolbarConfig
 import app.desty.chat_admin.common.bean.VersionGroup
 import app.desty.chat_admin.common.bean.VersionInfo
+import app.desty.chat_admin.common.config.EditVersionDraft
 import app.desty.chat_admin.common.config.Environment
 import app.desty.chat_admin.common.constants.RouteConstants
 import app.desty.chat_admin.common.enum_bean.ChatAdminDialog
@@ -26,25 +27,47 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
     @Autowired(name = "verInfo")
     var passedVerInfo: VersionInfo? = null
 
-    private val backClick = View.OnClickListener { _: View? ->
-        super.onBackPressed()
+    override fun onBackPressed() {
+        if (mState.ifSaveDraft()) {
+            MyDialog.show(
+                ChatAdminDialog.Draft,
+                {
+                    mState.saveVerDraft()
+                    super.onBackPressed()
+                },
+                {
+                    mState.clearVerDraft()
+                    super.onBackPressed()
+                }
+            )
+        } else {
+            super.onBackPressed()
+        }
     }
 
     override fun init(savedInstanceState: Bundle?) {
+        passedVerInfo?.apply {
+            content = ""
+        }
         KeyboardUtils.fixAndroidBug5497(this)
+        if (EditVersionDraft.verInfo == null) {
+            mState.setInitialData(passedVerInfo)
+        } else {
+            MyDialog.show(
+                ChatAdminDialog.LoadDraft,
+                {
+                    mState.setInitialData(EditVersionDraft.verInfo)
+                    mState.clearVerDraft()
+                },
+                {
+                    mState.setInitialData(passedVerInfo)
+                    mState.clearVerDraft()
+                }
+            )
+        }
     }
 
     override fun initViewModel() {
-        passedVerInfo?.apply {
-            mState.channel.value = this.channel
-            mState.latestVersion.value = this.latestVersion
-            mState.latestCode.value = VersionGroup(this.latestCode).getVersionCodeStr()
-            mState.compatVersion.value = this.compatVersion
-            mState.compatCode.value = VersionGroup(this.compatCode).getVersionCodeStr()
-            mState.url.value = this.url
-            mState.websiteUrl.value = this.websiteUrl
-            mState.marketUrl.value = this.marketUrl
-        }
         mState.ifSuccessful.observe(this, this::checkSubmitted)
     }
 
@@ -55,9 +78,9 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
     override fun getToolbarConfig(): ToolbarConfig {
         return ToolbarConfig(
             titleTextBold = true,
-            title = getString(R.string.upload_ver_toolbar_title),
+            title = StringUtils.getString(R.string.upload_ver_toolbar_title),
             showBack = true,
-            backClick = backClick
+            backClick = {onBackPressed()}
         )
     }
 

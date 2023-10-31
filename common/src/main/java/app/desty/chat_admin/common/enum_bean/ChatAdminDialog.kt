@@ -26,6 +26,20 @@ enum class ChatAdminDialog(
         titleRes = R.string.upload_new_ver_title,
         subTitleRes = R.string.upload_new_ver_subtitle,
         okRes = R.string.yes
+    ),
+    Draft(
+        layoutRes = R.layout.dialog_admin_yellow,
+        titleRes = R.string.save_draft_title,
+        subTitleRes = R.string.save_draft_subtitle,
+        okRes = R.string.yes,
+        cancelRes = R.string.no
+    ),
+    LoadDraft(
+        layoutRes = R.layout.dialog_admin_green,
+        titleRes = R.string.load_draft_title,
+        subTitleRes = R.string.load_draft_subtitle,
+        okRes = R.string.yes,
+        cancelRes = R.string.no
     );
 
     fun getFinalTitle(): String {

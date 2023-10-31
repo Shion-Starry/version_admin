@@ -2,7 +2,7 @@ package app.desty.chat_admin.common.model
 
 import androidx.lifecycle.ViewModel
 import app.desty.sdk.logcat.Logcat
-import com.blankj.utilcode.util.KsonUtils
+import com.blankj.utilcode.util.GsonUtils
 import com.drake.net.request.BodyRequest
 import com.drake.net.request.MediaConst
 import com.drake.net.scope.AndroidScope
@@ -13,6 +13,7 @@ import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONArray
 import org.json.JSONObject
 
 
@@ -72,8 +73,16 @@ fun BodyRequest.baseJson(baseJson: JSONObject) = baseJson(baseJson.toString())
 
 fun BodyRequest.baseJson(vararg params: Pair<String, Any?>) = baseJson(params.toMap())
 
-fun BodyRequest.bean(bean: Any?) {
-    body = KsonUtils.getKson().encodeToString(this).toRequestBody(MediaConst.JSON)
+fun BodyRequest.array(vararg map: Map<String, Any?>) {
+    body  = JSONArray(map.map { JSONObject(it) }).toString().toRequestBody(MediaConst.JSON)
+}
+
+fun BodyRequest.gson(any: Any){
+    body = GsonUtils.getGson().toJson(any).toRequestBody(MediaConst.JSON)
+}
+
+fun BodyRequest.gson(vararg params: Pair<String, Any?>){
+    body = GsonUtils.getGson().toJson(params.toMap()).toRequestBody(MediaConst.JSON)
 }
 
 inline fun <reified T> BodyRequest.baseJson(data: T?) {

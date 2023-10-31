@@ -73,6 +73,8 @@ class SerializationConverter(
                 this as R
             }
 
+//            else                           -> GsonUtils.getGson().fromJson(this, succeed) as R
+
             else                           -> jsonDecoder.decodeFromString(
                 Json.serializersModule.serializer(
                     succeed

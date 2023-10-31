@@ -48,6 +48,7 @@ dependencies {
 
     api commonLibraries.brv
     api commonLibraries.flexbox
+    api commonLibraries.gson
 
     //glide
     api commonLibraries.glide

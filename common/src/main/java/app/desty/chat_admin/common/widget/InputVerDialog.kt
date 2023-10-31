@@ -59,10 +59,10 @@ class InputVerDialog(context: Context) : BottomPopupView(context) {
         fun clickOk(view: View) {
             okListener?.run {
                 val versionGroup = VersionGroup(
-                    dlgState.versions.majorInput.value?.toInt() ?: 0,
-                    dlgState.versions.subInput.value?.toInt() ?: 0,
-                    dlgState.versions.fixInput.value?.toInt() ?: 0,
-                    dlgState.versions.buildInput.value?.toInt() ?: 0
+                    dlgState.versions.majorInput.value?.toIntOrNull() ?: 0,
+                    dlgState.versions.subInput.value?.toIntOrNull() ?: 0,
+                    dlgState.versions.fixInput.value?.toIntOrNull() ?: 0,
+                    dlgState.versions.buildInput.value?.toIntOrNull() ?: 0
                 )
                 this(versionGroup)
             }

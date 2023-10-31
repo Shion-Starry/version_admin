@@ -3,6 +3,7 @@ package app.desty.chat_admin.common.bean
 import android.os.Build
 import android.os.Parcelable
 import androidx.annotation.RequiresApi
+import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -15,15 +16,25 @@ import java.time.format.DateTimeFormatter
 @Parcelize
 data class VersionInfo(
     val channel: String = "",
-    @SerialName("compatibleCode") val compatCode: Int = 0,
-    @SerialName("compatibleVersion") val compatVersion: String = "",
-    val content: String = "",
+    @SerialName("compatibleCode")
+    @SerializedName("compatibleCode")
+    val compatCode: Int = 0,
+    @SerialName("compatibleVersion")
+    @SerializedName("compatibleVersion")
+    val compatVersion: String = "",
+    var content: String = "",
+    @Transient
     val createTime: Long = 0,
-    @SerialName("id") val versionId: Int = 0,
+    @Transient
+    @SerialName("id")
+    @SerializedName("id")
+    val versionId: Int = 0,
     val latestCode: Int = 0,
     val latestVersion: String = "",
     val marketUrl: String = "",
+    @Transient
     val state: Int = 0,
+    @Transient
     val updateTime: Long = 0,
     val url: String = "",
     val websiteUrl: String = ""
@@ -45,6 +56,22 @@ data class VersionInfo(
         val dateTime = ZonedDateTime.ofInstant(instant, zoneId)
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
         return dateTime.format(formatter)
+    }
+
+    override fun equals(other: Any?): Boolean {
+        return if (other is VersionInfo) {
+            (channel == other.channel
+                    && latestVersion == other.latestVersion
+                    && latestCode == other.latestCode
+                    && compatVersion == other.compatVersion
+                    && compatCode == other.compatCode
+                    && url == other.url
+                    && websiteUrl == other.websiteUrl
+                    && marketUrl == other.marketUrl
+                    && content == other.content)
+        } else {
+            false
+        }
     }
 
 }
