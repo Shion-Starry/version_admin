@@ -16,16 +16,15 @@ import kotlinx.coroutines.CoroutineScope
 
 class UploadNewViewModel : BaseVM() {
 
-    val channel = MutableLiveData("")
+    private val channel = MutableLiveData("")
     val latestVersion = MutableLiveData("")
     val latestCode = MutableLiveData("")
     val compatVersion = MutableLiveData("")
     val compatCode = MutableLiveData("")
-    val url = MutableLiveData("")
-    val websiteUrl = MutableLiveData("")
-    val marketUrl = MutableLiveData("")
+    private val url = MutableLiveData("")
+    private val websiteUrl = MutableLiveData("")
+    private val marketUrl = MutableLiveData("")
     private val content = MutableLiveData("")
-    val emptyVer = buildVerInfo()
     private val infoList = listOf(
         channel,
         latestVersion,
@@ -59,7 +58,7 @@ class UploadNewViewModel : BaseVM() {
         canUpload.value = true
     }
 
-    fun ifSaveDraft(): Boolean = (buildVerInfo() != presetVer && buildVerInfo() != emptyVer)
+    fun ifSaveDraft(): Boolean = buildVerInfo() != presetVer
 
     fun saveVerDraft() {
         EditVersionDraft.verInfo = buildVerInfo()

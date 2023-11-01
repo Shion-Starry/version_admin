@@ -1,12 +1,10 @@
 package app.desty.chat_admin.cloud.adapter
 
-import androidx.recyclerview.widget.RecyclerView
 import app.desty.chat_admin.cloud.R
 import app.desty.chat_admin.common.bean.CloudConfigInfo
 import com.drake.brv.BindingAdapter
 
 class CloudConfigListAdapter : BindingAdapter() {
-    private val recyclerViewPool = RecyclerView.RecycledViewPool()
     private var onEditConfig: ((CloudConfigInfo) -> Unit)? = null
     private var onDeleteConfig: ((CloudConfigInfo) -> Unit)? = null
 
@@ -22,6 +20,7 @@ class CloudConfigListAdapter : BindingAdapter() {
 
     init {
         addType<CloudConfigInfo>(R.layout.item_cloud_config_list)
+
         R.id.bbtv_edit.onClick {
             getModelOrNull<CloudConfigInfo>()?.apply {
                 onEditConfig?.invoke(this)
@@ -33,7 +32,6 @@ class CloudConfigListAdapter : BindingAdapter() {
                 onDeleteConfig?.invoke(this)
             }
         }
-
     }
 
 }

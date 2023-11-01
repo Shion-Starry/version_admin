@@ -14,12 +14,12 @@ import kotlinx.coroutines.CoroutineScope
 
 class CloudUploadViewModel : BaseVM() {
 
-    val configName = MutableLiveData("")
-    val configValue = MutableLiveData("")
+    private val configName = MutableLiveData("")
+    private val configValue = MutableLiveData("")
     val fromVersion = MutableLiveData("")
     val toVersion = MutableLiveData("")
-    val uniqueId = MutableLiveData("")
-    val channel = MutableLiveData("")
+    private val uniqueId = MutableLiveData("")
+    private val channel = MutableLiveData("")
     private val infoList = listOf(
         configName,
         configValue,
@@ -31,6 +31,7 @@ class CloudUploadViewModel : BaseVM() {
     val canUpload = MediatorLiveData(false)
     val env = MutableLiveData(Environment.Test)
     val ifSuccessful = MutableLiveData(false)
+    val editEnabled = MutableLiveData(true)
 
     init {
         for (info in infoList) {
@@ -48,6 +49,13 @@ class CloudUploadViewModel : BaseVM() {
             }
         }
         canUpload.value = true
+    }
+
+    fun setEditEnabled(key: String): Boolean {
+        return when (key) {
+            "Unique ID"    -> editEnabled.value ?: true
+            else               -> true
+        }
     }
 
     fun getSpecific(key: String): MutableLiveData<String> {

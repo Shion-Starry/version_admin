@@ -57,7 +57,6 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
                 ChatAdminDialog.LoadDraft,
                 {
                     mState.setInitialData(EditVersionDraft.verInfo)
-                    mState.clearVerDraft()
                 },
                 {
                     mState.setInitialData(passedVerInfo)

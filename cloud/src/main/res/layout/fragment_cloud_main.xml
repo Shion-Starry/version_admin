@@ -4,6 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        
+        <variable
+            name="mState"
+            type="app.desty.chat_admin.cloud.pages.CloudMainViewModel" />
+        
+        <variable
+            name="click"
+            type="app.desty.chat_admin.cloud.pages.CloudMainFragment.ClickEvents" />
 
     </data>
 
@@ -60,6 +68,7 @@
             app:layout_constraintGuide_percent="0.08" />
 
         <com.drake.brv.PageRefreshLayout
+            layoutState="@{mState.layoutState}"
             android:id="@+id/prl_configs"
             android:layout_width="match_parent"
             android:layout_height="0dp"
