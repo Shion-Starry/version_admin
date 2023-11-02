@@ -58,6 +58,7 @@ dependencies {
     api commonLibraries.floatingview
     api commonLibraries.easyFloatingView
     api commonLibraries.X_Popup
+    api commonLibraries.X_PopupExt
     api commonLibraries.magicIndicator
     api commonLibraries.eventbus
     api commonLibraries.XXPermissions

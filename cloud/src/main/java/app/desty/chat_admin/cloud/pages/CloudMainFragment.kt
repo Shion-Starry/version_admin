@@ -11,11 +11,11 @@ import app.desty.chat_admin.cloud.databinding.FragmentCloudMainBinding
 import app.desty.chat_admin.common.base.BaseVMFragment
 import app.desty.chat_admin.common.base.DataBindingConfig
 import app.desty.chat_admin.common.bean.CloudConfigInfo
+import app.desty.chat_admin.common.config.Environment
 import app.desty.chat_admin.common.config.ToolbarClickListener
 import app.desty.chat_admin.common.constants.RouteConstants
 import app.desty.chat_admin.common.enum_bean.HomePageType
 import app.desty.chat_admin.common.utils.MyToast
-import app.desty.sdk.logcat.Logcat
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.core.result.navigation
@@ -42,11 +42,30 @@ class CloudMainFragment : BaseVMFragment<CloudMainViewModel>(), ToolbarClickList
 
         if (binding is FragmentCloudMainBinding) {
             (binding as FragmentCloudMainBinding).apply {
-
                 prlConfigs.onRefresh {
-
+                    mState?.loadConfigList {
+                        val models = mutableListOf<CloudConfigInfo>()
+                        it?.apply {
+                            this.forEach { item ->
+                                models += item
+                            }
+                            addData(models)
+                        }
+                        finish()
+                    }
+                }.autoRefresh()
+                prlConfigs.onLoadMore {
+                    mState?.loadConfigList {
+                        val models = mutableListOf<CloudConfigInfo>()
+                        it?.apply {
+                            this.forEach { item ->
+                                models += item
+                            }
+                            addData(models)
+                        }
+                        finish()
+                    }
                 }
-
             }
         }
 
@@ -61,18 +80,37 @@ class CloudMainFragment : BaseVMFragment<CloudMainViewModel>(), ToolbarClickList
 
     inner class ClickEvents {
         fun editConfig(ccInfo: CloudConfigInfo) {
-            Logcat.i("The config to be edited: $ccInfo")
-            ARouter.getInstance()
-                .build(RouteConstants.Cloud.upload)
-                .navigation(this@CloudMainFragment, uploadCloudResult)
+            MyToast.showToast("The config to be edited: $ccInfo")
+//            ARouter.getInstance()
+//                .build(RouteConstants.Cloud.upload)
+//                .navigation(this@CloudMainFragment, uploadCloudResult)
         }
 
         fun deleteConfig(ccInfo: CloudConfigInfo) {
-            Logcat.i("The config to be deleted: $ccInfo")
-            ARouter.getInstance()
-                .build(RouteConstants.Cloud.upload)
-                .navigation(this@CloudMainFragment, uploadCloudResult)
+            MyToast.showToast("The config to be deleted: $ccInfo")
+//            ARouter.getInstance()
+//                .build(RouteConstants.Cloud.upload)
+//                .navigation(this@CloudMainFragment, uploadCloudResult)
         }
+
+        fun clearSearchBox(view: View) {
+            mState.searchKey.value = ""
+        }
+
+        fun clearFilter(view: View) {
+            mState.selectedToVersion.value = ""
+        }
+
+        fun clickFirstOp(view: View) {
+            mState.env.value = Environment.Test
+            mState.layoutState.showRefreshing()
+        }
+
+        fun clickSecondOp(view: View) {
+            mState.env.value = Environment.Prod
+            mState.layoutState.showRefreshing()
+        }
+
     }
 
     override fun clickFragToolbar(view: View, homePageType: HomePageType, buttonType: Int) {

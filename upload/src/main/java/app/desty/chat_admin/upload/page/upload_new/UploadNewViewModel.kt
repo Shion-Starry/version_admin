@@ -106,7 +106,7 @@ class UploadNewViewModel : BaseVM() {
     )
 
     fun uploadNewVer(): suspend CoroutineScope.() -> Unit = {
-        Post<Boolean>("${EnvConfig.getBaseUrl(env.value)}${UploadApi.saveVersion}") {
+        Post<String>("${EnvConfig.getBaseUrl(env.value)}${UploadApi.saveVersion}") {
             KsonUtils
             gson(
                 buildVerInfo()

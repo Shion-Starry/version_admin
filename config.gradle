@@ -129,6 +129,7 @@ ext {
             easyFloatingView          : "com.github.princekin-f:EasyFloat:2.0.4",
 
             //xpopup
+            X_PopupExt               : "com.github.li-xiaojun:XPopupExt:1.0.0",
             X_Popup                   : "com.github.li-xiaojun:XPopup:2.7.5",
             eventbus                  : "org.greenrobot:eventbus:3.0.0",
             XXPermissions             : 'com.github.getActivity:XXPermissions:16.8',
