@@ -14,11 +14,13 @@ import app.desty.chat_admin.common.bean.CloudConfigInfo
 import app.desty.chat_admin.common.config.Environment
 import app.desty.chat_admin.common.config.ToolbarClickListener
 import app.desty.chat_admin.common.constants.RouteConstants
+import app.desty.chat_admin.common.enum_bean.ChatAdminDialog
 import app.desty.chat_admin.common.enum_bean.HomePageType
-import app.desty.chat_admin.common.utils.MyToast
+import app.desty.chat_admin.common.utils.MyDialog
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.core.result.navigation
+import com.drake.net.utils.scopeDialog
 
 @Route(path = RouteConstants.Cloud.main)
 class CloudMainFragment : BaseVMFragment<CloudMainViewModel>(), ToolbarClickListener {
@@ -54,18 +56,7 @@ class CloudMainFragment : BaseVMFragment<CloudMainViewModel>(), ToolbarClickList
                         finish()
                     }
                 }.autoRefresh()
-                prlConfigs.onLoadMore {
-                    mState?.loadConfigList {
-                        val models = mutableListOf<CloudConfigInfo>()
-                        it?.apply {
-                            this.forEach { item ->
-                                models += item
-                            }
-                            addData(models)
-                        }
-                        finish()
-                    }
-                }
+                prlConfigs.setEnableLoadMore(false)
             }
         }
 
@@ -73,24 +64,29 @@ class CloudMainFragment : BaseVMFragment<CloudMainViewModel>(), ToolbarClickList
 
     private val uploadCloudResult = ActivityResultCallback<ActivityResult> {
         if (it.resultCode == Activity.RESULT_OK) {
-            MyToast.showToast("The draft has been saved :)")
+            mState.layoutState.showRefreshing()
         }
-
     }
 
     inner class ClickEvents {
         fun editConfig(ccInfo: CloudConfigInfo) {
-            MyToast.showToast("The config to be edited: $ccInfo")
-//            ARouter.getInstance()
-//                .build(RouteConstants.Cloud.upload)
-//                .navigation(this@CloudMainFragment, uploadCloudResult)
+            ARouter.getInstance()
+                .build(RouteConstants.Cloud.upload)
+                .withParcelable("configInfo", ccInfo)
+                .withSerializable("environment", mState.env.value)
+                .navigation(this@CloudMainFragment, uploadCloudResult)
         }
 
         fun deleteConfig(ccInfo: CloudConfigInfo) {
-            MyToast.showToast("The config to be deleted: $ccInfo")
-//            ARouter.getInstance()
-//                .build(RouteConstants.Cloud.upload)
-//                .navigation(this@CloudMainFragment, uploadCloudResult)
+            MyDialog.show(
+                ChatAdminDialog.DeleteConfig,
+                {
+                    scopeDialog(block = mState.deleteConfig(ccInfo))
+                        .finally {
+                            mState.layoutState.showRefreshing()
+                        }
+                }
+            )
         }
 
         fun clearSearchBox(view: View) {
@@ -98,7 +94,7 @@ class CloudMainFragment : BaseVMFragment<CloudMainViewModel>(), ToolbarClickList
         }
 
         fun clearFilter(view: View) {
-            mState.selectedToVersion.value = ""
+            mState.selectedVersion.value = ""
         }
 
         fun clickFirstOp(view: View) {
@@ -121,6 +117,7 @@ class CloudMainFragment : BaseVMFragment<CloudMainViewModel>(), ToolbarClickList
         if (buttonType == ToolbarClickListener.RIGHT_OPERATE) {
             ARouter.getInstance()
                 .build(RouteConstants.Cloud.upload)
+                .withSerializable("environment", mState.env.value)
                 .navigation(this@CloudMainFragment, uploadCloudResult)
         }
     }

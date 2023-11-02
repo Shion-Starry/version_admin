@@ -114,11 +114,19 @@ data class VersionGroup(
     }
 
     fun getVersionStr(): String {
-        return "${major}.${sub}.${fix}"
+        return if (major + sub + fix + build == 0) {
+            ""
+        } else {
+            "${major}.${sub}.${fix}"
+        }
     }
 
     fun getVersionCodeStr(): String {
-        return String.format("%d%02d%02d%03d", major, sub, fix, build)
+        return if (major + sub + fix + build == 0) {
+            ""
+        } else {
+            String.format("%d%02d%02d%03d", major, sub, fix, build)
+        }
     }
 
 }

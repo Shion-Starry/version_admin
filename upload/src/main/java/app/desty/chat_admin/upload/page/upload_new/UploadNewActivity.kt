@@ -7,7 +7,7 @@ import app.desty.chat_admin.common.base.DataBindingConfig
 import app.desty.chat_admin.common.bean.ToolbarConfig
 import app.desty.chat_admin.common.bean.VersionGroup
 import app.desty.chat_admin.common.bean.VersionInfo
-import app.desty.chat_admin.common.config.EditVersionDraft
+import app.desty.chat_admin.common.config.EditDraft
 import app.desty.chat_admin.common.config.Environment
 import app.desty.chat_admin.common.constants.RouteConstants
 import app.desty.chat_admin.common.enum_bean.ChatAdminDialog
@@ -26,6 +26,10 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
     @JvmField
     @Autowired(name = "verInfo")
     var passedVerInfo: VersionInfo? = null
+
+    @JvmField
+    @Autowired(name = "environment")
+    var passedEnv: Environment? = null
 
     override fun onBackPressed() {
         if (mState.ifSaveDraft()) {
@@ -46,17 +50,17 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
     }
 
     override fun init(savedInstanceState: Bundle?) {
-        passedVerInfo?.apply {
-            content = ""
-        }
         KeyboardUtils.fixAndroidBug5497(this)
-        if (EditVersionDraft.verInfo == null) {
+        passedEnv?.apply {
+            mState.env = this
+        }
+        if (EditDraft.getVerInfoByEnv(mState.env) == null) {
             mState.setInitialData(passedVerInfo)
         } else {
             MyDialog.show(
                 ChatAdminDialog.LoadDraft,
                 {
-                    mState.setInitialData(EditVersionDraft.verInfo)
+                    mState.setInitialData(EditDraft.getVerInfoByEnv(mState.env))
                 },
                 {
                     mState.setInitialData(passedVerInfo)
@@ -93,11 +97,11 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
     inner class ClickEvents {
 
         fun clickUpload(view: View) {
-            if (mState.env.value == Environment.Test) {
+            if (mState.env == Environment.Test) {
                 MyDialog.show(ChatAdminDialog.Upload, {
                     scopeDialog(block = mState.uploadNewVer())
                 })
-            } else if (mState.env.value == Environment.Prod) {
+            } else if (mState.env == Environment.Prod) {
                 MyDialog.showOtpDialog {
                     if (it) {
                         scopeDialog(block = mState.uploadNewVer())
@@ -128,12 +132,8 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
             }
         }
 
-        fun clickFirstOp(view: View) {
-            mState.env.value = Environment.Test
-        }
-
-        fun clickSecondOp(view: View) {
-            mState.env.value = Environment.Prod
+        fun clearContent(view: View) {
+            mState.content.value = ""
         }
 
     }

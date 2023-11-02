@@ -3,14 +3,14 @@ package app.desty.chat_admin.upload.page.upload_new
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import app.desty.chat_admin.common.base.BaseVM
+import app.desty.chat_admin.common.bean.VersionGroup
 import app.desty.chat_admin.common.bean.VersionInfo
-import app.desty.chat_admin.common.config.EditVersionDraft
+import app.desty.chat_admin.common.config.EditDraft
 import app.desty.chat_admin.common.config.EnvConfig
 import app.desty.chat_admin.common.config.Environment
 import app.desty.chat_admin.common.model.gson
 import app.desty.chat_admin.common.utils.MyToast
 import app.desty.chat_admin.upload.api.UploadApi
-import com.blankj.utilcode.util.KsonUtils
 import com.drake.net.Post
 import kotlinx.coroutines.CoroutineScope
 
@@ -24,7 +24,7 @@ class UploadNewViewModel : BaseVM() {
     private val url = MutableLiveData("")
     private val websiteUrl = MutableLiveData("")
     private val marketUrl = MutableLiveData("")
-    private val content = MutableLiveData("")
+    val content = MutableLiveData("")
     private val infoList = listOf(
         channel,
         latestVersion,
@@ -36,7 +36,7 @@ class UploadNewViewModel : BaseVM() {
         marketUrl,
         content)
     val canUpload = MediatorLiveData(false)
-    val env = MutableLiveData(Environment.Test)
+    var env = Environment.Test
     val ifSuccessful = MutableLiveData(false)
     private var presetVer: VersionInfo? = null
 
@@ -61,25 +61,25 @@ class UploadNewViewModel : BaseVM() {
     fun ifSaveDraft(): Boolean = buildVerInfo() != presetVer
 
     fun saveVerDraft() {
-        EditVersionDraft.verInfo = buildVerInfo()
+        EditDraft.setVerInfoByEnv(env, buildVerInfo())
     }
 
     fun clearVerDraft() {
-        EditVersionDraft.verInfo = null
+        EditDraft.setVerInfoByEnv(env, null)
     }
 
     fun setInitialData(versionInfo: VersionInfo?) {
         presetVer = versionInfo?.also {
             channel.value = it.channel
             latestVersion.value = it.latestVersion
-            latestCode.value = it.latestCode.toString()
+            latestCode.value = VersionGroup(it.latestCode).getVersionCodeStr()
             compatVersion.value = it.compatVersion
-            compatCode.value = it.compatCode.toString()
+            compatCode.value = VersionGroup(it.compatCode).getVersionCodeStr()
             url.value = it.url
             websiteUrl.value = it.websiteUrl
             marketUrl.value = it.marketUrl
             content.value = it.content
-        }
+        } ?: buildVerInfo()
     }
 
     fun getSpecific(key: String): MutableLiveData<String> {
@@ -106,8 +106,7 @@ class UploadNewViewModel : BaseVM() {
     )
 
     fun uploadNewVer(): suspend CoroutineScope.() -> Unit = {
-        Post<String>("${EnvConfig.getBaseUrl(env.value)}${UploadApi.saveVersion}") {
-            KsonUtils
+        Post<String>("${EnvConfig.getBaseUrl(env)}${UploadApi.saveVersion}") {
             gson(
                 buildVerInfo()
             )

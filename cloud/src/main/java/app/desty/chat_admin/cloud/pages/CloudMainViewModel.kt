@@ -10,10 +10,11 @@ import app.desty.chat_admin.common.bean.CloudConfigInfo
 import app.desty.chat_admin.common.config.EnvConfig
 import app.desty.chat_admin.common.config.Environment
 import com.drake.net.Post
+import kotlinx.coroutines.CoroutineScope
 
 class CloudMainViewModel : BaseVM() {
 
-    val selectedToVersion = MutableLiveData("")
+    val selectedVersion = MutableLiveData("")
     val searchKey = MutableLiveData("")
     val env = MutableLiveData(Environment.Test)
     val adapter = MutableLiveData(CloudConfigListAdapter())
@@ -31,6 +32,14 @@ class CloudMainViewModel : BaseVM() {
         }.finally {
             callback.invoke(null)
         }
+    }
+
+    fun deleteConfig(ccInfo: CloudConfigInfo): suspend CoroutineScope.() -> Unit = {
+        Post<String>("${EnvConfig.getBaseUrl(env.value)}${CloudApi.deleteConfig}") {
+            json(
+                "uniqueKey" to ccInfo.uniqueKey
+            )
+        }.await()
     }
 
 }

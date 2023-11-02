@@ -91,6 +91,7 @@
 
         <app.desty.chat_admin.common.widget.base.BaseBoldTextView
             drawable_radius="@{8}"
+            drawable_solidColor="@{@color/orange_500}"
             android:id="@+id/bbtv_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,6 +111,7 @@
 
         <app.desty.chat_admin.common.widget.base.BaseBoldTextView
             drawable_radius="@{8}"
+            drawable_solidColor="@{@color/chat_500}"
             android:id="@+id/bbtv_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

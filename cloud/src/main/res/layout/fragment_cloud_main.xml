@@ -54,7 +54,7 @@
 
             <include
                 layout="@layout/item_filter"
-                bind:displayText="@{mState.selectedToVersion}"
+                bind:displayText="@{mState.selectedVersion}"
                 bind:click="@{click}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

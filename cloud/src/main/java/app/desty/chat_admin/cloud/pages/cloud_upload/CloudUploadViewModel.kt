@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import app.desty.chat_admin.cloud.api.CloudApi
 import app.desty.chat_admin.common.base.BaseVM
 import app.desty.chat_admin.common.bean.CloudConfigInfo
+import app.desty.chat_admin.common.bean.VersionGroup
+import app.desty.chat_admin.common.config.EditDraft
 import app.desty.chat_admin.common.config.EnvConfig
 import app.desty.chat_admin.common.config.Environment
 import app.desty.chat_admin.common.model.gson
@@ -29,9 +31,10 @@ class CloudUploadViewModel : BaseVM() {
         channel
     )
     val canUpload = MediatorLiveData(false)
-    val env = MutableLiveData(Environment.Test)
+    var env = Environment.Test
     val ifSuccessful = MutableLiveData(false)
-    val editEnabled = MutableLiveData(true)
+    var editEnabled = true
+    private var presetConfig: CloudConfigInfo? = null
 
     init {
         for (info in infoList) {
@@ -53,9 +56,30 @@ class CloudUploadViewModel : BaseVM() {
 
     fun setEditEnabled(key: String): Boolean {
         return when (key) {
-            "Unique ID"    -> editEnabled.value ?: true
+            "Unique ID"    -> editEnabled
             else               -> true
         }
+    }
+
+    fun ifSaveDraft(): Boolean = buildConfigInfo() != presetConfig
+
+    fun saveConfigDraft() {
+        EditDraft.setCloudInfoByEnv(env, buildConfigInfo())
+    }
+
+    fun clearConfigDraft() {
+        EditDraft.setCloudInfoByEnv(env, null)
+    }
+
+    fun setInitialData(cloudConfigInfo: CloudConfigInfo?) {
+        presetConfig = cloudConfigInfo?.also {
+            configName.value = it.name
+            configValue.value = it.value
+            fromVersion.value = VersionGroup(it.fromVersionCode).getVersionCodeStr()
+            toVersion.value = VersionGroup(it.toVersionCode).getVersionCodeStr()
+            uniqueId.value = it.uniqueKey
+            channel.value = it.channel
+        } ?: buildConfigInfo()
     }
 
     fun getSpecific(key: String): MutableLiveData<String> {
@@ -70,23 +94,26 @@ class CloudUploadViewModel : BaseVM() {
         }
     }
 
+    private fun buildConfigInfo() = CloudConfigInfo(
+        name = configName.value ?: "",
+        value = configValue.value ?: "",
+        fromVersionCode = fromVersion.value?.toIntOrNull() ?: 0,
+        toVersionCode = toVersion.value?.toIntOrNull() ?: 0,
+        uniqueKey = uniqueId.value ?: "",
+        channel = channel.value ?: ""
+    )
+
     fun uploadCloud(): suspend CoroutineScope.() -> Unit = {
-        Post<String>("${EnvConfig.getBaseUrl(env.value)}${CloudApi.saveConfig}") {
+        Post<String>("${EnvConfig.getBaseUrl(env)}${CloudApi.saveConfig}") {
             gson(
                 mapOf(
                     "saveList" to listOf(
-                        CloudConfigInfo(
-                            name = configName.value ?: "",
-                            value = configValue.value ?: "",
-                            fromVersionCode = fromVersion.value?.toIntOrNull() ?: 0,
-                            toVersionCode = toVersion.value?.toIntOrNull() ?: 0,
-                            uniqueKey = uniqueId.value ?: "",
-                            channel = channel.value ?: ""
-                        )
+                        buildConfigInfo()
                     )
                 )
             )
         }.await()
+        clearConfigDraft()
         MyToast.showToast("Successfully Submitted :)")
         ifSuccessful.value = true
     }

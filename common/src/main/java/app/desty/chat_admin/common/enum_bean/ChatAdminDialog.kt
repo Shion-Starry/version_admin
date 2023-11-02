@@ -40,6 +40,12 @@ enum class ChatAdminDialog(
         subTitleRes = R.string.load_draft_subtitle,
         okRes = R.string.yes,
         cancelRes = R.string.no
+    ),
+    DeleteConfig(
+        layoutRes = R.layout.dialog_admin_yellow,
+        titleRes = R.string.delete_config_title,
+        subTitleRes = R.string.delete_config_subtitle,
+        okRes = R.string.yes
     );
 
     fun getFinalTitle(): String {

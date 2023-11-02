@@ -1,6 +1,7 @@
 Code,Android-key,English,Bahasa
 ,【Common】,,
 _10aec353,cancel,Cancel,Batalkan
+_01bc6f8e,clear,<u>Clear</u>,Jernih
 _d0cf705f,confirm,Confirm,Konfirmasi
 _fedd01b6,delete_button_text,Delete,Menghapus
 _f7c91379,edit_button_text,Edit,Sunting
@@ -23,6 +24,8 @@ _2ef1bb05,permission_notification_content,"Your notifications are not turned on,
 _6c14d946,permission_notification_operate,Set,Atur
 _81597753,permission_notification_title,Notification prompt,Permintaan Notifikasi
 ,【Dialog】,,
+_9e91869a,delete_config_subtitle,Are you sure to delete this configuration?,Apakah Anda yakin akan menghapus konfigurasi ini?
+_5139e21d,delete_config_title,Delete Configuration,Hapus Konfigurasi
 _2d6e7ef3,edit_subtitle_build_version,Build Version,Pembuatan Versi
 _dc3817da,edit_subtitle_channel,Channel,Saluran
 _a63a1a87,edit_subtitle_config_value,Config Value,Nilai Konfigurasi

@@ -40,7 +40,7 @@ class UploadMainFragment : BaseVMFragment<UploadMainViewModel>(), ToolbarClickLi
             (binding as FragmentUploadMainBinding).apply {
                 prlRefresh.onRefresh {
                     mState?.run {
-                        scopeLife(block = getVersionInfo()).finally{
+                        scopeLife(block = getVersionInfo()).finally {
                             finish()
                             layoutState.showContent()
                         }
@@ -63,6 +63,7 @@ class UploadMainFragment : BaseVMFragment<UploadMainViewModel>(), ToolbarClickLi
             ARouter.getInstance()
                 .build(RouteConstants.Upload.uploadNew)
                 .withParcelable("verInfo", mState.verInfo.value)
+                .withSerializable("environment", mState.env.value)
                 .navigation(this@UploadMainFragment, uploadNewResult)
         }
 
