@@ -19,6 +19,7 @@ class CloudMainViewModel : BaseVM() {
     val selectedVersion = MutableLiveData("")
     val searchKey = MutableLiveData("")
     val env = MutableLiveData(Environment.Test)
+    private val cachedData = MutableLiveData<List<CloudConfigInfo>>()
     val adapter = MutableLiveData(CloudConfigListAdapter())
 
     private val customizedFilter = object : ConfigFilter {
@@ -46,6 +47,20 @@ class CloudMainViewModel : BaseVM() {
         }
     }
 
+    fun updateDisplay() {
+        cachedData.value?.apply {
+            val models = filterConfigInfoList(this)
+            adapter.value?.models = models
+            if (models.isNotEmpty()) {
+                layoutState.showContent()
+            } else {
+                layoutState.showEmpty()
+            }
+        } ?: also {
+            layoutState.showRefreshing()
+        }
+    }
+
     fun filterConfigInfoList(configInfoList: List<CloudConfigInfo>): List<CloudConfigInfo> {
         return ConfigFilterUtils.getConfigInfoListByFilter(
             configInfoList,
@@ -61,6 +76,7 @@ class CloudMainViewModel : BaseVM() {
                     "showAllVersions" to true
                 )
             }.await()
+            cachedData.value = configList
             callback.invoke(configList)
         }.finally {
             callback.invoke(null)

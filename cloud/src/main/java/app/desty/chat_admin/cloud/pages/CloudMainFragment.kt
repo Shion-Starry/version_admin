@@ -36,7 +36,12 @@ class CloudMainFragment : BaseVMFragment<CloudMainViewModel>(), ToolbarClickList
             .addBindingParam(BR.click, ClickEvents())
 
     override fun init(savedInstanceState: Bundle?) {
-
+        mState.selectedVersion.observe(this) {
+            mState.updateDisplay()
+        }
+        mState.searchKey.observe(this) {
+            mState.updateDisplay()
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
