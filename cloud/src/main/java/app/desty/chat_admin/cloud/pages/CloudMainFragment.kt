@@ -11,6 +11,7 @@ import app.desty.chat_admin.cloud.databinding.FragmentCloudMainBinding
 import app.desty.chat_admin.common.base.BaseVMFragment
 import app.desty.chat_admin.common.base.DataBindingConfig
 import app.desty.chat_admin.common.bean.CloudConfigInfo
+import app.desty.chat_admin.common.bean.VersionGroup
 import app.desty.chat_admin.common.config.Environment
 import app.desty.chat_admin.common.config.ToolbarClickListener
 import app.desty.chat_admin.common.constants.RouteConstants
@@ -20,6 +21,7 @@ import app.desty.chat_admin.common.utils.MyDialog
 import app.desty.chat_admin.common.utils.MyToast
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.blankj.utilcode.util.StringUtils
 import com.core.result.navigation
 import com.drake.net.utils.scopeDialog
 
@@ -70,6 +72,24 @@ class CloudMainFragment : BaseVMFragment<CloudMainViewModel>(), ToolbarClickList
     }
 
     inner class ClickEvents {
+        fun clickFilter(view: View) {
+            val versionGroup = VersionGroup(mState.selectedVersion.value ?: "")
+            MyDialog.showInputVerDialog(
+                StringUtils.getString(R.string.edit_title_select_version),
+                versionGroup
+            ) {
+                mState.selectedVersion.value = it.getVersionCodeStr()
+            }
+        }
+
+        fun clearSearchBox(view: View) {
+            mState.searchKey.value = ""
+        }
+
+        fun clearFilter(view: View) {
+            mState.selectedVersion.value = ""
+        }
+
         fun editConfig(ccInfo: CloudConfigInfo) {
             ARouter.getInstance()
                 .build(RouteConstants.Cloud.upload)
@@ -101,14 +121,6 @@ class CloudMainFragment : BaseVMFragment<CloudMainViewModel>(), ToolbarClickList
                     MyToast.showToast("Unknown environment identified, operation failed :(")
                 }
             }
-        }
-
-        fun clearSearchBox(view: View) {
-            mState.searchKey.value = ""
-        }
-
-        fun clearFilter(view: View) {
-            mState.selectedVersion.value = ""
         }
 
         fun clickFirstOp(view: View) {

@@ -63,7 +63,7 @@
             android:background="@color/grey_200"
             app:layout_constraintTop_toBottomOf="@id/dlg_title" />
 
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/sv_info"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
 
         <app.desty.chat_admin.common.widget.base.BaseImageView
             drawable_radius="@{6}"

@@ -49,7 +49,7 @@
         <app.desty.chat_admin.common.widget.base.BaseEditWithoutTitleView
             android:id="@+id/btv_config_name"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="50dp"
             android:text="@={searchState.searchKey}"
             android:textSize="@dimen/text_base"
             android:textColor="@color/grey_600"
