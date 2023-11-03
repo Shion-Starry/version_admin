@@ -110,12 +110,12 @@
         </ScrollView>
 
         <app.desty.chat_admin.common.widget.base.BaseImageView
-            drawable_solidColor="@{@color/chat_500}"
             drawable_radius="@{6}"
+            drawable_solidColor="@{@color/chat_500}"
             normalSrc="@{@drawable/ic_check_tint}"
             normalTint="@{@color/color_white}"
-            drawable_disabled_solidColor="@{@color/grey_300}"
             drawable_disabled_radius="@{6}"
+            drawable_disabled_solidColor="@{@color/grey_300}"
             disabledSrc="@{@drawable/ic_check_tint}"
             disabledTint="@{@color/color_white}"
             android:id="@+id/iv_confirm"

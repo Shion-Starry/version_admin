@@ -27,6 +27,8 @@
         <app.desty.chat_admin.common.widget.base.BaseImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxWidth="22dp"
+            android:maxHeight="22dp"
             android:src="@drawable/ic_dialog_question_tint"
             app:tint="@color/sunflower_500" />
 
@@ -37,21 +39,21 @@
             android:gravity="center_horizontal"
             android:text="@string/two_step_vrf_title"
             android:textColor="@color/sunflower_500"
-            android:textSize="@dimen/text_2xl" />
+            android:textSize="@dimen/text_lg" />
 
         <app.desty.chat_admin.common.widget.base.BaseBoldTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:gravity="center_horizontal"
             android:text="@string/two_step_vrf_subtitle"
             android:textColor="@color/grey_700"
-            android:textSize="@dimen/text_2xl" />
+            android:textSize="@dimen/text_lg" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="16dp">
             
             <app.desty.chat_admin.common.widget.base.BaseBoldTextView
                 android:id="@+id/btv_input1"
@@ -60,11 +62,11 @@
                 drawable_strokeWidth="@{1}"
                 drawable_radius="@{6}"
                 android:layout_width="0dp"
-                android:layout_height="56dp"
+                android:layout_height="50dp"
                 android:text="@{codeList.authList[0]}"
                 app:layout_constraintWidth_percent="0.12"
                 android:inputType="number"
-                android:textSize="@dimen/text_2xl"
+                android:textSize="@dimen/text_lg"
                 android:gravity="center"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
@@ -82,11 +84,11 @@
                 drawable_strokeWidth="@{1}"
                 drawable_radius="@{6}"
                 android:layout_width="0dp"
-                android:layout_height="56dp"
+                android:layout_height="50dp"
                 android:text="@{codeList.authList[1]}"
-                app:layout_constraintWidth_percent="0.12"
+                app:layout_constraintWidth_percent="0.13"
                 android:inputType="number"
-                android:textSize="@dimen/text_2xl"
+                android:textSize="@dimen/text_lg"
                 android:gravity="center"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
@@ -104,11 +106,11 @@
                 drawable_strokeWidth="@{1}"
                 drawable_radius="@{6}"
                 android:layout_width="0dp"
-                android:layout_height="56dp"
+                android:layout_height="50dp"
                 android:text="@{codeList.authList[2]}"
-                app:layout_constraintWidth_percent="0.12"
+                app:layout_constraintWidth_percent="0.13"
                 android:inputType="number"
-                android:textSize="@dimen/text_2xl"
+                android:textSize="@dimen/text_lg"
                 android:gravity="center"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
@@ -126,11 +128,11 @@
                 drawable_strokeWidth="@{1}"
                 drawable_radius="@{6}"
                 android:layout_width="0dp"
-                android:layout_height="56dp"
+                android:layout_height="50dp"
                 android:text="@{codeList.authList[3]}"
-                app:layout_constraintWidth_percent="0.12"
+                app:layout_constraintWidth_percent="0.13"
                 android:inputType="number"
-                android:textSize="@dimen/text_2xl"
+                android:textSize="@dimen/text_lg"
                 android:gravity="center"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
@@ -148,11 +150,11 @@
                 drawable_strokeWidth="@{1}"
                 drawable_radius="@{6}"
                 android:layout_width="0dp"
-                android:layout_height="56dp"
+                android:layout_height="50dp"
                 android:text="@{codeList.authList[4]}"
-                app:layout_constraintWidth_percent="0.12"
+                app:layout_constraintWidth_percent="0.13"
                 android:inputType="number"
-                android:textSize="@dimen/text_2xl"
+                android:textSize="@dimen/text_lg"
                 android:gravity="center"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
@@ -170,11 +172,11 @@
                 drawable_strokeWidth="@{1}"
                 drawable_radius="@{6}"
                 android:layout_width="0dp"
-                android:layout_height="56dp"
+                android:layout_height="50dp"
                 android:text="@{codeList.authList[5]}"
-                app:layout_constraintWidth_percent="0.12"
+                app:layout_constraintWidth_percent="0.13"
                 android:inputType="number"
-                android:textSize="@dimen/text_2xl"
+                android:textSize="@dimen/text_lg"
                 android:gravity="center"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
@@ -207,28 +209,31 @@
         <app.desty.chat_admin.common.widget.base.BaseBoldTextView
             drawable_radius="@{6}"
             drawable_solidColor="@{@color/chat_500}"
+            drawable_disabled_radius="@{6}"
+            drawable_disabled_solidColor="@{@color/grey_300}"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="28dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="16dp"
             android:background="@color/chat_500"
             android:gravity="center"
             android:text="@string/confirm"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_lg"
-            android:onClick="@{proxy::clickConfirm}" />
+            android:textSize="@dimen/text_base"
+            android:onClick="@{proxy::clickConfirm}"
+            android:enabled="@{codeList.ifEnabled}"/>
 
-        <app.desty.chat_admin.common.widget.base.BaseTextView
+        <app.desty.chat_admin.common.widget.base.BaseBoldTextView
             drawable_radius="@{6}"
             drawable_solidColor="@{@color/grey_300}"
             drawable_strokeWidth="@{2}"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="46dp"
             android:layout_marginTop="12dp"
             android:background="@color/grey_300"
             android:gravity="center"
             android:text="@string/cancel"
             android:textColor="@color/grey_700"
-            android:textSize="@dimen/text_lg"
+            android:textSize="@dimen/text_base"
             android:onClick="@{proxy::clickCancel}" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

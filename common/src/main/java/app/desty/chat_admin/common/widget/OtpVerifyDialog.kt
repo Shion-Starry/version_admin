@@ -4,6 +4,7 @@ import android.content.Context
 import android.text.Editable
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import app.desty.chat.otp.OtpUtils
 import app.desty.chat_admin.common.BR
@@ -33,6 +34,10 @@ class OtpVerifyDialog(context: Context) : CenterPopupView(context) {
         binding?.run {
             setVariable(BR.codeList, authCodes)
             setVariable(BR.proxy, ProxyEvents())
+        }
+
+        authCodes.ifEnabled.addSource(authCodes.authCode) {
+            authCodes.ifEnabled.value = it.length == 6
         }
     }
 
@@ -73,5 +78,6 @@ class OtpVerifyDialog(context: Context) : CenterPopupView(context) {
 
 data class AuthCodeList (
     val authCode: MutableLiveData<String> = MutableLiveData(""),
-    val authList: MutableList<MutableLiveData<String>> = MutableList(6) { MutableLiveData("") }
+    val authList: MutableList<MutableLiveData<String>> = MutableList(6) { MutableLiveData("") },
+    val ifEnabled: MediatorLiveData<Boolean> = MediatorLiveData(false)
 )
