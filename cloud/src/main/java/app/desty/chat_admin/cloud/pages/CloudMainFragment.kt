@@ -54,7 +54,8 @@ class CloudMainFragment : BaseVMFragment<CloudMainViewModel>(), ToolbarClickList
                             this.forEach { item ->
                                 models += item
                             }
-                            addData(models)
+                            val filteredModels = mState?.filterConfigInfoList(models)
+                            addData(filteredModels)
                         }
                         finish()
                     }

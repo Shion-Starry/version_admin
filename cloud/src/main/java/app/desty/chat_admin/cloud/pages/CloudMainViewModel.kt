@@ -8,6 +8,8 @@ import app.desty.chat_admin.common.base.BaseVM
 import app.desty.chat_admin.common.bean.CloudConfigInfo
 import app.desty.chat_admin.common.config.EnvConfig
 import app.desty.chat_admin.common.config.Environment
+import app.desty.chat_admin.common.utils.ConfigFilter
+import app.desty.chat_admin.common.utils.ConfigFilterUtils
 import app.desty.chat_admin.common.utils.MyToast
 import com.drake.net.Post
 import kotlinx.coroutines.CoroutineScope
@@ -18,6 +20,38 @@ class CloudMainViewModel : BaseVM() {
     val searchKey = MutableLiveData("")
     val env = MutableLiveData(Environment.Test)
     val adapter = MutableLiveData(CloudConfigListAdapter())
+
+    private val customizedFilter = object : ConfigFilter {
+        override fun filter(
+            configInfoList: List<CloudConfigInfo>,
+            configInfo: CloudConfigInfo
+        ): Boolean {
+            selectedVersion.value?.apply {
+                if (this.isNotBlank()) {
+                    this.toIntOrNull()?.let {
+                        if (configInfo.fromVersionCode > it || configInfo.toVersionCode < it) {
+                            return false
+                        }
+                    }
+                }
+            }
+            searchKey.value?.apply {
+                if (this.isNotBlank()) {
+                    if (configInfo.name != this.trim()) {
+                        return false
+                    }
+                }
+            }
+            return true
+        }
+    }
+
+    fun filterConfigInfoList(configInfoList: List<CloudConfigInfo>): List<CloudConfigInfo> {
+        return ConfigFilterUtils.getConfigInfoListByFilter(
+            configInfoList,
+            customizedFilter
+        )
+    }
 
     fun loadConfigList(callback: (List<CloudConfigInfo>?) -> Unit) {
         scopeNetLife {
