@@ -17,6 +17,7 @@ import app.desty.chat_admin.common.constants.RouteConstants
 import app.desty.chat_admin.common.enum_bean.ChatAdminDialog
 import app.desty.chat_admin.common.enum_bean.HomePageType
 import app.desty.chat_admin.common.utils.MyDialog
+import app.desty.chat_admin.common.utils.MyToast
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.core.result.navigation
@@ -78,15 +79,28 @@ class CloudMainFragment : BaseVMFragment<CloudMainViewModel>(), ToolbarClickList
         }
 
         fun deleteConfig(ccInfo: CloudConfigInfo) {
-            MyDialog.show(
-                ChatAdminDialog.DeleteConfig,
-                {
-                    scopeDialog(block = mState.deleteConfig(ccInfo))
-                        .finally {
-                            mState.layoutState.showRefreshing()
+            when (mState.env.value) {
+                Environment.Test -> {
+                    MyDialog.show(
+                        ChatAdminDialog.DeleteConfig,
+                        {
+                            scopeDialog(block = mState.deleteConfig(ccInfo))
+                                .finally { mState.layoutState.showRefreshing() }
                         }
+                    )
                 }
-            )
+                Environment.Prod -> {
+                    MyDialog.showOtpDialog {
+                        if (it) {
+                            scopeDialog(block = mState.deleteConfig(ccInfo))
+                                .finally { mState.layoutState.showRefreshing() }
+                        }
+                    }
+                }
+                else -> {
+                    MyToast.showToast("Unknown environment identified, operation failed :(")
+                }
+            }
         }
 
         fun clearSearchBox(view: View) {

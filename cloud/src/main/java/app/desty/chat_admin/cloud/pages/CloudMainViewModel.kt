@@ -1,6 +1,5 @@
 package app.desty.chat_admin.cloud.pages
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.scopeNetLife
 import app.desty.chat_admin.cloud.adapter.CloudConfigListAdapter
@@ -9,6 +8,7 @@ import app.desty.chat_admin.common.base.BaseVM
 import app.desty.chat_admin.common.bean.CloudConfigInfo
 import app.desty.chat_admin.common.config.EnvConfig
 import app.desty.chat_admin.common.config.Environment
+import app.desty.chat_admin.common.utils.MyToast
 import com.drake.net.Post
 import kotlinx.coroutines.CoroutineScope
 
@@ -27,7 +27,6 @@ class CloudMainViewModel : BaseVM() {
                     "showAllVersions" to true
                 )
             }.await()
-            Log.i("The get config request is successful: ", "$configList")
             callback.invoke(configList)
         }.finally {
             callback.invoke(null)
@@ -40,6 +39,7 @@ class CloudMainViewModel : BaseVM() {
                 "uniqueKey" to ccInfo.uniqueKey
             )
         }.await()
+        MyToast.showToast("Successfully Deleted :)")
     }
 
 }
