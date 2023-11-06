@@ -106,11 +106,11 @@ _92ad0d94,splash_no_internet_negative,Setting,Atur
 _0a2ff602,splash_no_internet_positive,Retry,Coba lagi
 _56aeb490,splash_no_internet_title,No network available,Jaringan tidak tersedia
 ,【Welcome】,,
-_a9341bfc,welcome_content,"Easily reply your customer chat, anywhere and anytime from your Mobile App","Balas pesan pelanggan Anda dengan mudah, di mana saja dan kapan saja dari Aplikasi Seluler"
+_a9341bfc,welcome_content,Make your Desty Chat versions easy to check and manage,Jadikan versi Desty Chat Anda mudah diperiksa dan dikelola
 _883e8df6,welcome_content_no_platform,Please connect a channel on Profile-Channel Management or Web to start the chat with your customers.,Hubungkan toko Anda di Profil - Pengaturan Toko atau di Website untuk mulai chat dengan penlanggan Anda
 _c163e094,welcome_login,Log in,Log in
 _440ed308,welcome_refresh,Refresh,Refresh
-_318903df,welcome_title,Welcome to Desty Chat,Selamat Datang di Desty Chat
+_318903df,welcome_title,Welcome to Desty Chat - Admin,Selamat Datang di Desty Chat - Admin
 ,【Upgrade】,,
 _aaa399bd,upgrade_cancel_button,<u>Cancel update</u>,<u>Batalkan</u>
 _b1494cfb,upgrade_get_info_failure,Get upgrade info failed,Gagal memuat infomasi update
