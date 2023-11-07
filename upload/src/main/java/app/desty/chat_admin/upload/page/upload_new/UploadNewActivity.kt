@@ -118,7 +118,7 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
 
         fun clickLatestVer(view: View) {
             val versionGroup = VersionGroup(mState.latestCode.value ?: "")
-            MyDialog.showInputVerDialog(
+            MyDialog.showVerPickerDialog(
                 StringUtils.getString(R.string.edit_title_latest_version),
                 versionGroup
             ) {
@@ -129,7 +129,7 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
 
         fun clickCompatVer(view: View) {
             val versionGroup = VersionGroup(mState.compatCode.value ?: "")
-            MyDialog.showInputVerDialog(
+            MyDialog.showVerPickerDialog(
                 StringUtils.getString(R.string.edit_title_compat_version),
                 versionGroup
             ) {

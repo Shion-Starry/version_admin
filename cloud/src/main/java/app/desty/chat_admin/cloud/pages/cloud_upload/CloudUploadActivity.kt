@@ -124,7 +124,7 @@ class CloudUploadActivity : BaseVmActivity<CloudUploadViewModel>() {
 
         fun clickFromVer(view: View) {
             val versionGroup = VersionGroup(mState.fromVersion.value ?: "")
-            MyDialog.showInputVerDialog(
+            MyDialog.showVerPickerDialog(
                 StringUtils.getString(R.string.edit_title_from_which_version),
                 versionGroup
             ) {
@@ -134,7 +134,7 @@ class CloudUploadActivity : BaseVmActivity<CloudUploadViewModel>() {
 
         fun clickToVer(view: View) {
             val versionGroup = VersionGroup(mState.toVersion.value ?: "")
-            MyDialog.showInputVerDialog(
+            MyDialog.showVerPickerDialog(
                 StringUtils.getString(R.string.edit_title_to_which_version),
                 versionGroup
             ) {

@@ -80,7 +80,7 @@ class CloudMainFragment : BaseVMFragment<CloudMainViewModel>(), ToolbarClickList
     inner class ClickEvents {
         fun clickFilter(view: View) {
             val versionGroup = VersionGroup(mState.selectedVersion.value ?: "")
-            MyDialog.showInputVerDialog(
+            MyDialog.showVerPickerDialog(
                 StringUtils.getString(R.string.edit_title_select_version),
                 versionGroup
             ) {
