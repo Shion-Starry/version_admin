@@ -39,6 +39,13 @@ enum class HomePageType(
         0,
         R.drawable.ic_arrow_up_tint
     ),
+    Hidden(
+        4000,
+        R.drawable.ic_eye,
+        R.string.navigation_hidden,
+        RouteConstants.Hidden.main,
+        0
+    ),
     Logout(
         8000,
         R.drawable.ic_navi_logout,

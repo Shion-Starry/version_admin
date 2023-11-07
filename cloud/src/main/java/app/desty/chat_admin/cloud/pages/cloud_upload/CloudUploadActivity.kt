@@ -14,6 +14,7 @@ import app.desty.chat_admin.common.config.Environment
 import app.desty.chat_admin.common.constants.RouteConstants
 import app.desty.chat_admin.common.enum_bean.ChatAdminDialog
 import app.desty.chat_admin.common.utils.MyDialog
+import app.desty.chat_admin.common.utils.MyToast
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.KeyboardUtils
@@ -103,17 +104,21 @@ class CloudUploadActivity : BaseVmActivity<CloudUploadViewModel>() {
     inner class ClickEvents {
 
         fun clickUpload(view: View) {
-            if (mState.env == Environment.Test) {
-                MyDialog.show(ChatAdminDialog.Upload,
-                {
-                    scopeDialog(block = mState.uploadCloud())
-                })
-            } else if (mState.env == Environment.Prod) {
-                MyDialog.showOtpDialog {
-                    if (it) {
-                        scopeDialog(block = mState.uploadCloud())
+            if (mState.checkFormat()) {
+                if (mState.env == Environment.Test) {
+                    MyDialog.show(ChatAdminDialog.Upload,
+                        {
+                            scopeDialog(block = mState.uploadCloud())
+                        })
+                } else if (mState.env == Environment.Prod) {
+                    MyDialog.showOtpDialog {
+                        if (it) {
+                            scopeDialog(block = mState.uploadCloud())
+                        }
                     }
                 }
+            } else {
+                MyToast.showToast("The To Version cannot be earlier than the From Version :(")
             }
         }
 

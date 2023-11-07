@@ -26,10 +26,14 @@ _81597753,permission_notification_title,Notification prompt,Permintaan Notifikas
 ,【Dialog】,,
 _9e91869a,delete_config_subtitle,Are you sure to delete this configuration?,Apakah Anda yakin akan menghapus konfigurasi ini?
 _5139e21d,delete_config_title,Delete Configuration,Hapus Konfigurasi
+_4011f827,edit_subtitle_build,Build,Pembuatan
 _2d6e7ef3,edit_subtitle_build_version,Build Version,Pembuatan Versi
 _dc3817da,edit_subtitle_channel,Channel,Saluran
 _a63a1a87,edit_subtitle_config_value,Config Value,Nilai Konfigurasi
+_1efc7c2d,edit_subtitle_fix,Fix,Perbaiki
 _f9e67259,edit_subtitle_fix_version,Fix Version,Perbaiki Versi
+_3f6a41af,edit_subtitle_major,Major,Utama
+_2ec31025,edit_subtitle_sub,Sub,Sub
 _7f925dae,edit_subtitle_sub_version,Sub Version,Sub Versi
 _afa37871,edit_subtitle_version_id,ID,ID
 _c8fa8b10,edit_subtitle_version_name,Name,Nama
@@ -54,7 +58,8 @@ _0c92d549,two_step_vrf_title,Two-Step Verification,Verifikasi Dua Langkah
 _29e8355a,upload_new_ver_subtitle,Are you sure to submit your edited version?,Apakah Anda yakin untuk mengirimkan versi editan Anda?
 _57761ac8,upload_new_ver_title,Submission,Penyerahan
 ,【Home】,,
-_f4831c7b,navigation_cloud,Cloud Setting,pengaturan awan
+_f4831c7b,navigation_cloud,Cloud Configuration,Konfigurasi Awan
+_a41864ff,navigation_hidden,Inner Test Module,Modul Tes Dalam
 _03315ed0,navigation_home,Home,Beranda
 _97c47e07,navigation_logout,Logout,Keluar
 _11395f2d,navigation_upload,Upload Upgrades,Unggah Peningkatan

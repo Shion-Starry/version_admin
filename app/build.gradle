@@ -209,6 +209,7 @@ dependencies {
 
     implementation project(path: ':cloud')
     implementation project(path: ':common')
+    implementation project(path: ':hidden')
     implementation project(path: ':home')
     implementation project(path: ':login')
     implementation project(path: ':otp')

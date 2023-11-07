@@ -40,6 +40,11 @@ public interface RouteConstants {
         String upload = moduleName + "/upload";
     }
 
+    interface Hidden {
+        String moduleName = "/hidden";
+        String main = moduleName + "/main";
+    }
+
     interface Message {
         String moduleName = "/message";
         String home = moduleName + "/message";

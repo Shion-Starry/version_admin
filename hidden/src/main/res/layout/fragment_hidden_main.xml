@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="mState"
+            type="app.desty.chat_admin.hidden.pages.HiddenMainViewModel" />
+
+        <variable
+            name="click"
+            type="app.desty.chat_admin.hidden.pages.HiddenMainFragment.ClickEvents" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.3">
+
+            <app.desty.chat_admin.common.widget.base.BaseBoldTextView
+                android:id="@+id/bbtv_IO_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@{String.format(`The current version is: %s`, mState.testInput)}"
+                android:textColor="@color/grey_900"
+                android:textSize="@dimen/text_lg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="The current version is: 11110326" />
+
+            <app.desty.chat_admin.common.widget.base.BaseBoldTextView
+                android:id="@+id/bbtv_IO_button"
+                style="@style/Chat.Button.Primary.Base"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="Click to Test"
+                android:layout_marginTop="12dp"
+                android:onClick="@{click::clickTesting}" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

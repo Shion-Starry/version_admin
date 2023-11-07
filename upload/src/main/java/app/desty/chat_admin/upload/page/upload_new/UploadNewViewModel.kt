@@ -60,6 +60,9 @@ class UploadNewViewModel : BaseVM() {
 
     fun ifSaveDraft(): Boolean = buildVerInfo() != presetVer
 
+    fun checkFormat(): Boolean =
+        (latestCode.value?.toIntOrNull() ?: 0) >= (compatCode.value?.toIntOrNull() ?: 0)
+
     fun saveVerDraft() {
         EditDraft.setVerInfoByEnv(env, buildVerInfo())
     }

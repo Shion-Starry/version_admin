@@ -12,6 +12,7 @@ import app.desty.chat_admin.common.config.Environment
 import app.desty.chat_admin.common.constants.RouteConstants
 import app.desty.chat_admin.common.enum_bean.ChatAdminDialog
 import app.desty.chat_admin.common.utils.MyDialog
+import app.desty.chat_admin.common.utils.MyToast
 import app.desty.chat_admin.upload.BR
 import app.desty.chat_admin.upload.R
 import com.alibaba.android.arouter.facade.annotation.Autowired
@@ -97,16 +98,20 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
     inner class ClickEvents {
 
         fun clickUpload(view: View) {
-            if (mState.env == Environment.Test) {
-                MyDialog.show(ChatAdminDialog.Upload, {
-                    scopeDialog(block = mState.uploadNewVer())
-                })
-            } else if (mState.env == Environment.Prod) {
-                MyDialog.showOtpDialog {
-                    if (it) {
+            if (mState.checkFormat()) {
+                if (mState.env == Environment.Test) {
+                    MyDialog.show(ChatAdminDialog.Upload, {
                         scopeDialog(block = mState.uploadNewVer())
+                    })
+                } else if (mState.env == Environment.Prod) {
+                    MyDialog.showOtpDialog {
+                        if (it) {
+                            scopeDialog(block = mState.uploadNewVer())
+                        }
                     }
                 }
+            } else {
+                MyToast.showToast("The Latest Version cannot be earlier than the Compatible Version :(")
             }
         }
 

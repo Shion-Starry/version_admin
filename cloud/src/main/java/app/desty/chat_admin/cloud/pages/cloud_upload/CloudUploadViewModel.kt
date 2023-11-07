@@ -63,6 +63,9 @@ class CloudUploadViewModel : BaseVM() {
 
     fun ifSaveDraft(): Boolean = buildConfigInfo() != presetConfig
 
+    fun checkFormat(): Boolean =
+        (toVersion.value?.toIntOrNull() ?: 0) >= (fromVersion.value?.toIntOrNull() ?: 0)
+
     fun saveConfigDraft() {
         EditDraft.setCloudInfoByEnv(env, buildConfigInfo())
     }
