@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.View
 import app.desty.chat_admin.common.base.BaseVMFragment
 import app.desty.chat_admin.common.base.DataBindingConfig
+import app.desty.chat_admin.common.bean.VersionGroup
 import app.desty.chat_admin.common.constants.RouteConstants
-import app.desty.chat_admin.common.utils.MyToast
+import app.desty.chat_admin.common.utils.MyDialog
 import app.desty.chat_admin.hidden.BR
 import app.desty.chat_admin.hidden.R
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.blankj.utilcode.util.StringUtils
 
 @Route(path = RouteConstants.Hidden.main)
 class HiddenMainFragment : BaseVMFragment<HiddenMainViewModel>() {
@@ -26,7 +28,13 @@ class HiddenMainFragment : BaseVMFragment<HiddenMainViewModel>() {
 
     inner class ClickEvents {
         fun clickTesting(view: View) {
-            MyToast.showToast("The output of the testing is ${mState.testInput}")
+            val versionGroup = VersionGroup(mState.testInput.value ?: "")
+            MyDialog.showVerPickerDialog(
+                StringUtils.getString(R.string.edit_title_select_version),
+                versionGroup
+            ) {
+                mState.testInput.value = it.getVersionCodeStr()
+            }
         }
     }
 

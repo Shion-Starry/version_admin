@@ -43,7 +43,7 @@ enum class HomePageType(
         4000,
         R.drawable.ic_eye,
         R.string.navigation_hidden,
-        RouteConstants.Hidden.main,
+        "",
         0
     ),
     Logout(

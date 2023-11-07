@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import app.desty.chat_admin.common.BR
 import app.desty.chat_admin.common.R
 import app.desty.chat_admin.common.bean.VersionGroup
+import app.desty.chat_admin.common.bean.Versions
 import app.desty.chat_admin.common.databinding.DialogInputVerInfoBinding
 import app.desty.chat_admin.common.utils.NumberUtil
 import com.blankj.utilcode.util.StringUtils
@@ -85,13 +86,6 @@ data class DialogState(
     val versions: Versions = Versions(),
     val ifEnabled : MediatorLiveData<Boolean> = MediatorLiveData(true)
 ) {
-    fun setVersions(versionGroup: VersionGroup) {
-        versions.majorInput.value = versionGroup.major.toString()
-        versions.subInput.value = versionGroup.sub.toString()
-        versions.fixInput.value = versionGroup.fix.toString()
-        versions.buildInput.value = versionGroup.build.toString()
-    }
-
     fun getSpecified(type: Int): MutableLiveData<String> {
         return when (type) {
             1 -> versions.majorInput
@@ -112,10 +106,3 @@ data class DialogState(
         }
     }
 }
-
-data class Versions (
-    val majorInput: MutableLiveData<String> = MutableLiveData("0"),
-    val subInput: MutableLiveData<String> = MutableLiveData("0"),
-    val fixInput: MutableLiveData<String> = MutableLiveData("0"),
-    val buildInput: MutableLiveData<String> = MutableLiveData("0")
-)

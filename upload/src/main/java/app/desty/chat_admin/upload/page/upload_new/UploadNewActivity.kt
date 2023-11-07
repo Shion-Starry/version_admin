@@ -100,9 +100,10 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
         fun clickUpload(view: View) {
             if (mState.checkFormat()) {
                 if (mState.env == Environment.Test) {
-                    MyDialog.show(ChatAdminDialog.Upload, {
-                        scopeDialog(block = mState.uploadNewVer())
-                    })
+                    MyDialog.show(
+                        ChatAdminDialog.Upload,
+                        { scopeDialog(block = mState.uploadNewVer()) }
+                    )
                 } else if (mState.env == Environment.Prod) {
                     MyDialog.showOtpDialog {
                         if (it) {

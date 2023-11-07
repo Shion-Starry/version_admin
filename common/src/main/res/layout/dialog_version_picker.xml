@@ -4,7 +4,15 @@
     xmlns:bind="http://schemas.android.com/tools">
 
     <data>
+        
+        <variable
+            name="dialogTitle"
+            type="java.lang.String" />
 
+        <variable
+            name="proxy"
+            type="app.desty.chat_admin.common.widget.VersionPickerDialog.ProxyEvents" />
+        
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:gravity="center_vertical"
+            android:text="@{dialogTitle}"
             android:textSize="@dimen/text_base"
             android:textColor="@color/grey_500"
             app:layout_constraintTop_toTopOf="parent"
@@ -37,6 +46,7 @@
             android:padding="10dp"
             android:src="@drawable/ic_close_tint"
             app:tint="@color/grey_700"
+            android:onClick="@{proxy::clickClose}"
             android:layout_marginEnd="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/btv_title"
@@ -138,6 +148,7 @@
             android:layout_height="38dp"
             android:background="@color/chat_500"
             android:src="@drawable/ic_check_tint"
+            android:onClick="@{proxy::clickOk}"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
             app:layout_constraintStart_toStartOf="parent"

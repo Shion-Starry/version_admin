@@ -106,10 +106,10 @@ class CloudUploadActivity : BaseVmActivity<CloudUploadViewModel>() {
         fun clickUpload(view: View) {
             if (mState.checkFormat()) {
                 if (mState.env == Environment.Test) {
-                    MyDialog.show(ChatAdminDialog.Upload,
-                        {
-                            scopeDialog(block = mState.uploadCloud())
-                        })
+                    MyDialog.show(
+                        ChatAdminDialog.Upload,
+                        { scopeDialog(block = mState.uploadCloud()) }
+                    )
                 } else if (mState.env == Environment.Prod) {
                     MyDialog.showOtpDialog {
                         if (it) {

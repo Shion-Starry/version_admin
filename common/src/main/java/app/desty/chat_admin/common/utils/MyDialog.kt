@@ -10,6 +10,7 @@ import app.desty.chat_admin.common.widget.GlobalDialog
 import app.desty.chat_admin.common.widget.GlobalImageDialog
 import app.desty.chat_admin.common.widget.InputVerDialog
 import app.desty.chat_admin.common.widget.OtpVerifyDialog
+import app.desty.chat_admin.common.widget.VersionPickerDialog
 import com.lxj.xpopup.XPopup
 import com.lxj.xpopup.core.BasePopupView
 import com.lxj.xpopup.interfaces.OnCancelListener
@@ -41,7 +42,8 @@ object MyDialog {
                     this.httpErrorCode = httpErrorCode
                     this.confirmListener = confirmListener
                     this.cancelListener = cancelListener
-                }).show()
+                }
+            ).show()
 
     fun showOtpDialog(
         confirmListener: ((Boolean) -> Unit)?,
@@ -52,7 +54,8 @@ object MyDialog {
                     ActivityLifecycleManager.getInstance().topActivity
                 ).apply {
                     this.confirmListener = confirmListener
-                }).show()
+                }
+            ).show()
 
     fun showInputVerDialog(
         title: String,
@@ -65,9 +68,26 @@ object MyDialog {
                     ActivityLifecycleManager.getInstance().topActivity
                 ).apply {
                     this.title = title
-                    this.dlgState.setVersions(versionGroup)
+                    this.dlgState.versions.setVersions(versionGroup)
                     this.okListener = okListener
-                }).show()
+                }
+            ).show()
+
+    fun showVerPickerDialog(
+        title: String,
+        versionGroup: VersionGroup,
+        okListener: ((VersionGroup) -> Unit)?
+    ): BasePopupView =
+        XPopup.Builder(ActivityLifecycleManager.getInstance().topActivity)
+            .asCustom(
+                VersionPickerDialog(
+                    ActivityLifecycleManager.getInstance().topActivity
+                ).apply {
+                    this.title = title
+                    this.versionGroup = versionGroup
+                    this.okListener = okListener
+                }
+            ).show()
 
     fun showDialog(
         dialogEnum: GlobalDialogEnum,
