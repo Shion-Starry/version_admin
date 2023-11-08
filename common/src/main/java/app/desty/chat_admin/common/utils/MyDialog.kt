@@ -23,10 +23,9 @@ object MyDialog {
         onConfirmListener: OnConfirmListener? = null,
         onCancelListener: OnCancelListener? = null
     ): BasePopupView =
-        showAdminDialog(null, chatAdminDialog, onConfirmListener, onCancelListener)
+        showAdminDialog(chatAdminDialog, onConfirmListener, onCancelListener)
 
     private fun showAdminDialog(
-        httpErrorCode: String?,
         chatAdminDialog: ChatAdminDialog?,
         confirmListener: OnConfirmListener?,
         cancelListener: OnCancelListener?

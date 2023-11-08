@@ -29,7 +29,6 @@
             android:textSize="@dimen/text_base"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             tools:text="key" />
 
         <app.desty.chat_admin.common.widget.base.BaseTextView
