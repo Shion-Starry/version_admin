@@ -130,13 +130,17 @@ class CloudMainFragment : BaseVMFragment<CloudMainViewModel>(), ToolbarClickList
         }
 
         fun clickFirstOp(view: View) {
-            mState.env.value = Environment.Test
-            mState.layoutState.showRefreshing()
+            if (mState.env.value == Environment.Prod) {
+                mState.env.value = Environment.Test
+                mState.layoutState.showRefreshing()
+            }
         }
 
         fun clickSecondOp(view: View) {
-            mState.env.value = Environment.Prod
-            mState.layoutState.showRefreshing()
+            if (mState.env.value == Environment.Test) {
+                mState.env.value = Environment.Prod
+                mState.layoutState.showRefreshing()
+            }
         }
 
     }

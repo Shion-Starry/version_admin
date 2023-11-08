@@ -8,6 +8,10 @@
         <variable
             name="dialogTitle"
             type="java.lang.String" />
+        
+        <variable
+            name="isEnabled"
+            type="androidx.lifecycle.MutableLiveData&lt;java.lang.Boolean&gt;" />
 
         <variable
             name="proxy"
@@ -112,25 +116,25 @@
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@id/llc_subtitle">
             
-            <com.contrarywind.view.WheelView
+            <app.desty.sdk.picker.wheelview.widget.WheelView
                 android:id="@+id/major"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <com.contrarywind.view.WheelView
+            <app.desty.sdk.picker.wheelview.widget.WheelView
                 android:id="@+id/sub"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <com.contrarywind.view.WheelView
+            <app.desty.sdk.picker.wheelview.widget.WheelView
                 android:id="@+id/fix"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <com.contrarywind.view.WheelView
+            <app.desty.sdk.picker.wheelview.widget.WheelView
                 android:id="@+id/build"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -143,6 +147,10 @@
             drawable_solidColor="@{@color/chat_500}"
             normalSrc="@{@drawable/ic_check_tint}"
             normalTint="@{@color/color_white}"
+            drawable_disabled_radius="@{6}"
+            drawable_disabled_solidColor="@{@color/grey_300}"
+            disabledSrc="@{@drawable/ic_check_tint}"
+            disabledTint="@{@color/color_white}"
             android:id="@+id/biv_confirm"
             android:layout_width="120dp"
             android:layout_height="38dp"
@@ -154,7 +162,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/llc_ver_picker"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:enabled="@{isEnabled}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

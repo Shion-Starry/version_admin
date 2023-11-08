@@ -84,7 +84,7 @@ class InputVerDialog(context: Context) : BottomPopupView(context) {
 
 data class DialogState(
     val versions: Versions = Versions(),
-    val ifEnabled : MediatorLiveData<Boolean> = MediatorLiveData(true)
+    val ifEnabled: MediatorLiveData<Boolean> = MediatorLiveData(true)
 ) {
     fun getSpecified(type: Int): MutableLiveData<String> {
         return when (type) {
