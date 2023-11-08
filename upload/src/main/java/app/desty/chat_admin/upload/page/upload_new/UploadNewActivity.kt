@@ -34,8 +34,9 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
 
     override fun onBackPressed() {
         if (mState.ifSaveDraft()) {
-            MyDialog.show(
+            MyDialog.showAdminDialog(
                 ChatAdminDialog.Draft,
+                false,
                 {
                     mState.saveVerDraft()
                     super.onBackPressed()
@@ -58,8 +59,9 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
         if (EditDraft.getVerInfoByEnv(mState.env) == null) {
             mState.setInitialData(passedVerInfo)
         } else {
-            MyDialog.show(
+            MyDialog.showAdminDialog(
                 ChatAdminDialog.LoadDraft,
+                false,
                 {
                     mState.setInitialData(EditDraft.getVerInfoByEnv(mState.env))
                 },
@@ -100,8 +102,9 @@ class UploadNewActivity : BaseVmActivity<UploadNewViewModel>() {
         fun clickUpload(view: View) {
             if (mState.checkFormat()) {
                 if (mState.env == Environment.Test) {
-                    MyDialog.show(
+                    MyDialog.showAdminDialog(
                         ChatAdminDialog.Upload,
+                        true,
                         { scopeDialog(block = mState.uploadNewVer()) }
                     )
                 } else if (mState.env == Environment.Prod) {

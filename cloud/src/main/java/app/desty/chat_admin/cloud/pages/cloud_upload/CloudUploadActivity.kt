@@ -34,8 +34,9 @@ class CloudUploadActivity : BaseVmActivity<CloudUploadViewModel>() {
 
     override fun onBackPressed() {
         if (mState.ifSaveDraft() && mState.editEnabled) {
-            MyDialog.show(
+            MyDialog.showAdminDialog(
                 ChatAdminDialog.Draft,
+                false,
                 {
                     mState.saveConfigDraft()
                     super.onBackPressed()
@@ -61,8 +62,9 @@ class CloudUploadActivity : BaseVmActivity<CloudUploadViewModel>() {
             mState.setInitialData(this)
         } ?: also {
             EditDraft.getCloudInfoByEnv(mState.env)?.apply {
-                MyDialog.show(
+                MyDialog.showAdminDialog(
                     ChatAdminDialog.LoadDraft,
+                    false,
                     {
                         mState.setInitialData(this)
                     },
@@ -106,8 +108,9 @@ class CloudUploadActivity : BaseVmActivity<CloudUploadViewModel>() {
         fun clickUpload(view: View) {
             if (mState.checkFormat()) {
                 if (mState.env == Environment.Test) {
-                    MyDialog.show(
+                    MyDialog.showAdminDialog(
                         ChatAdminDialog.Upload,
+                        true,
                         { scopeDialog(block = mState.uploadCloud()) }
                     )
                 } else if (mState.env == Environment.Prod) {

@@ -23,7 +23,7 @@ class ChatAdminDialogPopup(context: Context) : CenterPopupView(context), View.On
     var confirmListener: OnConfirmListener? = null
     var cancelListener: OnCancelListener? = null
     private var binding: ViewDataBinding? = null
-    var httpErrorCode: String? = null
+    private var httpErrorCode: String? = null
     private var dismissByOption = false
 
     init {

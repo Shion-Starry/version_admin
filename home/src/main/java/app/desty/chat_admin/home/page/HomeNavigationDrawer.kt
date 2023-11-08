@@ -52,7 +52,7 @@ class HomeNavigationDrawer(context: Context) : DrawerPopupView(context) {
         }
 
         fun clickLogout(view: View) {
-            MyDialog.show(ChatAdminDialog.Logout, {
+            MyDialog.showAdminDialog(ChatAdminDialog.Logout, true, {
                 LoginUtil.logout(true)
             })
         }

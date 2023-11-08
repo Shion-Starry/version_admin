@@ -23,14 +23,16 @@ object MyDialog {
         onConfirmListener: OnConfirmListener? = null,
         onCancelListener: OnCancelListener? = null
     ): BasePopupView =
-        showAdminDialog(chatAdminDialog, onConfirmListener, onCancelListener)
+        showAdminDialog(chatAdminDialog, true, onConfirmListener, onCancelListener)
 
-    private fun showAdminDialog(
+    fun showAdminDialog(
         chatAdminDialog: ChatAdminDialog?,
-        confirmListener: OnConfirmListener?,
-        cancelListener: OnCancelListener?
+        enableTouchOutside: Boolean = true,
+        confirmListener: OnConfirmListener? = null,
+        cancelListener: OnCancelListener? = null
     ): BasePopupView =
         XPopup.Builder(ActivityLifecycleManager.getInstance().topActivity)
+            .dismissOnTouchOutside(enableTouchOutside)
             .asCustom(
                 ChatAdminDialogPopup(
                     ActivityLifecycleManager.getInstance().topActivity
@@ -38,7 +40,6 @@ object MyDialog {
                     if (chatAdminDialog != null) {
                         this.chatAdminDialog = chatAdminDialog
                     }
-                    this.httpErrorCode = httpErrorCode
                     this.confirmListener = confirmListener
                     this.cancelListener = cancelListener
                 }
@@ -48,6 +49,7 @@ object MyDialog {
         confirmListener: ((Boolean) -> Unit)?,
     ): BasePopupView =
         XPopup.Builder(ActivityLifecycleManager.getInstance().topActivity)
+            .dismissOnTouchOutside(false)
             .asCustom(
                 OtpVerifyDialog(
                     ActivityLifecycleManager.getInstance().topActivity

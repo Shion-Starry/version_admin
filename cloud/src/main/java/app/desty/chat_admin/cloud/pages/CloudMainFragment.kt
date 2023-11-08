@@ -107,8 +107,9 @@ class CloudMainFragment : BaseVMFragment<CloudMainViewModel>(), ToolbarClickList
         fun deleteConfig(ccInfo: CloudConfigInfo) {
             when (mState.env.value) {
                 Environment.Test -> {
-                    MyDialog.show(
+                    MyDialog.showAdminDialog(
                         ChatAdminDialog.DeleteConfig,
+                        true,
                         {
                             scopeDialog(block = mState.deleteConfig(ccInfo))
                                 .finally { mState.layoutState.showRefreshing() }
