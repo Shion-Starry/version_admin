@@ -91,7 +91,8 @@
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/sv_info"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:overScrollMode="never">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     drawable_radius="@{8}"

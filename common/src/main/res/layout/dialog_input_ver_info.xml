@@ -71,7 +71,8 @@
             android:layout_marginEnd="12dp"
             app:layout_constraintStart_toStartOf="@id/gl_left"
             app:layout_constraintTop_toBottomOf="@id/v_divider"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+            android:overScrollMode="never">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 drawable_radius="@{8}"
