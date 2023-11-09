@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import app.desty.chat_admin.common.base.BaseVmActivity
 import app.desty.chat_admin.common.base.DataBindingConfig
 import app.desty.chat_admin.common.constants.RouteConstants
-import app.desty.chat_admin.common.handler.TokenExpirationHandler
 import app.desty.chat_admin.login.BR
 import app.desty.chat_admin.login.R
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -27,15 +26,15 @@ class LoginActivity : BaseVmActivity<LoginViewModel>() {
     override fun getDataBindingConfig(): DataBindingConfig =
         DataBindingConfig(R.layout.activity_login, BR.mState, mState)
 
-    override fun onResume() {
-        super.onResume()
-        TokenExpirationHandler.startMonitoring()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        TokenExpirationHandler.stopMonitoring()
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        TokenExpirationHandler.startMonitoring()
+//    }
+//
+//    override fun onPause() {
+//        super.onPause()
+//        TokenExpirationHandler.stopMonitoring()
+//    }
 
     private fun switchFragment(pageType: LoginPageType) {
         val fragmentName: String = pageType.fragmentPath

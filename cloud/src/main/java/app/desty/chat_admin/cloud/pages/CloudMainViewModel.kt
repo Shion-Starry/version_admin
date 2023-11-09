@@ -28,17 +28,15 @@ class CloudMainViewModel : BaseVM() {
             configInfo: CloudConfigInfo
         ): Boolean {
             selectedVersion.value?.apply {
-                if (this.isNotBlank()) {
-                    this.toIntOrNull()?.let {
-                        if (configInfo.fromVersionCode > it || configInfo.toVersionCode < it) {
-                            return false
-                        }
+                toIntOrNull()?.let {
+                    if (configInfo.fromVersionCode > it || configInfo.toVersionCode < it) {
+                        return false
                     }
                 }
             }
             searchKey.value?.apply {
-                if (this.isNotBlank()) {
-                    if (configInfo.name != this.trim()) {
+                if (isNotBlank()) {
+                    if (configInfo.name != trim()) {
                         return false
                     }
                 }

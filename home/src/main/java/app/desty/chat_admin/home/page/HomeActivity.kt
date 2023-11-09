@@ -11,7 +11,6 @@ import app.desty.chat_admin.common.bean.ToolbarConfig
 import app.desty.chat_admin.common.config.ToolbarClickListener
 import app.desty.chat_admin.common.constants.RouteConstants
 import app.desty.chat_admin.common.enum_bean.HomePageType
-import app.desty.chat_admin.common.handler.TokenExpirationHandler
 import app.desty.chat_admin.home.BR
 import app.desty.chat_admin.home.R
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -49,15 +48,15 @@ class HomeActivity : BaseVmActivity<HomeViewModel>() {
     override fun getDataBindingConfig(): DataBindingConfig =
         DataBindingConfig(R.layout.activity_home, BR.mState, mState)
 
-    override fun onResume() {
-        super.onResume()
-        TokenExpirationHandler.startMonitoring()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        TokenExpirationHandler.stopMonitoring()
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        TokenExpirationHandler.startMonitoring()
+//    }
+//
+//    override fun onPause() {
+//        super.onPause()
+//        TokenExpirationHandler.stopMonitoring()
+//    }
 
     override fun getToolbarConfig(): ToolbarConfig {
         val tmpType = nowPageType ?: defaultPageType
