@@ -33,7 +33,6 @@ class UploadNewViewModel : BaseVM() {
         compatCode,
         url,
         websiteUrl,
-        marketUrl,
         content)
     val canUpload = MediatorLiveData(false)
     var env = Environment.Test
