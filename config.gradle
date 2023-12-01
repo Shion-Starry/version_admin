@@ -94,7 +94,7 @@ ext {
 
             //GitHub: https://github.com/liangjingkanji/Net/
             //文档: https://liangjingkanji.github.io/Net/
-            net                       : 'com.github.liangjingkanji:Net:3.6.1',
+            net                       : 'com.github.liangjingkanji:Net:3.6.2',
             okhttp                    : 'com.squareup.okhttp3:okhttp:4.10.0',
             okhttp_bom                : 'com.squareup.okhttp3:okhttp-bom:4.10.0',
             okhttp_logging            : 'com.squareup.okhttp3:logging-interceptor:4.10.0',
