@@ -1,8 +1,8 @@
 -keep class kotlin.** { *; }
 -keep class org.jetbrains.** { *; }
 
--keep class app.desty.common.chat.bean.**{*;}
-#-keep class app.desty.common.enum_bean.**{*;}
+-keep class app.desty.chat_admin.common.bean.**{*;}
+# -keep class app.desty.chat_admin.common.enum_bean.**{*;}
 
 
 #内部库
