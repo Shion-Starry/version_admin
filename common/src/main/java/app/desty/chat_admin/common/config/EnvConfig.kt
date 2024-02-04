@@ -16,7 +16,7 @@ object EnvConfig {
 //        Environment.Dev     -> "https://platform-gateway-dev.desty.one"
 //        Environment.Staging -> "https://platform-gateway-staging.desty.one"
         Environment.Test    -> "https://platform-gateway.desty.one"
-//        Environment.Prod    -> "https://pulibic-gateway.desty.app"
+        Environment.Prod    -> "https://pulibic-gateway.desty.app"
         else                -> "https://platform-gateway.desty.one"
     }
 
